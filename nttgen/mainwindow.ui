@@ -107,7 +107,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton">
+   <widget class="QRadioButton" name="fixedRegions">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -120,7 +120,7 @@
      <string>Fixed regions</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_2">
+   <widget class="QRadioButton" name="fexibleRegions">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -143,7 +143,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="measures">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -156,7 +156,7 @@
      <string>Do you want to enable Measures?</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_2">
+   <widget class="QCheckBox" name="bc">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -169,7 +169,7 @@
      <string>Betwenness Centrality</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_3">
+   <widget class="QCheckBox" name="dc">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -182,7 +182,7 @@
      <string>Degree Centrality</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_4">
+   <widget class="QCheckBox" name="ec">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -195,7 +195,7 @@
      <string>Efficiency Centrality</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_5">
+   <widget class="QCheckBox" name="cc">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -419,7 +419,7 @@
       <string>Alpha ( α )</string>
      </property>
     </widget>
-    <widget class="QDoubleSpinBox" name="alpha_2">
+    <widget class="QDoubleSpinBox" name="alpha">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -473,6 +473,7 @@
      <string>Region</string>
     </property>
    </widget>
+   <zorder>fexibleRegions</zorder>
    <zorder>groupBox</zorder>
    <zorder>pushButton</zorder>
    <zorder>nodes</zorder>
@@ -483,14 +484,13 @@
    <zorder>numberOfRegions</zorder>
    <zorder>length</zorder>
    <zorder>breadth</zorder>
-   <zorder>radioButton</zorder>
-   <zorder>radioButton_2</zorder>
+   <zorder>fixedRegions</zorder>
    <zorder>comboBox</zorder>
-   <zorder>checkBox</zorder>
-   <zorder>checkBox_2</zorder>
-   <zorder>checkBox_3</zorder>
-   <zorder>checkBox_4</zorder>
-   <zorder>checkBox_5</zorder>
+   <zorder>measures</zorder>
+   <zorder>bc</zorder>
+   <zorder>dc</zorder>
+   <zorder>ec</zorder>
+   <zorder>cc</zorder>
    <zorder>numberOfSimulations</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
@@ -511,7 +511,7 @@
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>beta</tabstop>
-  <tabstop>alpha_2</tabstop>
+  <tabstop>alpha</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>minimumDegree</tabstop>
   <tabstop>nodes</tabstop>
@@ -521,14 +521,14 @@
   <tabstop>numberOfRegions</tabstop>
   <tabstop>length</tabstop>
   <tabstop>breadth</tabstop>
-  <tabstop>radioButton</tabstop>
-  <tabstop>radioButton_2</tabstop>
+  <tabstop>fixedRegions</tabstop>
+  <tabstop>fexibleRegions</tabstop>
   <tabstop>comboBox</tabstop>
-  <tabstop>checkBox</tabstop>
-  <tabstop>checkBox_2</tabstop>
-  <tabstop>checkBox_3</tabstop>
-  <tabstop>checkBox_4</tabstop>
-  <tabstop>checkBox_5</tabstop>
+  <tabstop>measures</tabstop>
+  <tabstop>bc</tabstop>
+  <tabstop>dc</tabstop>
+  <tabstop>ec</tabstop>
+  <tabstop>cc</tabstop>
   <tabstop>numberOfSimulations</tabstop>
  </tabstops>
  <resources/>

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed Feb 25 11:36:17 2015
+** Created: Mon Mar 30 14:21:21 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -42,14 +42,14 @@ public:
     QSpinBox *numberOfRegions;
     QSpinBox *length;
     QSpinBox *breadth;
-    QRadioButton *radioButton;
-    QRadioButton *radioButton_2;
+    QRadioButton *fixedRegions;
+    QRadioButton *fexibleRegions;
     QComboBox *comboBox;
-    QCheckBox *checkBox;
-    QCheckBox *checkBox_2;
-    QCheckBox *checkBox_3;
-    QCheckBox *checkBox_4;
-    QCheckBox *checkBox_5;
+    QCheckBox *measures;
+    QCheckBox *bc;
+    QCheckBox *dc;
+    QCheckBox *ec;
+    QCheckBox *cc;
     QSpinBox *numberOfSimulations;
     QLabel *label;
     QLabel *label_2;
@@ -65,7 +65,7 @@ public:
     QLabel *label_14;
     QGroupBox *groupBox;
     QLabel *label_7;
-    QDoubleSpinBox *alpha_2;
+    QDoubleSpinBox *alpha;
     QLabel *label_6;
     QDoubleSpinBox *beta;
     QLabel *label_15;
@@ -105,30 +105,30 @@ public:
         breadth = new QSpinBox(centralWidget);
         breadth->setObjectName(QString::fromUtf8("breadth"));
         breadth->setGeometry(QRect(370, 390, 81, 31));
-        radioButton = new QRadioButton(centralWidget);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
-        radioButton->setGeometry(QRect(40, 320, 141, 26));
-        radioButton_2 = new QRadioButton(centralWidget);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
-        radioButton_2->setGeometry(QRect(210, 320, 161, 26));
+        fixedRegions = new QRadioButton(centralWidget);
+        fixedRegions->setObjectName(QString::fromUtf8("fixedRegions"));
+        fixedRegions->setGeometry(QRect(40, 320, 141, 26));
+        fexibleRegions = new QRadioButton(centralWidget);
+        fexibleRegions->setObjectName(QString::fromUtf8("fexibleRegions"));
+        fexibleRegions->setGeometry(QRect(210, 320, 161, 26));
         comboBox = new QComboBox(centralWidget);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setGeometry(QRect(570, 220, 121, 31));
-        checkBox = new QCheckBox(centralWidget);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        checkBox->setGeometry(QRect(30, 450, 251, 26));
-        checkBox_2 = new QCheckBox(centralWidget);
-        checkBox_2->setObjectName(QString::fromUtf8("checkBox_2"));
-        checkBox_2->setGeometry(QRect(30, 490, 181, 26));
-        checkBox_3 = new QCheckBox(centralWidget);
-        checkBox_3->setObjectName(QString::fromUtf8("checkBox_3"));
-        checkBox_3->setGeometry(QRect(30, 520, 171, 26));
-        checkBox_4 = new QCheckBox(centralWidget);
-        checkBox_4->setObjectName(QString::fromUtf8("checkBox_4"));
-        checkBox_4->setGeometry(QRect(300, 490, 161, 21));
-        checkBox_5 = new QCheckBox(centralWidget);
-        checkBox_5->setObjectName(QString::fromUtf8("checkBox_5"));
-        checkBox_5->setGeometry(QRect(300, 530, 161, 26));
+        measures = new QCheckBox(centralWidget);
+        measures->setObjectName(QString::fromUtf8("measures"));
+        measures->setGeometry(QRect(30, 450, 251, 26));
+        bc = new QCheckBox(centralWidget);
+        bc->setObjectName(QString::fromUtf8("bc"));
+        bc->setGeometry(QRect(30, 490, 181, 26));
+        dc = new QCheckBox(centralWidget);
+        dc->setObjectName(QString::fromUtf8("dc"));
+        dc->setGeometry(QRect(30, 520, 171, 26));
+        ec = new QCheckBox(centralWidget);
+        ec->setObjectName(QString::fromUtf8("ec"));
+        ec->setGeometry(QRect(300, 490, 161, 21));
+        cc = new QCheckBox(centralWidget);
+        cc->setObjectName(QString::fromUtf8("cc"));
+        cc->setGeometry(QRect(300, 530, 161, 26));
         numberOfSimulations = new QSpinBox(centralWidget);
         numberOfSimulations->setObjectName(QString::fromUtf8("numberOfSimulations"));
         numberOfSimulations->setGeometry(QRect(500, 390, 181, 31));
@@ -184,9 +184,9 @@ public:
         label_7 = new QLabel(groupBox);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         label_7->setGeometry(QRect(40, 30, 71, 21));
-        alpha_2 = new QDoubleSpinBox(groupBox);
-        alpha_2->setObjectName(QString::fromUtf8("alpha_2"));
-        alpha_2->setGeometry(QRect(40, 60, 71, 31));
+        alpha = new QDoubleSpinBox(groupBox);
+        alpha->setObjectName(QString::fromUtf8("alpha"));
+        alpha->setGeometry(QRect(40, 60, 71, 31));
         label_6 = new QLabel(groupBox);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         label_6->setGeometry(QRect(180, 30, 67, 21));
@@ -198,6 +198,7 @@ public:
         label_15->setGeometry(QRect(40, 280, 67, 21));
         label_15->setFont(font);
         MainWindow->setCentralWidget(centralWidget);
+        fexibleRegions->raise();
         groupBox->raise();
         pushButton->raise();
         nodes->raise();
@@ -208,14 +209,13 @@ public:
         numberOfRegions->raise();
         length->raise();
         breadth->raise();
-        radioButton->raise();
-        radioButton_2->raise();
+        fixedRegions->raise();
         comboBox->raise();
-        checkBox->raise();
-        checkBox_2->raise();
-        checkBox_3->raise();
-        checkBox_4->raise();
-        checkBox_5->raise();
+        measures->raise();
+        bc->raise();
+        dc->raise();
+        ec->raise();
+        cc->raise();
         numberOfSimulations->raise();
         label->raise();
         label_2->raise();
@@ -233,8 +233,8 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         MainWindow->setStatusBar(statusBar);
-        QWidget::setTabOrder(beta, alpha_2);
-        QWidget::setTabOrder(alpha_2, pushButton);
+        QWidget::setTabOrder(beta, alpha);
+        QWidget::setTabOrder(alpha, pushButton);
         QWidget::setTabOrder(pushButton, minimumDegree);
         QWidget::setTabOrder(minimumDegree, nodes);
         QWidget::setTabOrder(nodes, maximumDegree);
@@ -243,15 +243,15 @@ public:
         QWidget::setTabOrder(area, numberOfRegions);
         QWidget::setTabOrder(numberOfRegions, length);
         QWidget::setTabOrder(length, breadth);
-        QWidget::setTabOrder(breadth, radioButton);
-        QWidget::setTabOrder(radioButton, radioButton_2);
-        QWidget::setTabOrder(radioButton_2, comboBox);
-        QWidget::setTabOrder(comboBox, checkBox);
-        QWidget::setTabOrder(checkBox, checkBox_2);
-        QWidget::setTabOrder(checkBox_2, checkBox_3);
-        QWidget::setTabOrder(checkBox_3, checkBox_4);
-        QWidget::setTabOrder(checkBox_4, checkBox_5);
-        QWidget::setTabOrder(checkBox_5, numberOfSimulations);
+        QWidget::setTabOrder(breadth, fixedRegions);
+        QWidget::setTabOrder(fixedRegions, fexibleRegions);
+        QWidget::setTabOrder(fexibleRegions, comboBox);
+        QWidget::setTabOrder(comboBox, measures);
+        QWidget::setTabOrder(measures, bc);
+        QWidget::setTabOrder(bc, dc);
+        QWidget::setTabOrder(dc, ec);
+        QWidget::setTabOrder(ec, cc);
+        QWidget::setTabOrder(cc, numberOfSimulations);
 
         retranslateUi(MainWindow);
 
@@ -262,13 +262,13 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Network Topologies Generator", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("MainWindow", "Begin Simulation", 0, QApplication::UnicodeUTF8));
-        radioButton->setText(QApplication::translate("MainWindow", "Fixed regions", 0, QApplication::UnicodeUTF8));
-        radioButton_2->setText(QApplication::translate("MainWindow", "Flexible regions", 0, QApplication::UnicodeUTF8));
-        checkBox->setText(QApplication::translate("MainWindow", "Do you want to enable Measures?", 0, QApplication::UnicodeUTF8));
-        checkBox_2->setText(QApplication::translate("MainWindow", "Betwenness Centrality", 0, QApplication::UnicodeUTF8));
-        checkBox_3->setText(QApplication::translate("MainWindow", "Degree Centrality", 0, QApplication::UnicodeUTF8));
-        checkBox_4->setText(QApplication::translate("MainWindow", "Efficiency Centrality", 0, QApplication::UnicodeUTF8));
-        checkBox_5->setText(QApplication::translate("MainWindow", "Closeness Centrality", 0, QApplication::UnicodeUTF8));
+        fixedRegions->setText(QApplication::translate("MainWindow", "Fixed regions", 0, QApplication::UnicodeUTF8));
+        fexibleRegions->setText(QApplication::translate("MainWindow", "Flexible regions", 0, QApplication::UnicodeUTF8));
+        measures->setText(QApplication::translate("MainWindow", "Do you want to enable Measures?", 0, QApplication::UnicodeUTF8));
+        bc->setText(QApplication::translate("MainWindow", "Betwenness Centrality", 0, QApplication::UnicodeUTF8));
+        dc->setText(QApplication::translate("MainWindow", "Degree Centrality", 0, QApplication::UnicodeUTF8));
+        ec->setText(QApplication::translate("MainWindow", "Efficiency Centrality", 0, QApplication::UnicodeUTF8));
+        cc->setText(QApplication::translate("MainWindow", "Closeness Centrality", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Nodes (N)", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindow", "Minimum degree \342\214\251\316\264\342\214\252min", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("MainWindow", "Maximum degree \342\214\251\316\264\342\214\252max", 0, QApplication::UnicodeUTF8));
