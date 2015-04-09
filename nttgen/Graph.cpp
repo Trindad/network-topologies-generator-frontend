@@ -84,7 +84,7 @@ void Graph::setWeightEdgeDirected(int u,int v, double value)
 
 void Graph::setWeight(int u,int v, double value)
 {
-	cout<<" u "<<u<<" v "<<v<<endl;
+    //cout<<" u "<<u<<" v "<<v<<endl;
 	this->nodes[u].setWeight(v,value);//peso 1 caso ocorra ligação 
 	this->nodes[v].setWeight(u,value);//peso 1 caso ocorra ligação 
 }
@@ -110,11 +110,11 @@ bool Graph::getEdge(int u,int v)
 
 int Graph::getDegree(int node)
 {
-	cout << "NOdes? " << this->nodes.size() << endl;
+    //cout << "NOdes? " << this->nodes.size() << endl;
 
 	int degree = this->nodes[node].getDegree();
 
-	cout<<"degree[ "<<node<<" "<<degree;
+    //cout<<"degree[ "<<node<<" "<<degree;
 	return degree;
 }
 
@@ -133,7 +133,7 @@ int Graph::getMaximumNumberOfEdges()
 {
 	int maximumDegree = ( ( this->maxDegree * this->nNodes )/ 2 ); //máximo de ligações que terá a topologia
 
-	cout<<"maximo de ligações "<<maximumDegree<<endl;
+    //cout<<"maximo de ligações "<<maximumDegree<<endl;
 	try 
 	{
 		limitEdges( maximumDegree );

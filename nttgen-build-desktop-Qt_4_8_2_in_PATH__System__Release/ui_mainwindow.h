@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon Mar 30 14:21:21 2015
+** Created: Mon Mar 30 14:53:08 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -84,30 +84,51 @@ public:
         nodes = new QSpinBox(centralWidget);
         nodes->setObjectName(QString::fromUtf8("nodes"));
         nodes->setGeometry(QRect(40, 90, 61, 31));
+        nodes->setMinimum(3);
+        nodes->setMaximum(1000);
+        nodes->setValue(5);
         minimumDegree = new QSpinBox(centralWidget);
         minimumDegree->setObjectName(QString::fromUtf8("minimumDegree"));
         minimumDegree->setGeometry(QRect(150, 90, 151, 31));
+        minimumDegree->setMinimum(1);
+        minimumDegree->setMaximum(999);
+        minimumDegree->setValue(2);
         maximumDegree = new QSpinBox(centralWidget);
         maximumDegree->setObjectName(QString::fromUtf8("maximumDegree"));
         maximumDegree->setGeometry(QRect(350, 90, 161, 31));
+        maximumDegree->setMinimum(1);
+        maximumDegree->setMaximum(999);
+        maximumDegree->setValue(2);
         distance = new QSpinBox(centralWidget);
         distance->setObjectName(QString::fromUtf8("distance"));
         distance->setGeometry(QRect(560, 90, 141, 31));
         area = new QSpinBox(centralWidget);
         area->setObjectName(QString::fromUtf8("area"));
         area->setGeometry(QRect(40, 220, 71, 31));
+        area->setMinimum(6);
+        area->setMaximum(100000);
+        area->setValue(10);
         numberOfRegions = new QSpinBox(centralWidget);
         numberOfRegions->setObjectName(QString::fromUtf8("numberOfRegions"));
         numberOfRegions->setGeometry(QRect(40, 390, 151, 31));
+        numberOfRegions->setMinimum(1);
+        numberOfRegions->setMaximum(99999);
         length = new QSpinBox(centralWidget);
         length->setObjectName(QString::fromUtf8("length"));
         length->setGeometry(QRect(230, 390, 81, 31));
+        length->setMinimum(1);
+        length->setMaximum(99999);
+        length->setValue(2);
         breadth = new QSpinBox(centralWidget);
         breadth->setObjectName(QString::fromUtf8("breadth"));
         breadth->setGeometry(QRect(370, 390, 81, 31));
+        breadth->setMinimum(1);
+        breadth->setMaximum(99999);
+        breadth->setValue(5);
         fixedRegions = new QRadioButton(centralWidget);
         fixedRegions->setObjectName(QString::fromUtf8("fixedRegions"));
         fixedRegions->setGeometry(QRect(40, 320, 141, 26));
+        fixedRegions->setChecked(true);
         fexibleRegions = new QRadioButton(centralWidget);
         fexibleRegions->setObjectName(QString::fromUtf8("fexibleRegions"));
         fexibleRegions->setGeometry(QRect(210, 320, 161, 26));
@@ -132,6 +153,8 @@ public:
         numberOfSimulations = new QSpinBox(centralWidget);
         numberOfSimulations->setObjectName(QString::fromUtf8("numberOfSimulations"));
         numberOfSimulations->setGeometry(QRect(500, 390, 181, 31));
+        numberOfSimulations->setMinimum(1);
+        numberOfSimulations->setMaximum(99999);
         label = new QLabel(centralWidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(40, 60, 67, 21));
@@ -187,12 +210,20 @@ public:
         alpha = new QDoubleSpinBox(groupBox);
         alpha->setObjectName(QString::fromUtf8("alpha"));
         alpha->setGeometry(QRect(40, 60, 71, 31));
+        alpha->setMinimum(0.01);
+        alpha->setMaximum(1);
+        alpha->setSingleStep(0.1);
+        alpha->setValue(0.5);
         label_6 = new QLabel(groupBox);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         label_6->setGeometry(QRect(180, 30, 67, 21));
         beta = new QDoubleSpinBox(groupBox);
         beta->setObjectName(QString::fromUtf8("beta"));
         beta->setGeometry(QRect(180, 60, 61, 31));
+        beta->setMinimum(0.1);
+        beta->setMaximum(1);
+        beta->setSingleStep(0.05);
+        beta->setValue(0.8);
         label_15 = new QLabel(centralWidget);
         label_15->setObjectName(QString::fromUtf8("label_15"));
         label_15->setGeometry(QRect(40, 280, 67, 21));
@@ -264,6 +295,11 @@ public:
         pushButton->setText(QApplication::translate("MainWindow", "Begin Simulation", 0, QApplication::UnicodeUTF8));
         fixedRegions->setText(QApplication::translate("MainWindow", "Fixed regions", 0, QApplication::UnicodeUTF8));
         fexibleRegions->setText(QApplication::translate("MainWindow", "Flexible regions", 0, QApplication::UnicodeUTF8));
+        comboBox->clear();
+        comboBox->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Uniform", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("MainWindow", "Random", 0, QApplication::UnicodeUTF8)
+        );
         measures->setText(QApplication::translate("MainWindow", "Do you want to enable Measures?", 0, QApplication::UnicodeUTF8));
         bc->setText(QApplication::translate("MainWindow", "Betwenness Centrality", 0, QApplication::UnicodeUTF8));
         dc->setText(QApplication::translate("MainWindow", "Degree Centrality", 0, QApplication::UnicodeUTF8));
@@ -281,7 +317,7 @@ public:
         label_12->setText(QApplication::translate("MainWindow", "Nodes distribution", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("MainWindow", "Network", 0, QApplication::UnicodeUTF8));
         label_14->setText(QApplication::translate("MainWindow", "Plane", 0, QApplication::UnicodeUTF8));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Waxman", 0, QApplication::UnicodeUTF8));
+        groupBox->setTitle(QApplication::translate("MainWindow", " Waxman", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("MainWindow", "Alpha ( \316\261 )", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("MainWindow", " Beta ( \316\262 )", 0, QApplication::UnicodeUTF8));
         label_15->setText(QApplication::translate("MainWindow", "Region", 0, QApplication::UnicodeUTF8));

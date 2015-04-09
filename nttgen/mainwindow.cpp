@@ -82,28 +82,39 @@ void MainWindow::on_pushButton_clicked()
       * o limit e máximo, verificando-se a sobrevivência
       */
 
+     int notMax = std::numeric_limits<int>::max();
 
-     while( graph.getNumberOfEdges() < graph.getMinimumNumberOfEdges() )
+     cout<<"Interligação das regiões já realizada"<<endl;
+
+     while( graph.getNumberOfEdges() < graph.getMinimumNumberOfEdges() && notMax >= 2)
      {
-        plane.randomLink(graph);
+        notMax = plane.randomLink(graph);
      }
 
+     cout<<"Interligação randomizada"<<endl;
 
-     while( graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() )
+     while( graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2)
      {
-        plane.randomLink(graph);
+        notMax = plane.randomLink(graph);
      }
+
+     cout<<"Finaliza ligações"<<endl;
 
      if(ui->measures->isChecked())
      {
+
          Measure measures;
 
          vector<Node> _nodes = graph.getNodes();
-         measures.initialize( _nodes,graph.getNumberOfNodes()); //obtêm as medidas de centralidade para cada nó da rede
+         measures.initialize( _nodes,graph.getNumberOfNodes() ); //obtêm as medidas de centralidade para cada nó da rede
 
+         cout<<"measures"<<endl;
      }
 
 
      Suurballe s;
-     s.execute(graph);
+
+     bool survivor = s.execute(graph);
+
+    cout<<"survivor "<<survivor<<endl;
 }

@@ -36,6 +36,15 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>3</number>
+    </property>
+    <property name="maximum">
+     <number>1000</number>
+    </property>
+    <property name="value">
+     <number>5</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="minimumDegree">
     <property name="geometry">
@@ -46,6 +55,15 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>999</number>
+    </property>
+    <property name="value">
+     <number>2</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="maximumDegree">
     <property name="geometry">
@@ -55,6 +73,15 @@
       <width>161</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>999</number>
+    </property>
+    <property name="value">
+     <number>2</number>
     </property>
    </widget>
    <widget class="QSpinBox" name="distance">
@@ -76,6 +103,15 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>6</number>
+    </property>
+    <property name="maximum">
+     <number>100000</number>
+    </property>
+    <property name="value">
+     <number>10</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="numberOfRegions">
     <property name="geometry">
@@ -85,6 +121,12 @@
       <width>151</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>99999</number>
     </property>
    </widget>
    <widget class="QSpinBox" name="length">
@@ -96,6 +138,15 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>99999</number>
+    </property>
+    <property name="value">
+     <number>2</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="breadth">
     <property name="geometry">
@@ -105,6 +156,15 @@
       <width>81</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>99999</number>
+    </property>
+    <property name="value">
+     <number>5</number>
     </property>
    </widget>
    <widget class="QRadioButton" name="fixedRegions">
@@ -118,6 +178,9 @@
     </property>
     <property name="text">
      <string>Fixed regions</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QRadioButton" name="fexibleRegions">
@@ -142,6 +205,16 @@
       <height>31</height>
      </rect>
     </property>
+    <item>
+     <property name="text">
+      <string>Uniform</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Random</string>
+     </property>
+    </item>
    </widget>
    <widget class="QCheckBox" name="measures">
     <property name="geometry">
@@ -216,6 +289,12 @@
       <width>181</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>99999</number>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -404,7 +483,7 @@
 }</string>
     </property>
     <property name="title">
-     <string>Waxman</string>
+     <string> Waxman</string>
     </property>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
@@ -428,6 +507,18 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="minimum">
+      <double>0.010000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>1.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="value">
+      <double>0.500000000000000</double>
+     </property>
     </widget>
     <widget class="QLabel" name="label_6">
      <property name="geometry">
@@ -450,6 +541,18 @@
        <width>61</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="minimum">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>1.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.050000000000000</double>
+     </property>
+     <property name="value">
+      <double>0.800000000000000</double>
      </property>
     </widget>
    </widget>
