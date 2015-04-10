@@ -118,3 +118,19 @@ void MainWindow::on_pushButton_clicked()
 
     cout<<"survivor "<<survivor<<endl;
 }
+
+void MainWindow::on_fixedRegions_clicked()
+{
+    ui->numberOfRegions->setEnabled(true);
+
+    ui->breadth->setEnabled(false);
+    ui->length->setEnabled(false);
+}
+
+void MainWindow::on_fexibleRegions_clicked()
+{
+    ui->numberOfRegions->setEnabled(false);
+
+    ui->breadth->setEnabled(true);
+    ui->length->setEnabled(true);
+}

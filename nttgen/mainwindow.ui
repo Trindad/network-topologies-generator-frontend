@@ -130,6 +130,9 @@
     </property>
    </widget>
    <widget class="QSpinBox" name="length">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -149,6 +152,9 @@
     </property>
    </widget>
    <widget class="QSpinBox" name="breadth">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>370</x>

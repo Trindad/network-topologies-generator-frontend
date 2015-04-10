@@ -18,6 +18,10 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_fixedRegions_clicked();
+
+    void on_fexibleRegions_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
