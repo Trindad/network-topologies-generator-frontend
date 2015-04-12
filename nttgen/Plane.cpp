@@ -211,6 +211,14 @@ void Plane::setRegion(int nRegions)
 }
 
 /**
+ *Armazena o tipo de distribuição dos nós(Variado ou Uniforme)
+ */
+void Plane::setDistributionType(int value)
+{
+    this->distributionType = value;
+}
+
+/**
  * Calcula largura e comprimento
  * de cada região do plano
  */

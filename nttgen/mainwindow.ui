@@ -202,7 +202,7 @@
      <string>Flexible regions</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="nodesDistribution">
     <property name="geometry">
      <rect>
       <x>570</x>
@@ -594,7 +594,7 @@
    <zorder>length</zorder>
    <zorder>breadth</zorder>
    <zorder>fixedRegions</zorder>
-   <zorder>comboBox</zorder>
+   <zorder>nodesDistribution</zorder>
    <zorder>measures</zorder>
    <zorder>bc</zorder>
    <zorder>dc</zorder>
@@ -632,7 +632,7 @@
   <tabstop>breadth</tabstop>
   <tabstop>fixedRegions</tabstop>
   <tabstop>fexibleRegions</tabstop>
-  <tabstop>comboBox</tabstop>
+  <tabstop>nodesDistribution</tabstop>
   <tabstop>measures</tabstop>
   <tabstop>bc</tabstop>
   <tabstop>dc</tabstop>

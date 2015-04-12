@@ -64,6 +64,17 @@ void MainWindow::on_pushButton_clicked()
 
      plane.setWaxmanParameters(ui->alpha->value(),ui->beta->value());
 
+     qDebug()<<ui->nodesDistribution->currentText();
+
+     if(ui->nodesDistribution->currentText() == "Uniform")
+     {
+         plane.setDistributionType(0);
+     }
+     else
+     {
+         plane.setDistributionType(1);
+     }
+
      try
      {
         plane.limitArea(graph.getNumberOfNodes());

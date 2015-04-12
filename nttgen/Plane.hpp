@@ -80,6 +80,7 @@ private:
     int nRegions;							//número de regiões
     double betha;							//parâmetro de Waxman
     double alpha;							//parâmetro de Waxman
+    int distributionType;                   //tipo de distribuição dos nós nas regiões do plano
     vector < vector<int> > xy; 				//armazena as coordenas randomicas
     vector < vector<int> > plane;  			//matriz do plano dinâmica
     vector < vector<int> > coordinates;  	//matriz de coordenadas de cada nodo da rede
