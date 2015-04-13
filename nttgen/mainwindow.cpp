@@ -52,6 +52,7 @@ void MainWindow::on_pushButton_clicked()
         plane.setLength(ui->length->value());//comprimento
 
         plane.setBreadth(ui->breadth->value());//largura
+
      }
      else
      {
@@ -60,7 +61,6 @@ void MainWindow::on_pushButton_clicked()
 
         plane.setRegionsMeasures();
      }
-
 
      plane.setWaxmanParameters(ui->alpha->value(),ui->beta->value());
 
@@ -85,6 +85,7 @@ void MainWindow::on_pushButton_clicked()
      }
 
      plane.initialize(graph);
+
 
      /**
       * Verifica se o número de ligações foi atingido

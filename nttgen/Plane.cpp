@@ -118,50 +118,56 @@ void Plane::setEuclidean(Graph graph,int u,int v)
     graph.setDistancePairOfNodes(u,v,getEuclidean(u,v));
 }
 
+void Plane::setCoordinatesRegion()
+{
+    vector<int> xy;
+
+    int column = 0, row = 0;
+    int columns = 0,rows = 0;
+
+    for (int numberRegion = 0; numberRegion < this->nRegions; numberRegion++)
+    {
+        column = 0, row = 0, columns = 0,rows = 0;
+
+        if (this->nRegions < this->side)
+        {
+            column = floor( numberRegion / getBreadth() ) * this->regionColumn; //armazena a linha do plano
+            
+            row =  floor( numberRegion / this->regionRow ) * this->regionRow;   //armazena a coluna do plano
+            
+            columns = column + this->regionColumn;          //limite de colunas da região
+            rows = row + this->regionRow;
+        }
+        else
+        {
+
+            column = (numberRegion % this->regionRow) * this->regionColumn; //armazena a linha do plano
+            row =  floor( numberRegion / this->regionRow )*this->regionRow; //armazena a coluna do plano
+
+            columns = column + this->regionColumn;          //limite de colunas da região
+            rows = row + this->regionRow;                   //limite de linhas da região
+        }
+
+        xy.push_back(column);
+        xy.push_back(columns);
+        xy.push_back(row);
+        xy.push_back(rows);
+
+        xy.push_back(0);//inicializa número de nós na região
+
+        this->regionsWithNodes.push_back(xy);
+    }
+}
+
+
 /**
  * Atribui as posições dos nós existentes na região ao vetor de posições (nPOsitions)
  */
 void Plane::getNumberOfNodesRegion(int numberRegion, vector<int> &nodes)
 {
-
-    int column = 0, row = 0;
-    int columns = 0,rows = 0;
-
-
-    if (this->nRegions < this->side)
+    for (int i = regionsWithNodes[numberRegion][0]; i < regionsWithNodes[numberRegion][1]; i++)
     {
-        column = floor( numberRegion / getBreadth() ) * this->regionColumn;	//armazena a linha do plano
-        //cout<<"Coluna init "<<column<<endl;
-        row =  floor( numberRegion / this->regionRow ) * this->regionRow;	//armazena a coluna do plano
-        //cout<<"Linhas init "<<row<<endl;
-        columns = column + this->regionColumn;			//limite de colunas da região
-        rows = row + this->regionRow;
-    }
-    else
-    {
-
-        column = (numberRegion % this->regionRow) * this->regionColumn;	//armazena a linha do plano
-        row =  floor( numberRegion / this->regionRow )*this->regionRow;	//armazena a coluna do plano
-
-        //cout<<"Região "<<numberRegion<<" column "<<column<<" row "<<row<<endl;
-
-        // int row = getRegionX(numberRegion/planeColumn);
-        // int column = getRegionY( floor(numberRegion/planeRow) );
-
-        columns = column + this->regionColumn;			//limite de colunas da região
-        rows = row + this->regionRow; 					//limite de linhas da região
-
-        //cout<<"row "<<row<<"rows "<<rows<<"regionRow "<<this->regionRow <<endl;
-
-    }
-
-    // cout<<"Coluna init "<<column<<" até "<<columns<<endl;
-    // cout<<"Linhas init "<<row<<" até "<<rows<<endl;
-    // cout<<"\n\n";
-
-    for (int i = column; i < columns; i++)
-    {
-        for (int j = row; j < rows; j++)
+        for (int j = regionsWithNodes[numberRegion][2]; j < regionsWithNodes[numberRegion][3]; j++)
         {
             if (this->plane[i][j] >= 0)
             {
@@ -216,6 +222,21 @@ void Plane::setRegion(int nRegions)
 void Plane::setDistributionType(int value)
 {
     this->distributionType = value;
+}
+
+
+void Plane::setNodesLimitPerRegion(int n)
+{
+    int temp =  floor(n/this->nRegions);
+
+    if (temp <= 0)
+    {
+        this->nodesLimitPerRegion = 1;//recebe o teto
+    }
+    else
+    {
+        this->nodesLimitPerRegion = temp;
+    }
 }
 
 /**
@@ -535,14 +556,57 @@ void Plane::generateCoordinates(Graph graph,int position)
      */
     if (this->plane[x][y] == -1)
     {
-        xy[position][0] = x;
-        xy[position][1] = y;
+        this->xy[position][0] = x;
+        this->xy[position][1] = y;
 
         /**
         * Bloqueia zona conforme a distância minima
         * Insere -2 na coordenada de bloqueio
         */
         blockedAreaAroundTheNode(graph,x,y);
+
+        return;
+    }
+    else
+    {
+        generateCoordinates(graph,position);
+    }
+}
+
+/**
+ * Atribui coordenadas randomicas no plano
+ */
+void Plane::generateCoordinatesUniform(Graph graph,int position)
+{
+
+    /**
+     * Sorteia uma região do plano depois
+     * sorteia uma posição x e y
+     */
+    int region = random(0,this->nRegions);
+
+    int y = random(this->regionsWithNodes[region][0],this->regionsWithNodes[region][1]);
+    int x = random(this->regionsWithNodes[region][2],this->regionsWithNodes[region][3]);
+
+    /**
+     * Verifica se não existe nenhum nó
+     * nas coordenadas x e y
+     * testa se a posição esta livre e
+     * se o nó não esta na posição correspondente
+     * a diagonal principal
+     */
+    if (this->plane[x][y] == -1 && this->regionsWithNodes[region][4] < this->nodesLimitPerRegion)
+    {
+        this->xy[position][0] = x;
+        this->xy[position][1] = y;
+
+        /**
+        * Bloqueia zona conforme a distância minima
+        * Insere -2 na coordenada de bloqueio
+        */
+        blockedAreaAroundTheNode(graph,x,y);
+
+        this->regionsWithNodes[region][4]++;
 
         return;
     }
@@ -564,6 +628,26 @@ void Plane::setCoodinatesRandomRegion(Graph graph)
 
     /**
      * Gera coordenadas randomicas
+     */
+    for (int i = 0; i < nNodes; i++)
+    {
+        generateCoordinates(graph,i);
+    }
+}
+
+
+/**
+ * Choose any N regions randomly, out of the total R regions, and some of the
+ * regions may be chosen more than once (i.e., have more than one nodes).
+ */
+void Plane::setCoodinatesUniformRegion(Graph graph)
+{
+
+    int nNodes = graph.getNumberOfNodes();
+
+    /**
+     * Gera coordenadas de modo que não ultrapasse o 
+     * número de nós para manter a uniformidade
      */
     for (int i = 0; i < nNodes; i++)
     {
@@ -981,11 +1065,28 @@ void Plane::initialize(Graph &graph)
         setRegion( getNumberRegions() );
     }
 
+
+   
+    setCoordinatesRegion();//obtêm valores das coordenadas(x,y) das regiões no plano
+    
+
     /**
      * Gerando coordenadas (X,Y) de forma randomica
      * para distribuir os nós nas regiões
     */
-    setCoodinatesRandomRegion(graph);
+    if (this->distributionType)
+    {
+        setCoodinatesRandomRegion(graph);//distribuição randomica dos nós nas regiões
+    }
+    else
+    {
+        int n = graph.getNumberOfNodes();
+
+        setNodesLimitPerRegion(n);
+
+        setCoodinatesUniformRegion(graph);
+    }
+    
     setNodesCoordinates(graph);
 
     print();
