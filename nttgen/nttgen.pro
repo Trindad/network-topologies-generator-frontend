@@ -34,6 +34,7 @@ HEADERS  += mainwindow.h \
     Measure.hpp \
     Graph.hpp \
     Dijkstra.hpp \
-    Brandes.hpp
+    Brandes.hpp \
+    FileWriter.hpp
 
 FORMS    += mainwindow.ui

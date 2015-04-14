@@ -29,6 +29,14 @@ void Graph::setEdge(int u,int v)
 	}
 }
 
+/**
+ * Atribui distancia euclidiana entre dois nós
+ */
+void Graph::setEuclideanDistance(int u,int v,double euclidean)
+{
+	nodes[u].setEuclideanDistance(euclidean);
+	nodes[v].setEuclideanDistance(euclidean);
+}
 
 void Graph::setEdgeDirected(int u,int v)
 {

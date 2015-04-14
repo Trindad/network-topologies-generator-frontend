@@ -179,6 +179,12 @@ void Plane::getNumberOfNodesRegion(int numberRegion, vector<int> &nodes)
     }
 }
 
+
+vector< vector<int> > Plane::getCoordinates()
+{
+    return this->coordinates;
+}
+
 /**
  * Atribui o número de colunas de uma região
  * Em seguida obtêm o valor do comprimento

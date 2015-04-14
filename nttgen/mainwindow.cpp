@@ -4,6 +4,7 @@
 #include "Plane.hpp"
 #include "Measure.hpp"
 #include "Suurballe.hpp"
+#include "FileWriter.hpp"
 
 using namespace std;
 
@@ -129,6 +130,13 @@ void MainWindow::on_pushButton_clicked()
      bool survivor = s.execute(graph);
 
     cout<<"survivor "<<survivor<<endl;
+
+    if(survivor)
+    {
+        FileWriter file;
+
+        file.writeTopologies(graph,plane);
+    }
 }
 
 void MainWindow::on_fixedRegions_clicked()

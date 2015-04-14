@@ -49,7 +49,7 @@ public:
     int getEuclidean(int,int);                              //calcula distância euclidiana entre um par de nós
     int getMaximumNodesRegion();                            //máximo de nós que cabem em uma região
     void getNumberOfNodesRegion(int,vector<int>&);          //retorna o número de nós na região passada como parâmetro
-
+    vector< vector<int> > getCoordinates();
 
     /**
      * Funções auxiliares do plano

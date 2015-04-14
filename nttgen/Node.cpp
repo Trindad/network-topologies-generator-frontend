@@ -47,6 +47,11 @@ void Node::setWeight(int node, double value)
 	}
 }
 
+void Node::setEuclideanDistance(double distance)
+{
+	distanceEuclidean.push_back(distance);
+}
+
 void Node::incrementPaths(int n)
 {
 	this->numberOfPaths  = this->numberOfPaths + n;

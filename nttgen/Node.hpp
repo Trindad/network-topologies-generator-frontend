@@ -34,7 +34,8 @@ public:
     void setClosenessCentrality(double);		//atribui o valor da centralidade de proximidade
     void setEfficientCentrality(double);		//atribui o valor da centralidade de eficiência
     void setRelativeDegreeCentrality(double);	//atribui o valor da centralidade relativa de grau
-
+    void setEuclideanDistance(double);
+   
     /**
      * Getters
      */
@@ -60,9 +61,10 @@ public:
 
 private:
 
-    int degree; 					//número de links da topologia
-    vector<int> adjacents;  		//vetor de adjacências de um nó
-    vector<double> weight;			//vetor de peso de ligações entre nós adjacentes
+    int degree; 					     //número de links da topologia
+    vector<int> adjacents;  		     //vetor de adjacências de um nó
+    vector<double> weight;			     //vetor de peso de ligações entre nós adjacentes
+    vector<double> distanceEuclidean;   //armazena a distância euclidiana de um par de nós adjacentes
 
     /**
      * Variáveis utilizadas para medidas de centralidade

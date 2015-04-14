@@ -29,6 +29,7 @@ public:
 	void setWeightEdgeDirected(int, int, double);
 	void setMinimumDistanceOfNode(int);
 	void setDistancePairOfNodes(int,int,double);
+	void setEuclideanDistance(int,int,double);
 
 
 	/**
