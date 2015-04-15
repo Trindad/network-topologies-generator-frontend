@@ -144,7 +144,7 @@ void MainWindow::on_pushButton_clicked()
                 file.writeCoordinatesTopologies(graph,plane);
             }
 
-            file.writeTopologies(graph,plane);
+            file.writeTopologies(graph,plane,simulation);
 
         }
         cout<<" simulation "<<simulation<<endl;

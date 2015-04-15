@@ -54,11 +54,12 @@ void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 	}
 }
 
-void FileWriter::writeTopologies(Graph g, Plane plane)
+void FileWriter::writeTopologies(Graph g, Plane plane, int simulation)
 {
 	vector < vector<int> > graph = vector< vector<int> > (g.getNumberOfNodes(),vector<int>(g.getNumberOfNodes(),0));
 	vector<Node> node = g.getNodes();
 	
+	this->output<<"\nSimulation "<<simulation<<endl;
 
 	this->output<<"\n From "<<" To "<<" Distance "<<endl;
     for (int u = 0; u < g.getNumberOfNodes(); u++)

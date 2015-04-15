@@ -13,7 +13,7 @@ public:
 
 	string returnCurrentTimeAndDate();
 	void writeCoordinatesTopologies(Graph, Plane);
-	void writeTopologies(Graph,Plane);
+	void writeTopologies(Graph,Plane,int);
 	void writeMeasures();
 	void closeFile();
 
