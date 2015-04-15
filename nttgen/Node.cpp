@@ -49,7 +49,7 @@ void Node::setWeight(int node, double value)
 
 void Node::setEuclideanDistance(double distance)
 {
-	distanceEuclidean.push_back(distance);
+	this->distanceEuclidean.push_back(distance);
 }
 
 void Node::incrementPaths(int n)
@@ -85,6 +85,7 @@ void Node::setRelativeDegreeCentrality(double value)
 	this->relativeDegreeCentrality = value;
 }
 
+
 double Node::getDegreeCentrality()
 {
 	return this->degreeCentrality;
@@ -113,6 +114,10 @@ int Node::getDegree()
 	return this->degree;
 }
 
+vector<double> Node::getEuclideanDistance()
+{
+	return this->distanceEuclidean;
+}
 
 vector<int> Node::getAdjacentsNodes() 
 {

@@ -1,49 +1,89 @@
-#include "FileWrite.hpp"
+#include "FileWriter.hpp"
 
-FileWriter(){}
+FileWriter::FileWriter(){}
 
-~FileWriter(){}
+FileWriter::~FileWriter(){}
 
-void FileWriter::writeTopologies(Graph g, Plane p)
+string FileWriter::returnCurrentTimeAndDate()
 {
-    
-	vector < vector<int> > coodinates = plane.getCoordinates();
-	vector < vector<int> > adjacents = vector< vector<int> > (g.getNumberOfNodes(),vector<int>(g.getNumberOfNodes(),0));
+    time_t rawtime;
+	struct tm * timeinfo;
+	char buffer [80];
 
-	std::chrono::time_point<std::chrono::system_clock> start, end;
-    start = std::chrono::system_clock::now();
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
 
-	end = std::chrono::system_clock::now();
- 
-    time_t end_time = chrono::system_clock::to_time_t(end);
+	strftime (buffer,80,"%d_%m_%Y_%T",timeinfo);
 
-	string fileName = "topology_"+ ;
-    string date = ctime(&end_time);			//obtêm a data 
-    date = date.substr(0, date.size()-1);	//elimina ultimo caractere lixo
-    string extension = ".txt";
+	return buffer;
+}
 
-    string file = fileName+date+extension;
-
-	ofstream output;
-
-    output.open(file);
-
-    this->dateTime = date;
-
-    /**
-     * Escreve no arquivo as posições de cada nó no grafo
-     * A ordem de inserção é crescente
-     */
-	for (int i = 0; i < g.getNumberOfNodes(); i++)
+void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
+{
+	if (this->output.good())
 	{
-		output<<" "<<coodinates[i][0]<<" "<<coodinates[i][1]<<endl;
+		string fileName = "topology_";
+	    string date = returnCurrentTimeAndDate();
+	    string extension = ".txt";
+
+	    string file = fileName+date+extension;
+
+	    this->output.open(file);
+
+	    this->dateTime = date;
+
+
+		vector < vector<int> > coodinates = plane.getCoordinates();
+
+	    /**
+	     * Escreve no arquivo as posições(x,y) de cada nó no grafo
+	     * A ordem de inserção é crescente
+	     */
+	    this->output<<" Row "<<" Column "<<endl;
+
+	    for (int u = 0; u < g.getNumberOfNodes(); u++)
+		{
+	        this->output<<" "<<coodinates[u][0]<<" "<<coodinates[u][1]<<endl;
+		}
 	}
-
-	for (int i = 0; i < g.getNumberOfNodes(); i++)
+	else
 	{
+		exit(1);
+	}
+}
+
+void FileWriter::writeTopologies(Graph g, Plane plane)
+{
+	vector < vector<int> > graph = vector< vector<int> > (g.getNumberOfNodes(),vector<int>(g.getNumberOfNodes(),0));
+
+	vector<Node> node = g.getNodes();
+
+    for (int u = 0; u < g.getNumberOfNodes(); u++)
+	{
+		vector<int> adj = node[u].getAdjacentsNodes();
+		vector<double> euclidean = node[u].getEuclideanDistance();
 		
+		unsigned int count = 0, n = adj.size();
+
+		while(count < n)
+		{
+			int v = adj[count];
+
+	        if(graph[u][v] == 1 || graph[v][u] == 1)
+	        {
+	        	count++;
+	            continue;
+	        }
+
+	        graph[u][v] = graph[v][u] = 1;
+			
+            this->output<<" "<<u<<" "<<v<<" "<<euclidean[count]<<endl;
+
+        	count++;
+		}
 	}
 
+	this->output.close();
 }
 
 void FileWriter::writeMeasures()

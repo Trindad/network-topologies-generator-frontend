@@ -107,9 +107,9 @@ int Plane::getEuclidean(int u, int v)
     int baseU = abs(this->coordinates[u][0]-this->coordinates[u][1]);
     int baseV = abs(this->coordinates[v][0]-this->coordinates[v][1]);
 
-    int distance = sqrt( pow(baseU,2) + pow(baseV,2) );
+    this->euclidean = sqrt( pow(baseU,2) + pow(baseV,2) );
 
-    return distance;
+    return this->euclidean;
 }
 
 void Plane::setEuclidean(Graph graph,int u,int v)
@@ -898,6 +898,9 @@ vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>
         if (n == 2)
         {
             graph.setEdge(nodes[i][0],nodes[i][1]);//liga os dois nós no grafo
+            
+            double e = getEuclidean(nodes[i][0],nodes[i][0]);
+            graph.setEuclideanDistance(nodes[i][0],nodes[i][1],e);
 
             continue;
         }
@@ -954,6 +957,7 @@ vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>
                     {
                         //cout<<"ligação entre "<<source<<" e "<<target<<endl;
                         graph.setEdge(source,target);//liga os dois nós no grafo
+                        graph.setEuclideanDistance(source,target,this->euclidean);
 
                         targets[target] = 1;
                         sources[source] = 1;
@@ -966,6 +970,7 @@ vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>
                     {
                         //cout<<"ligação entre "<<source<<" e "<<target<<endl;
                         graph.setEdge(source,target);//liga os dois nós no grafo
+                        graph.setEuclideanDistance(source,target,this->euclidean);
 
                         targets[target] = 1;
                         sources[source] = 1;
@@ -1164,6 +1169,8 @@ int Plane::randomLink(Graph &graph)
         {
             //cout<<"Ligação entre "<<nodes[0]<<" e "<<nodes[1]<<endl;
             graph.setEdge(nodes[0],nodes[1]);
+            double e = getEuclidean(nodes[0],nodes[1]);
+            graph.setEuclideanDistance(nodes[0],nodes[1],e);
 
             return nodes.size();
         }
@@ -1222,6 +1229,7 @@ int Plane::randomLink(Graph &graph)
         {
             //cout<<"ligação entre "<<source<<" e "<<target<<endl;
             graph.setEdge(source,target);
+            graph.setEuclideanDistance(source,target,this->euclidean);
 
             return nodes.size();
         }

@@ -52,6 +52,7 @@ public:
     double getEfficientCentrality();	//centralidade de eficiência
     vector<int> getAdjacentsNodes();	//retorna vetor de nós adjacentes
     int getNumberOfNodesFromPath(int);	//número de nodos em um caminho minimo
+    vector<double>  getEuclideanDistance();//retorna um vetor com as distâncias euclidianas de cada ligação
 
     void addNodePath(int);					//adiciona nodo ao caminho
     void removeNode(int);					//remove nodo da lista de adjacências

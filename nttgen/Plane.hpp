@@ -1,3 +1,5 @@
+#ifndef PLANE_H
+#define PLANE_H
 /**
  * Definições de função-membro que aparecem em Regions.cpp
  */
@@ -84,6 +86,7 @@ private:
     int nRegions;							//número de regiões
     double betha;							//parâmetro de Waxman
     double alpha;							//parâmetro de Waxman
+    double euclidean;                       //distancia euclidiana atual
     int nodesLimitPerRegion;                //limite de nós por região, considerando distribuição uniforme
     int distributionType;                   //tipo de distribuição dos nós nas regiões do plano
     vector < vector<int> > xy; 				//armazena as coordenas randomicas
@@ -91,3 +94,4 @@ private:
     vector < vector<int> > coordinates;  	//matriz de coordenadas de cada nodo da rede
     vector< vector<int> > regionsWithNodes; //insere valor inicial e final referente ao número de linhas e colunas que a cada região ocupa e armazena o número de nós daquela região
 };
+#endif

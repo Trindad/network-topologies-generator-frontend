@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     Measure.cpp \
     Graph.cpp \
     Dijkstra.cpp \
-    Brandes.cpp
+    Brandes.cpp \
+    FileWriter.cpp
 
 HEADERS  += mainwindow.h \
     tree_util.hh \
