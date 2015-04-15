@@ -14,6 +14,10 @@ Plane::Plane() {
 
 Plane::~Plane() {}
 
+void Plane::setNumberOfSimulations(int n)
+{
+    this->nSimulations = n;
+}
 /**
  * Atribui o valor do lado de um plano (lado X lado)
  * Atribui 0 a todas as posições da matriz do plano
@@ -96,6 +100,11 @@ void Plane::setWaxmanParameters(double alpha,double betha)
     this->betha = betha;
 }
 
+
+int Plane::getNumberOfSimulations()
+{
+    return this->nSimulations;
+}
 /**
  * Calcula a distância euclidiana
  * entre um par de nós u e v
@@ -1057,48 +1066,50 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> nodes)
 /**
  * Faz a inicialização do plano
  */
-void Plane::initialize(Graph &graph)
+void Plane::initialize(Graph &graph,int simulation)
 {
 
-    memsetCoordinates( graph.getNumberOfNodes() );
-
-    this->xy = vector<vector<int>> (graph.getNumberOfNodes(),vector<int>(2,0));
-
-    /**
-     * Verifica com procedera a distribuição dos nodos
-     * de acordo com a configuração referente ao número
-     * de regiões do plano
-     */
-
-
-    if(!this->nRegions)
+    if (simulation == 1)
     {
-        setRegion( getNumberRegions() );
+        memsetCoordinates( graph.getNumberOfNodes() );
+
+        this->xy = vector<vector<int>> (graph.getNumberOfNodes(),vector<int>(2,0));
+
+        /**
+         * Verifica com procedera a distribuição dos nodos
+         * Tendo duas opções: uniforme e aleatória
+         * de acordo com a configuração referente ao número
+         * de regiões do plano
+         */
+
+
+        if(!this->nRegions)
+        {
+            setRegion( getNumberRegions() );
+        }
+
+        setCoordinatesRegion();//obtêm valores das coordenadas(x,y) das regiões no plano
+        
+        /**
+         * Gerando coordenadas (X,Y) de forma randomica
+         * para distribuir os nós nas regiões
+        */
+        if (this->distributionType)
+        {
+            setCoodinatesRandomRegion(graph);//distribuição randomica dos nós nas regiões
+        }
+        else
+        {
+            int n = graph.getNumberOfNodes();
+
+            setNodesLimitPerRegion(n);
+
+            setCoodinatesUniformRegion(graph);
+        }
+        
+        setNodesCoordinates(graph);
     }
-
-
-   
-    setCoordinatesRegion();//obtêm valores das coordenadas(x,y) das regiões no plano
     
-
-    /**
-     * Gerando coordenadas (X,Y) de forma randomica
-     * para distribuir os nós nas regiões
-    */
-    if (this->distributionType)
-    {
-        setCoodinatesRandomRegion(graph);//distribuição randomica dos nós nas regiões
-    }
-    else
-    {
-        int n = graph.getNumberOfNodes();
-
-        setNodesLimitPerRegion(n);
-
-        setCoodinatesUniformRegion(graph);
-    }
-    
-    setNodesCoordinates(graph);
 
     print();
 

@@ -87,11 +87,14 @@ void FileWriter::writeTopologies(Graph g, Plane plane)
         	count++;
 		}
 	}
-
-	this->output.close();
 }
 
 void FileWriter::writeMeasures()
 {
 
+}
+
+void FileWriter::closeFile()
+{
+	this->output.close();
 }

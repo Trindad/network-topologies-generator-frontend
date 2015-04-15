@@ -28,6 +28,7 @@ public:
     void setNumberRegions(int);
     void setCoordinatesRegion();                 //obtêm coordenadas x e y iniciais de uma região retornando um vetor de 4 posições
     void setNodesCoordinates(Graph);            //set de coordenadas randomicas X e Y do plano
+    void setNumberOfSimulations(int);           //número de simulações 
     void setNodesLimitPerRegion(int);           //limite de nós por região caso a distribuição seja uniforme 
     void setEuclidean(Graph,int,int);           //calcula a distância euclidiana entre um par de nós
     void setCoodinatesRandomRegion(Graph);      //distribui os nós nas regiões de forma randomica
@@ -50,6 +51,7 @@ public:
     int getCoordinateY(int);                                //coordenada Y
     int getEuclidean(int,int);                              //calcula distância euclidiana entre um par de nós
     int getMaximumNodesRegion();                            //máximo de nós que cabem em uma região
+    int getNumberOfSimulations();                           //retorna o número de simulações
     void getNumberOfNodesRegion(int,vector<int>&);          //retorna o número de nós na região passada como parâmetro
     vector< vector<int> > getCoordinates();
 
@@ -62,7 +64,7 @@ public:
     void limitArea(int);                                                        //verifica se o número de nós é : 2N <= R <= N^2
     int random(int,int);                                                        //gera um número randomico através de uma função probalistica
     int randomLink(Graph &);                                                    //sorteio randomizado de um par de nodos qualquer
-    void initialize(Graph &);                                                   //inicializa as configurações
+    void initialize(Graph &,int);                                                   //inicializa as configurações
     void limitRegion(int,int);                                                  //limites de cada região do plano
     void memsetCoordinates(int);                                                //inicializa vetor de coordenads em 0
     double randomDouble(int,int);                                               //gera um número randomico do tipo double

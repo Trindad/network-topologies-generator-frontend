@@ -15,6 +15,7 @@ public:
 	void writeCoordinatesTopologies(Graph, Plane);
 	void writeTopologies(Graph,Plane);
 	void writeMeasures();
+	void closeFile();
 
 private:
 	string dateTime; //armazena data e hora

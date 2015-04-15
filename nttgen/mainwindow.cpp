@@ -23,7 +23,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
 
-     int simulations = 1;
+     int simulation = 1;
+     FileWriter file;
 
      Graph graph; // cria objeto grafo
 
@@ -34,8 +35,6 @@ void MainWindow::on_pushButton_clicked()
      graph.setMaximumDegree(ui->maximumDegree->value());//grau máximo
 
      graph.setMinimumDistanceOfNode(ui->distance->value());//distância mínima entre dois nós
-
-     graph.memsetGraph();
 
      /**
       * Configurações do plano
@@ -87,65 +86,72 @@ void MainWindow::on_pushButton_clicked()
         cout<<error<<endl;
      }
 
-     plane.initialize(graph);
+     plane.setNumberOfSimulations(ui->numberOfSimulations->value());
 
-
-     /**
-      * Verifica se o número de ligações foi atingido
-      * Se sim verifica se a topologia gerada é sobrevivente
-      * Do contrário realiza sorteio randômico de nós até atingir
-      * o limit e máximo, verificando-se a sobrevivência
-      */
-
-     int notMax = std::numeric_limits<int>::max();
-
-     cout<<"Interligação das regiões já realizada"<<endl;
-
-     while( graph.getNumberOfEdges() < graph.getMinimumNumberOfEdges() && notMax >= 2)
+     while( simulation <= plane.getNumberOfSimulations() )
      {
-        notMax = plane.randomLink(graph);
-     }
+        graph.memsetGraph();
 
-     cout<<"Interligação randomizada"<<endl;
+        plane.initialize(graph,simulation);
 
-     while( graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2)
-     {
-        notMax = plane.randomLink(graph);
-     }
+         /**
+          * Verifica se o número de ligações foi atingido
+          * Se sim verifica se a topologia gerada é sobrevivente
+          * Do contrário realiza sorteio randômico de nós até atingir
+          * o limit e máximo, verificando-se a sobrevivência
+          */
 
-     cout<<"Finaliza ligações"<<endl;
+         int notMax = std::numeric_limits<int>::max();
 
-     if(ui->measures->isChecked())
-     {
+         cout<<"Interligação das regiões já realizada"<<endl;
 
-         Measure measures;
+         while( graph.getNumberOfEdges() < graph.getMinimumNumberOfEdges() && notMax >= 2)
+         {
+            notMax = plane.randomLink(graph);
+         }
 
-         vector<Node> _nodes = graph.getNodes();
-         measures.initialize( _nodes,graph.getNumberOfNodes() ); //obtêm as medidas de centralidade para cada nó da rede
+         cout<<"Interligação randomizada"<<endl;
 
-         cout<<"measures"<<endl;
-     }
+         while( graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2)
+         {
+            notMax = plane.randomLink(graph);
+         }
+
+         cout<<"Finaliza ligações"<<endl;
+
+         if(ui->measures->isChecked())
+         {
+
+             Measure measures;
+
+             vector<Node> _nodes = graph.getNodes();
+             measures.initialize( _nodes,graph.getNumberOfNodes() ); //obtêm as medidas de centralidade para cada nó da rede
+
+             cout<<"measures"<<endl;
+         }
 
 
-     Suurballe s;
+         Suurballe s;
 
-     bool survivor = s.execute(graph);
+         bool survivor = s.execute(graph);
 
-    cout<<"survivor "<<survivor<<endl;
+        cout<<"survivor "<<survivor<<endl;
 
-    if(survivor)
-    {
-        FileWriter file;
-        
-        if (simulations == 1)
+        if(survivor)
         {
-            file.writeCoordinatesTopologies(graph,plane);
+            if (simulation == 1)
+            {
+                file.writeCoordinatesTopologies(graph,plane);
+            }
+
+            file.writeTopologies(graph,plane);
+
         }
+        cout<<" simulation "<<simulation<<endl;
+        simulation++;
+     }
 
-        file.writeTopologies(graph,plane);
-
-        simulations++;
-    }
+     file.closeFile();
 }
 
 void MainWindow::on_fixedRegions_clicked()
