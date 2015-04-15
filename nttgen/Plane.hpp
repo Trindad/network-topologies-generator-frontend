@@ -89,6 +89,7 @@ private:
     double euclidean;                       //distancia euclidiana atual
     int nodesLimitPerRegion;                //limite de nós por região, considerando distribuição uniforme
     int distributionType;                   //tipo de distribuição dos nós nas regiões do plano
+    int nSimulations;                       //número de simulações para construir as ligações
     vector < vector<int> > xy; 				//armazena as coordenas randomicas
     vector < vector<int> > plane;  			//matriz do plano dinâmica
     vector < vector<int> > coordinates;  	//matriz de coordenadas de cada nodo da rede

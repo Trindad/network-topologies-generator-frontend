@@ -43,7 +43,9 @@ void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 
 	    for (int u = 0; u < g.getNumberOfNodes(); u++)
 		{
-	        this->output<<" "<<coodinates[u][0]<<" "<<coodinates[u][1]<<endl;
+			char str[255];
+            sprintf(str," %*d  %*d ", 2, coodinates[u][0], 4, coodinates[u][1]);
+	        this->output<<str<<endl;
 		}
 	}
 	else
@@ -55,9 +57,10 @@ void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 void FileWriter::writeTopologies(Graph g, Plane plane)
 {
 	vector < vector<int> > graph = vector< vector<int> > (g.getNumberOfNodes(),vector<int>(g.getNumberOfNodes(),0));
-
 	vector<Node> node = g.getNodes();
+	
 
+	this->output<<"\n From "<<" To "<<" Distance "<<endl;
     for (int u = 0; u < g.getNumberOfNodes(); u++)
 	{
 		vector<int> adj = node[u].getAdjacentsNodes();
@@ -76,9 +79,11 @@ void FileWriter::writeTopologies(Graph g, Plane plane)
 	        }
 
 	        graph[u][v] = graph[v][u] = 1;
-			
-            this->output<<" "<<u<<" "<<v<<" "<<euclidean[count]<<endl;
 
+	        char str[255];
+            sprintf(str," %*d  %*d  %*f ", 2, u, 4, v, 8, euclidean[count]);
+
+			this->output<<str<<"\n";
         	count++;
 		}
 	}

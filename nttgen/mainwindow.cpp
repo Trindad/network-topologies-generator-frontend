@@ -23,6 +23,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
 
+     int simulations = 1;
+
      Graph graph; // cria objeto grafo
 
      graph.setNumberOfNodes( ui->nodes->value() ); //número de nós
@@ -134,8 +136,15 @@ void MainWindow::on_pushButton_clicked()
     if(survivor)
     {
         FileWriter file;
+        
+        if (simulations == 1)
+        {
+            file.writeCoordinatesTopologies(graph,plane);
+        }
 
         file.writeTopologies(graph,plane);
+
+        simulations++;
     }
 }
 
