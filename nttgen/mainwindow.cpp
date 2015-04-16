@@ -102,6 +102,7 @@ void MainWindow::on_pushButton_clicked()
           */
 
          int notMax = std::numeric_limits<int>::max();
+         int topology = 1;
 
          cout<<"Interligação das regiões já realizada"<<endl;
 
@@ -110,30 +111,10 @@ void MainWindow::on_pushButton_clicked()
             notMax = plane.randomLink(graph);
          }
 
-         cout<<"Interligação randomizada"<<endl;
-
-         while( graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2)
-         {
-            notMax = plane.randomLink(graph);
-         }
-
-         cout<<"Finaliza ligações"<<endl;
-
-         if(ui->measures->isChecked())
-         {
-
-             Measure measures;
-
-             vector<Node> _nodes = graph.getNodes();
-             measures.initialize( _nodes,graph.getNumberOfNodes() ); //obtêm as medidas de centralidade para cada nó da rede
-
-             cout<<"measures"<<endl;
-         }
-
-
+         
          Suurballe s;
 
-         bool survivor = s.execute(graph);
+        bool survivor = s.execute(graph);
 
         cout<<"survivor "<<survivor<<endl;
 
@@ -141,13 +122,79 @@ void MainWindow::on_pushButton_clicked()
         {
             if (simulation == 1)
             {
+                file.openFile();
                 file.writeCoordinatesTopologies(graph,plane);
             }
 
-            file.writeTopologies(graph,plane,simulation);
+            file.writeTopologies(graph,plane,simulation,topology);
 
+
+            if(ui->measures->isChecked())
+            {
+
+                cout<<"measures"<<endl;
+                Measure measures;
+
+                vector<Node> _nodes = graph.getNodes();
+                measures.initialize( _nodes,graph.getNumberOfNodes(),ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked() ); //obtêm as medidas de centralidade para cada nó da rede
+
+            }
+            
+            topology++;
         }
-        cout<<" simulation "<<simulation<<endl;
+        
+
+        cout<<"Interligação randomizada "<<graph.getNumberOfEdges()<<" "<<graph.getMaximumNumberOfEdges()<<endl;
+        int nEdges = graph.getNumberOfEdges();
+
+        for (int i = 0; i < graph.getNumberOfNodes(); i++)
+        {
+            cout<<"Node "<<i<<endl;
+            graph.printAdjacents(i);
+        }
+         
+        while( graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2)
+        {
+            cout<<"AQUI"<<endl;
+            notMax = plane.randomLink(graph);
+
+            if (graph.getNumberOfEdges() > nEdges)
+            {
+                nEdges = graph.getNumberOfEdges();
+
+                Suurballe s;
+
+                bool survivor = s.execute(graph);
+
+                cout<<"survivor "<<survivor<<endl;
+
+                if(survivor)
+                {
+                    if (simulation == 1 && topology == 1)
+                    {
+                        file.openFile();
+                        file.writeCoordinatesTopologies(graph,plane);
+                    }
+
+                    file.writeTopologies(graph,plane,simulation,topology);
+
+                    if(ui->measures->isChecked())
+                    {
+
+                         Measure measures;
+
+                         vector<Node> _nodes = graph.getNodes();
+                         measures.initialize( _nodes,graph.getNumberOfNodes(),ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked() ); //obtêm as medidas de centralidade para cada nó da rede
+
+                         cout<<"measures"<<endl;
+                    }
+                    
+                    topology++;
+                }
+
+            }    
+        }
+
         simulation++;
      }
 

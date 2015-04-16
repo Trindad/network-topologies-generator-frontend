@@ -13,6 +13,7 @@ Graph::Graph() {
 	setMinimumDegree(0);		//grau minimo da topologia
 	setMaximumDegree(0.0);		//grau médio da topologia
 	setMinimumDistanceOfNode(0);//distância mínima entre um par de nodos
+	this->nEdges = 0;
 }
 
 Graph::~Graph() {}

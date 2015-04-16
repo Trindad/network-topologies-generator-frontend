@@ -1,6 +1,10 @@
 #include "FileWriter.hpp"
 
-FileWriter::FileWriter(){}
+FileWriter::FileWriter()
+{
+
+	this->simulation = 0;
+}
 
 FileWriter::~FileWriter(){}
 
@@ -18,21 +22,24 @@ string FileWriter::returnCurrentTimeAndDate()
 	return buffer;
 }
 
+void FileWriter::openFile()
+{
+	string fileName = "topology_";
+    string date = returnCurrentTimeAndDate();
+    string extension = ".txt";
+
+    string file = fileName+date+extension;
+
+    this->output.open(file);
+
+    this->dateTime = date;
+}
+
 void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 {
+
 	if (this->output.good())
 	{
-		string fileName = "topology_";
-	    string date = returnCurrentTimeAndDate();
-	    string extension = ".txt";
-
-	    string file = fileName+date+extension;
-
-	    this->output.open(file);
-
-	    this->dateTime = date;
-
-
 		vector < vector<int> > coodinates = plane.getCoordinates();
 
 	    /**
@@ -54,14 +61,20 @@ void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 	}
 }
 
-void FileWriter::writeTopologies(Graph g, Plane plane, int simulation)
+void FileWriter::writeTopologies(Graph g, Plane plane, int s, int topology)
 {
 	vector < vector<int> > graph = vector< vector<int> > (g.getNumberOfNodes(),vector<int>(g.getNumberOfNodes(),0));
 	vector<Node> node = g.getNodes();
 	
-	this->output<<"\nSimulation "<<simulation<<endl;
+	if (s > this->simulation)
+	{
+		this->output<<"\nSimulation "<<s<<endl;
 
-	this->output<<"\n From "<<" To "<<" Distance "<<endl;
+		this->simulation = s;
+	}
+
+	this->output<<"Topology "<<topology<<endl;
+	this->output<<" From "<<" To "<<" Distance "<<endl;
     for (int u = 0; u < g.getNumberOfNodes(); u++)
 	{
 		vector<int> adj = node[u].getAdjacentsNodes();

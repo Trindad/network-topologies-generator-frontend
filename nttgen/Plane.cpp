@@ -1206,7 +1206,7 @@ int Plane::randomLink(Graph &graph)
 
         int indexNode = random(0,nodes.size()-1);
         int source = nodes[ indexNode ];
-        cout<<"indexNode "<<indexNode<<" node "<<source<<endl;
+        // cout<<"indexNode "<<indexNode<<" node "<<source<<endl;
 
         indexNode = random(0,nodes.size()-1);
         int target = nodes[ indexNode ];
@@ -1238,9 +1238,9 @@ int Plane::randomLink(Graph &graph)
          */
         if ( graph.getEdge(source,target) == false && waxmanProbability(graph,source,target) == true )
         {
-            //cout<<"ligação entre "<<source<<" e "<<target<<endl;
             graph.setEdge(source,target);
             graph.setEuclideanDistance(source,target,this->euclidean);
+            cout<<"ligação entre "<<source<<" e "<<target<<" "<<graph.getNumberOfEdges()<<endl;
 
             return nodes.size();
         }

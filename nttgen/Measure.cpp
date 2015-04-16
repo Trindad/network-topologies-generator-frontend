@@ -52,70 +52,86 @@ void Measure::setEfficientCentrality(int index, double value)
     nodes[index].setEfficientCentrality(value);
 }
 
-void Measure::initialize(vector<Node> & nodes,int n)
+void Measure::initialize(vector<Node> & nodes,int n, bool bc, bool cc, bool dc, bool ec)
 {
 
     this->numberOfNodes = n;
 
-    vector< vector<int> > graph = vector< vector<int> > ( n, vector<int> ( n,0 ) );
-
     ofstream saida;
 
     saida.open("saida");
-    /**
-     * Gera matriz de adjacência do grafo a partir do vetor de nós
-     */
-    for ( unsigned int i = 0; i < this->numberOfNodes; i++)
+
+    if (bc || cc || ec)
     {
-        vector <int> adjacents = nodes[i].getAdjacentsNodes();
-
-        for (unsigned int j = 0; j < adjacents.size(); j++)
+        vector< vector<int> > graph = vector< vector<int> > ( n, vector<int> ( n,0 ) );
+        /**
+         * Gera matriz de adjacência do grafo a partir do vetor de nós
+         */
+        for ( unsigned int i = 0; i < this->numberOfNodes; i++)
         {
-            graph[i][ adjacents[j] ] = 1;//atribui ligação
-        }
-    }
+            vector <int> adjacents = nodes[i].getAdjacentsNodes();
 
-    Brandes brandes (this->numberOfNodes);
-
-    for (int i = 0; i < this->numberOfNodes-1; i++)
-    {
-        for (int j = i+1; j < this->numberOfNodes; j++)
-        {
-            if (graph[i][j] == 1)
+            for (unsigned int j = 0; j < adjacents.size(); j++)
             {
-                saida <<" "<<i<<" "<<j<<endl;
+                graph[i][ adjacents[j] ] = 1;//atribui ligação
             }
-
         }
-        cout<<"\n";
+
+        Brandes brandes (this->numberOfNodes);
+
+        for (int i = 0; i < this->numberOfNodes-1; i++)
+        {
+            for (int j = i+1; j < this->numberOfNodes; j++)
+            {
+                if (graph[i][j] == 1)
+                {
+                    saida <<" "<<i<<" "<<j<<endl;
+                }
+
+            }
+            cout<<"\n";
+        }
+        /**
+         * Encontra todos os caminhos mínimos entre pares de nós do grafo
+         */
+        for (int i = 0; i < this->numberOfNodes; i++)
+        {
+            brandes.execute(graph,i,nodes);
+            cout<<"getNumberOfPaths "<<nodes[i].returnPaths().size()<<endl;
+        }
+
+
+        /**
+         * Obtendo medidas de centralidade
+         */
+
+        vector< vector <int> > shortestPath = brandes.getShortestPath();
+
+        if (bc)
+        {
+            betweenCentrality(nodes);       //centralidade de intermediação
+        }
+
+        if (cc)
+        { 
+            closenessCentrality(nodes,shortestPath);    //centralidade de proximidade
+        }
+
+        if (ec)
+        {
+            efficientCentrality(nodes,shortestPath);        //centralidade de eficiência
+        }
+
+
+        for (unsigned int i = 0; i < this->numberOfNodes; i++)
+        {
+            saida<<"bc["<<i<<"] = "<< nodes[i].getBetweenCentrality();
+        }
     }
-    /**
-     * Encontra todos os caminhos mínimos entre pares de nós do grafo
-     */
-    for (int i = 0; i < this->numberOfNodes; i++)
-    {
-        brandes.execute(graph,i,nodes);
-        cout<<"getNumberOfPaths "<<nodes[i].returnPaths().size()<<endl;
-    }
 
-
-    /**
-     * Obtendo medidas de centralidade
-     */
-
-    vector< vector <int> > shortestPath = brandes.getShortestPath();
-
-    betweenCentrality(nodes);						//centralidade de intermediação
-
-    closenessCentrality(nodes,shortestPath);		//centralidade de proximidade
-
-    efficientCentrality(nodes,shortestPath);		//centralidade de eficiência
-
-    degreeCentrality(nodes);						//centralidade de grau
-
-    for (unsigned int i = 0; i < this->numberOfNodes; i++)
-    {
-        saida<<"bc["<<i<<"] = "<< nodes[i].getBetweenCentrality();
+    if (dc)
+    {  
+        degreeCentrality(nodes);                        //centralidade de grau
     }
 }
 

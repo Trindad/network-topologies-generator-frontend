@@ -11,13 +11,15 @@ public:
 	FileWriter();
 	~FileWriter();
 
+	void openFile();
 	string returnCurrentTimeAndDate();
 	void writeCoordinatesTopologies(Graph, Plane);
-	void writeTopologies(Graph,Plane,int);
+	void writeTopologies(Graph,Plane,int,int);
 	void writeMeasures();
 	void closeFile();
 
 private:
 	string dateTime; //armazena data e hora
-	ofstream output; //arquivo onde será armazenado as topologias geradas 
+	ofstream output; //arquivo onde será armazenado as topologias geradas
+	int simulation;	//guarda a simulação anterior 
 };
