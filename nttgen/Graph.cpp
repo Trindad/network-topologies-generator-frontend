@@ -145,7 +145,7 @@ int Graph::getMaximumNumberOfEdges()
     //cout<<"maximo de ligações "<<maximumDegree<<endl;
 	try 
 	{
-		limitEdges( maximumDegree );
+        limitDegree();
 	}
 	catch(const char *error) 
 	{
@@ -201,14 +201,14 @@ void Graph::memsetGraph()
  * possuem o mesmo grau ele não ultrapassa o limite
  * Se passar lança uma exception.
  */
-void Graph::limitEdges(int max) 
+void Graph::limitDegree() 
 {
+	// int temp = ( this->nNodes * ( this->nNodes-1 ) ) / 2; //número máximo de nós em um grafo completo
 
-	int temp = ( this->nNodes * ( this->nNodes-1 ) ) / 2; //número máximo de nós em um grafo completo
-
-	if ( max > temp )	
+	if ( this->maxDegree >= this->nNodes  )	
 	{
-		throw "2 ≤ Maximum Degree ≤ [N*(N-1)]/2";
+		// throw "2 ≤ Maximum Degree ≤ [N*(N-1)]/2";
+		throw "limitDegree";
 	}
 }
 

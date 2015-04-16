@@ -84,8 +84,17 @@ void MainWindow::on_pushButton_clicked()
      }
      catch(const char *error)
      {
-        error = "2N ≤ R ≤ N²";
-        ui->error->setText(QString::fromUtf8("2N ≤ R ≤ N²"));
+        ui->error->setText(QString::fromUtf8("2N ≤ R ≤ N²\n"));
+        return;
+     }
+
+     try
+     {
+        graph.limitDegree();
+     }
+     catch(const char *error)
+     {
+        ui->error->setText(QString::fromUtf8("2 ≤ Maximum Degree ≤ N-1\n"));
         return;
      }
 

@@ -49,7 +49,7 @@ public:
 	int getMaximumNumberOfEdges();
 
 	void memsetGraph();
-	void limitEdges(int); 
+	void limitDegree(); 
 	void removeNode(int,int);
 	void printAdjacents(int);
 

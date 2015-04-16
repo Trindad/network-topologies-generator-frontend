@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu Apr 16 15:37:30 2015
+** Created: Thu Apr 16 16:02:19 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -244,7 +244,7 @@ public:
         label_15->setFont(font2);
         error = new QLabel(centralWidget);
         error->setObjectName(QString::fromUtf8("error"));
-        error->setGeometry(QRect(50, 580, 661, 21));
+        error->setGeometry(QRect(50, 570, 661, 31));
         QFont font3;
         font3.setPointSize(10);
         error->setFont(font3);
