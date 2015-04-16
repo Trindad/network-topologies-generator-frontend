@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sat Apr 11 22:51:34 2015
+** Created: Thu Apr 16 09:31:33 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -142,15 +142,19 @@ public:
         measures->setGeometry(QRect(30, 450, 251, 26));
         bc = new QCheckBox(centralWidget);
         bc->setObjectName(QString::fromUtf8("bc"));
+        bc->setEnabled(false);
         bc->setGeometry(QRect(30, 490, 181, 26));
         dc = new QCheckBox(centralWidget);
         dc->setObjectName(QString::fromUtf8("dc"));
+        dc->setEnabled(false);
         dc->setGeometry(QRect(30, 520, 171, 26));
         ec = new QCheckBox(centralWidget);
         ec->setObjectName(QString::fromUtf8("ec"));
+        ec->setEnabled(false);
         ec->setGeometry(QRect(300, 490, 161, 21));
         cc = new QCheckBox(centralWidget);
         cc->setObjectName(QString::fromUtf8("cc"));
+        cc->setEnabled(false);
         cc->setGeometry(QRect(300, 530, 161, 26));
         numberOfSimulations = new QSpinBox(centralWidget);
         numberOfSimulations->setObjectName(QString::fromUtf8("numberOfSimulations"));

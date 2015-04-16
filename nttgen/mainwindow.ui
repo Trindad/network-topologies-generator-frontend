@@ -236,6 +236,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="bc">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -249,6 +252,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="dc">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -262,6 +268,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="ec">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -275,6 +284,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="cc">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>300</x>

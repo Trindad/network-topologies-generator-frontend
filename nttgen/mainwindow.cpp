@@ -169,3 +169,21 @@ void MainWindow::on_fexibleRegions_clicked()
     ui->breadth->setEnabled(true);
     ui->length->setEnabled(true);
 }
+
+void MainWindow::on_measures_clicked()
+{
+    if(ui->measures->isChecked())
+    {
+        ui->bc->setEnabled(true);
+        ui->ec->setEnabled(true);
+        ui->cc->setEnabled(true);
+        ui->dc->setEnabled(true);
+    }
+    else
+    {
+        ui->bc->setEnabled(false);
+        ui->ec->setEnabled(false);
+        ui->cc->setEnabled(false);
+        ui->dc->setEnabled(false);
+    }
+}

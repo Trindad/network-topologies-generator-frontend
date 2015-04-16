@@ -22,6 +22,8 @@ private slots:
 
     void on_fexibleRegions_clicked();
 
+    void on_measures_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
