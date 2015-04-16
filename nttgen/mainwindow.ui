@@ -6,9 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>740</width>
-    <height>600</height>
+    <width>760</width>
+    <height>636</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Network Topologies Generator</string>
@@ -23,6 +28,12 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="text">
      <string>Begin Simulation</string>
     </property>
@@ -32,7 +43,7 @@
      <rect>
       <x>40</x>
       <y>90</y>
-      <width>61</width>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
@@ -51,7 +62,7 @@
      <rect>
       <x>150</x>
       <y>90</y>
-      <width>151</width>
+      <width>161</width>
       <height>31</height>
      </rect>
     </property>
@@ -68,9 +79,9 @@
    <widget class="QSpinBox" name="maximumDegree">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>360</x>
       <y>90</y>
-      <width>161</width>
+      <width>171</width>
       <height>31</height>
      </rect>
     </property>
@@ -87,9 +98,9 @@
    <widget class="QSpinBox" name="distance">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>570</x>
       <y>90</y>
-      <width>141</width>
+      <width>151</width>
       <height>31</height>
      </rect>
     </property>
@@ -99,7 +110,7 @@
      <rect>
       <x>40</x>
       <y>220</y>
-      <width>71</width>
+      <width>81</width>
       <height>31</height>
      </rect>
     </property>
@@ -118,7 +129,7 @@
      <rect>
       <x>40</x>
       <y>390</y>
-      <width>151</width>
+      <width>171</width>
       <height>31</height>
      </rect>
     </property>
@@ -135,7 +146,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>250</x>
       <y>390</y>
       <width>81</width>
       <height>31</height>
@@ -157,7 +168,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>390</x>
       <y>390</y>
       <width>81</width>
       <height>31</height>
@@ -192,7 +203,7 @@
    <widget class="QRadioButton" name="fexibleRegions">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>250</x>
       <y>320</y>
       <width>161</width>
       <height>26</height>
@@ -207,7 +218,7 @@
      <rect>
       <x>570</x>
       <y>220</y>
-      <width>121</width>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -227,7 +238,7 @@
      <rect>
       <x>30</x>
       <y>450</y>
-      <width>251</width>
+      <width>291</width>
       <height>26</height>
      </rect>
     </property>
@@ -275,7 +286,7 @@
      <rect>
       <x>300</x>
       <y>490</y>
-      <width>161</width>
+      <width>171</width>
       <height>21</height>
      </rect>
     </property>
@@ -291,7 +302,7 @@
      <rect>
       <x>300</x>
       <y>530</y>
-      <width>161</width>
+      <width>181</width>
       <height>26</height>
      </rect>
     </property>
@@ -302,9 +313,9 @@
    <widget class="QSpinBox" name="numberOfSimulations">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>520</x>
       <y>390</y>
-      <width>181</width>
+      <width>191</width>
       <height>31</height>
      </rect>
     </property>
@@ -320,7 +331,7 @@
      <rect>
       <x>40</x>
       <y>60</y>
-      <width>67</width>
+      <width>81</width>
       <height>21</height>
      </rect>
     </property>
@@ -333,7 +344,7 @@
      <rect>
       <x>150</x>
       <y>60</y>
-      <width>151</width>
+      <width>171</width>
       <height>21</height>
      </rect>
     </property>
@@ -344,7 +355,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>360</x>
       <y>60</y>
       <width>171</width>
       <height>21</height>
@@ -357,9 +368,9 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>570</x>
       <y>60</y>
-      <width>141</width>
+      <width>161</width>
       <height>21</height>
      </rect>
     </property>
@@ -370,9 +381,9 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>520</x>
       <y>360</y>
-      <width>181</width>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
@@ -383,7 +394,7 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>250</x>
       <y>360</y>
       <width>67</width>
       <height>21</height>
@@ -396,7 +407,7 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>390</x>
       <y>360</y>
       <width>67</width>
       <height>21</height>
@@ -411,7 +422,7 @@
      <rect>
       <x>40</x>
       <y>360</y>
-      <width>161</width>
+      <width>171</width>
       <height>21</height>
      </rect>
     </property>
@@ -488,9 +499,9 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>200</x>
       <y>160</y>
-      <width>301</width>
+      <width>321</width>
       <height>101</height>
      </rect>
     </property>
@@ -501,7 +512,7 @@
 }</string>
     </property>
     <property name="title">
-     <string> Waxman</string>
+     <string>   Waxman</string>
     </property>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
@@ -594,6 +605,24 @@
      <string>Region</string>
     </property>
    </widget>
+   <widget class="QLabel" name="error">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>580</y>
+      <width>661</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>fexibleRegions</zorder>
    <zorder>groupBox</zorder>
    <zorder>pushButton</zorder>
@@ -626,8 +655,83 @@
    <zorder>label_13</zorder>
    <zorder>label_14</zorder>
    <zorder>label_15</zorder>
+   <zorder>error</zorder>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>118</red>
+         <green>118</green>
+         <blue>117</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>118</red>
+         <green>118</green>
+         <blue>117</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>DejaVu Sans</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>

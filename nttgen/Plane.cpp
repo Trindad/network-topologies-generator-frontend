@@ -545,7 +545,7 @@ void Plane::limitArea(int nNodes)
 
     if (this->side > (nNodes*nNodes) || this->side < (2*nNodes))
     {
-        throw "2N ≤ R ≤ N²";
+        throw "limitArea";
     }
 }
 
@@ -1240,7 +1240,7 @@ int Plane::randomLink(Graph &graph)
         {
             graph.setEdge(source,target);
             graph.setEuclideanDistance(source,target,this->euclidean);
-            cout<<"ligação entre "<<source<<" e "<<target<<" "<<graph.getNumberOfEdges()<<endl;
+            // cout<<"ligação entre "<<source<<" e "<<target<<" "<<graph.getDegree()<<endl;
 
             return nodes.size();
         }

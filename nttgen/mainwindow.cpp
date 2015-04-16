@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
+#include <QString>
 #include "Plane.hpp"
 #include "Measure.hpp"
 #include "Suurballe.hpp"
@@ -22,7 +23,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-
+     ui->error->setText(QString::fromUtf8(""));
      int simulation = 1;
      FileWriter file;
 
@@ -83,7 +84,9 @@ void MainWindow::on_pushButton_clicked()
      }
      catch(const char *error)
      {
-        cout<<error<<endl;
+        error = "2N ≤ R ≤ N²";
+        ui->error->setText(QString::fromUtf8("2N ≤ R ≤ N²"));
+        return;
      }
 
      plane.setNumberOfSimulations(ui->numberOfSimulations->value());
