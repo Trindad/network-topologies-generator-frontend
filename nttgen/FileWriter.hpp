@@ -3,6 +3,7 @@
 #include <sstream> // stringstream
 #include <iomanip> // put_time
 #include <string>
+#include <libxl/libxl.h>
 #include "Plane.hpp"
 
 class FileWriter

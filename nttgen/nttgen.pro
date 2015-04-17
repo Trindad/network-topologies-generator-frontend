@@ -36,6 +36,13 @@ HEADERS  += mainwindow.h \
     Graph.hpp \
     Dijkstra.hpp \
     Brandes.hpp \
-    FileWriter.hpp
+    FileWriter.hpp \
+    libxl/setup.h \
+    libxl/libxl.h \
+    libxl/ISheetT.h \
+    libxl/IFormatT.h \
+    libxl/IFontT.h \
+    libxl/IBookT.h \
+    libxl/enum.h
 
 FORMS    += mainwindow.ui

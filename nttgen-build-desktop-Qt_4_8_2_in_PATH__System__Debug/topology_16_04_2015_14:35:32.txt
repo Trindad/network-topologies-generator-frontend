@@ -1,0 +1,15 @@
+ Row  Column 
+  8     0 
+  4     2 
+  5     6 
+  9     5 
+  9     8 
+
+Simulation 1
+Topology 1
+ From  To  Distance 
+  0     2  8,062258 
+  0     3  8,944272 
+  1     4  2,236068 
+  1     2  2,236068 
+  3     4  4,123106 

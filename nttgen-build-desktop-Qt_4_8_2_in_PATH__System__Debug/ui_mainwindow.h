@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu Apr 16 16:02:19 2015
+** Created: Thu Apr 16 16:06:34 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -244,10 +244,8 @@ public:
         label_15->setFont(font2);
         error = new QLabel(centralWidget);
         error->setObjectName(QString::fromUtf8("error"));
-        error->setGeometry(QRect(50, 570, 661, 31));
-        QFont font3;
-        font3.setPointSize(10);
-        error->setFont(font3);
+        error->setGeometry(QRect(50, 560, 661, 51));
+        error->setFont(font);
         MainWindow->setCentralWidget(centralWidget);
         fexibleRegions->raise();
         groupBox->raise();
@@ -297,10 +295,10 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         statusBar->setPalette(palette);
-        QFont font4;
-        font4.setFamily(QString::fromUtf8("DejaVu Sans"));
-        font4.setPointSize(12);
-        statusBar->setFont(font4);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font3.setPointSize(12);
+        statusBar->setFont(font3);
         MainWindow->setStatusBar(statusBar);
         QWidget::setTabOrder(beta, alpha);
         QWidget::setTabOrder(alpha, pushButton);
