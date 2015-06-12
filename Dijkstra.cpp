@@ -105,11 +105,5 @@ int Dijkstra::execute( Graph graph, int source, int target)
         }
     }
 
-    for (unsigned int i = 0; i < parent.size(); i++)
-    {
-        cout<<" "<<parent[i];
-    }
-    cout<<endl;
-
     return distance[target];//retorna distância
 }

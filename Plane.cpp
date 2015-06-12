@@ -203,7 +203,6 @@ void Plane::setColumns(int columns)
 
     this->regionColumn = columns;
     this->length = this->side/columns;//obtêm o comprimento do plano
-    //cout<<"length "<<this->length<<endl;
 }
 
 /**
@@ -212,12 +211,9 @@ void Plane::setColumns(int columns)
  */
 void Plane::setRows(int rows)
 {
-
-    //cout<<"setRows"<<endl;
     this->regionRow = rows;
 
     this->breadth = this->side/rows;//obtêm a largura do plano
-    //cout<<"breadth "<<this->breadth<<endl;
 }
 
 /**
@@ -354,8 +350,6 @@ void Plane::setRegionsMeasures()
         setRows( (int)floor( X/A ) ); 		//largura de cada regiao
         setColumns( (int)floor( X/K ) ); 	//altura de cada regiao
     }
-
-    //cout<<"column "<<this->regionColumn<<" row "<<this->regionRow<<endl;
 }
 
 /**
@@ -502,14 +496,11 @@ bool Plane::waxmanProbability(Graph graph,int u,int v)
 
     double temp = randomDouble(0,1)*0.75f;
 
-    // cout<<"temp "<<temp<<"\t probability "<<probability<<endl;
-    // cout<<"ok ? "<<graph.getEdge(u,v)<<endl;
     if (probability > temp && !graph.getEdge(u,v) == true)
     {
         return true;
     }
 
-    // cout<<"Problema no waxman"<<endl;
     return false;
 
 }
@@ -752,16 +743,10 @@ int Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes,int in
 
     while(count < maximum)
     {
-        //cout<<"Maximum "<<maximum<<" count "<<count<<endl;
+
         int targetNow = random(0,maximum-1);
 
         int radiusNow = 0, radiusEarlier = 1;
-
-        // cout<<"tm coordinates x "<< this->coordinates[0].size()<<" tm coordinates y "<< this->coordinates[1].size()<<endl;
-        // for (int p = 0; p < graph.getNumberOfNodes(); p++)
-        // {
-        // 	cout<<" x "<<this->coordinates[p][0]<<" y "<<this->coordinates[p][1]<<endl;
-        // }
 
         int xTarget = this->coordinates[targetNow][0];
         int yTarget = this->coordinates[targetNow][1];
@@ -779,7 +764,6 @@ int Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes,int in
                     {
                         if(radiusNow < radiusEarlier && regionEqual(nodes[indexRegion],targetNow) == false && graph.getEdge(source,targetNow) == false)
                         {
-                            //cout<<" target "<<targetNow<<" source "<<source<<"\n\n\n"<<endl;
                             target = targetNow;
                             radiusEarlier = radiusNow;
 
@@ -800,7 +784,6 @@ int Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes,int in
         }
     }
 
-    //cout<<"source "<<source<<" target "<<target<<endl;
     return target;
 }
 
@@ -878,25 +861,14 @@ vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>
     vector<int> sources = vector<int> (graph.getNumberOfNodes(),0);
     vector<int> targets = vector<int> (graph.getNumberOfNodes(),0);
 
-    cout<<" nRegions "<<this->nRegions<<endl;
     for (int i = 0; i < this->nRegions; i++)
     {
-
-        // cout<<"connection Nodes Region "<<i<<endl;
 
         vector<int> temp;
 
         getNumberOfNodesRegion(i,temp);
 
         nodes.push_back( temp );//retorna os nós de uma região
-
-        cout<<"nodes em "<<i<<endl;
-
-        for (unsigned int p = 0; p < nodes[i].size(); p++)
-        {
-            cout<<" "<<nodes[i][p];
-        }
-        cout<<endl;
 
         int controller = 0;
         int n = nodes[i].size();
@@ -956,15 +928,12 @@ vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>
                 {
                     target = *k;
 
-                    // cout<<"target "<<target<<endl;
                     if (target == source)
                     {
-                        // cout<<"src "<< source <<"\t trt"<<target <<endl;
                         continue;
                     }
                     else if(targets[target] == 0 && target != end && controller < n && waxmanProbability(graph,source,target) == true)
                     {
-                        //cout<<"ligação entre "<<source<<" e "<<target<<endl;
                         graph.setEdge(source,target);//liga os dois nós no grafo
                         graph.setEuclideanDistance(source,target,this->euclidean);
 
@@ -977,7 +946,6 @@ vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>
                     }
                     else if( targets[target] == 0  && controller == n-1 && waxmanProbability(graph,source,target) == true)
                     {
-                        //cout<<"ligação entre "<<source<<" e "<<target<<endl;
                         graph.setEdge(source,target);//liga os dois nós no grafo
                         graph.setEuclideanDistance(source,target,this->euclidean);
 
@@ -1009,7 +977,6 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> nodes)
 
     int controller = 0;
 
-    cout<<" nRegions "<<this->nRegions<<endl;
     for (int i = 0; i < this->nRegions; i++)
     {
         int neighbor,j = 0;
@@ -1020,7 +987,7 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> nodes)
          * então haverá ligação entre dois nós
          * mais próximos.
          */
-        cout<<"numero de nodos em "<<i<<" = "<<nodes[i].size()<<endl;
+
         if (nodes[i].size() == 0)
         {
             continue;
@@ -1046,7 +1013,7 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> nodes)
         }
         else
         {
-            cout<<"count "<<count<<" "<< nodes[i].size()<<endl;
+
             while( count < nodes[i].size() )
             {
 
@@ -1058,7 +1025,6 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> nodes)
 
                 j++;
             }
-            cout<<"count "<<count<<" "<< nodes[i].size()<<endl;
         }
     }
 }
@@ -1111,7 +1077,7 @@ void Plane::initialize(Graph &graph,int simulation)
     }
     
 
-    print();
+//    print();
 
     vector<vector<int>> nodesFromRegion;
 
@@ -1139,8 +1105,6 @@ void Plane::initialize(Graph &graph,int simulation)
     {
         regionsInterconnection(graph,nodesFromRegion);
     }
-
-    //cout<<graph.getNumberOfEdges();
 }
 
 
@@ -1153,7 +1117,6 @@ void Plane::initialize(Graph &graph,int simulation)
  */
 int Plane::randomLink(Graph &graph)
 {
-    //cout<<"ligações randomicas"<<endl;
     vector<int> nodes;
     int maximum = graph.getMaximumDegree();
 
@@ -1162,10 +1125,10 @@ int Plane::randomLink(Graph &graph)
      */
     for (int i = 0; i < graph.getNumberOfNodes(); i++)
     {
-        // cout<<"v "<<i<<" degree "<<graph.getDegree(i)<<endl;
+
         if (graph.getDegree(i) < maximum)
         {
-            //cout<<"nodo "<<i<<endl;
+
             nodes.push_back(i);
         }
     }
@@ -1178,7 +1141,7 @@ int Plane::randomLink(Graph &graph)
     {
         if ( graph.getEdge(nodes[0],nodes[1]) ==  false && waxmanProbability(graph,nodes[0],nodes[1]) == true )
         {
-            //cout<<"Ligação entre "<<nodes[0]<<" e "<<nodes[1]<<endl;
+
             graph.setEdge(nodes[0],nodes[1]);
             double e = getEuclidean(nodes[0],nodes[1]);
             graph.setEuclideanDistance(nodes[0],nodes[1],e);
@@ -1206,7 +1169,6 @@ int Plane::randomLink(Graph &graph)
 
         int indexNode = random(0,nodes.size()-1);
         int source = nodes[ indexNode ];
-        // cout<<"indexNode "<<indexNode<<" node "<<source<<endl;
 
         indexNode = random(0,nodes.size()-1);
         int target = nodes[ indexNode ];
@@ -1240,7 +1202,6 @@ int Plane::randomLink(Graph &graph)
         {
             graph.setEdge(source,target);
             graph.setEuclideanDistance(source,target,this->euclidean);
-            // cout<<"ligação entre "<<source<<" e "<<target<<" "<<graph.getDegree()<<endl;
 
             return nodes.size();
         }

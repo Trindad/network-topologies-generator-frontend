@@ -81,25 +81,12 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
 
         Brandes brandes (this->numberOfNodes);
 
-//        for (int i = 0; i < this->numberOfNodes-1; i++)
-//        {
-//            for (int j = i+1; j < this->numberOfNodes; j++)
-//            {
-//                if (graph[i][j] == 1)
-//                {
-//                    saida <<" "<<i<<" "<<j<<endl;
-//                }
-
-//            }
-//            cout<<"\n";
-//        }
         /**
          * Encontra todos os caminhos mínimos entre pares de nós do grafo
          */
         for (int i = 0; i < this->numberOfNodes; i++)
         {
             brandes.execute(graph,i,nodes);
-//            cout<<"getNumberOfPaths "<<nodes[i].returnPaths().size()<<endl;
         }
 
 
@@ -124,11 +111,6 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
             efficientCentrality(nodes,shortestPath);        //centralidade de eficiência
         }
 
-
-//        for (unsigned int i = 0; i < this->numberOfNodes; i++)
-//        {
-//            saida<<"bc["<<i<<"] = "<< nodes[i].getBetweenCentrality();
-//        }
     }
 
     if (dc)
@@ -220,8 +202,6 @@ void Measure::betweenCentrality(vector<Node> & nodes)
     for (int v = 0; v < this->numberOfNodes; v++)
     {
         double value =  geodesic(nodes,v);
-
-//        cout<<"bc "<<value<<endl;
         nodes[v].setBetweenCentrality(value);
 
         if (bc < value)
