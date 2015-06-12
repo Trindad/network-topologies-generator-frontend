@@ -24,6 +24,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
      ui->error->setText(QString::fromUtf8(""));
+     ui->pushButton->setEnabled(false);
      int simulation = 1;
      FileWriter file;
 
@@ -116,7 +117,7 @@ void MainWindow::on_pushButton_clicked()
          int notMax = std::numeric_limits<int>::max();
          int topology = 1;
 
-         cout<<"Interligação das regiões já realizada"<<endl;
+//         cout<<"Interligação das regiões já realizada"<<endl;
 
          while( graph.getNumberOfEdges() < graph.getMinimumNumberOfEdges() && notMax >= 2)
          {
@@ -148,7 +149,7 @@ void MainWindow::on_pushButton_clicked()
                 {
                     file.createXls(ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked());
                 }
-                cout<<"measures"<<endl;
+//                cout<<"measures"<<endl;
                 Measure measures;
                 
                 measures.initialize( graph,graph.getNumberOfNodes(),ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked() ); //obtêm as medidas de centralidade para cada nó da rede
@@ -160,18 +161,18 @@ void MainWindow::on_pushButton_clicked()
         }
 
 
-        cout<<"Interligação randomizada "<<graph.getNumberOfEdges()<<" "<<graph.getMaximumNumberOfEdges()<<endl;
+//        cout<<"Interligação randomizada "<<graph.getNumberOfEdges()<<" "<<graph.getMaximumNumberOfEdges()<<endl;
         int nEdges = graph.getNumberOfEdges();
 
-        for (int i = 0; i < graph.getNumberOfNodes(); i++)
-        {
-            cout<<"Node "<<i<<endl;
-            graph.printAdjacents(i);
-        }
+//        for (int i = 0; i < graph.getNumberOfNodes(); i++)
+//        {
+//            cout<<"Node "<<i<<endl;
+//            graph.printAdjacents(i);
+//        }
 
         while( graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2)
         {
-            cout<<"AQUI"<<endl;
+//            cout<<"AQUI"<<endl;
             notMax = plane.randomLink(graph);
 
             if (graph.getNumberOfEdges() > nEdges)
@@ -182,7 +183,7 @@ void MainWindow::on_pushButton_clicked()
 
                 bool survivor = s.execute(graph);
 
-                cout<<"survivor "<<survivor<<endl;
+//                cout<<"survivor "<<survivor<<endl;
 
                 if(survivor)
                 {
@@ -206,7 +207,7 @@ void MainWindow::on_pushButton_clicked()
 
                          measures.initialize(graph,graph.getNumberOfNodes(),ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked() ); //obtêm as medidas de centralidade para cada nó da rede
 
-                         cout<<"measures"<<endl;
+//                         cout<<"measures"<<endl;
 
                          file.writeMeasures(graph,ui->bc->isChecked(),ui->ec->isChecked(),ui->dc->isChecked(),ui->cc->isChecked());
                     }
@@ -222,6 +223,7 @@ void MainWindow::on_pushButton_clicked()
 
      file.closeFileTopologies();
      file.closeFileMeasures();
+     ui->pushButton->setEnabled(true);
 }
 
 void MainWindow::on_fixedRegions_clicked()
