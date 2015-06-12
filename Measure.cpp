@@ -59,9 +59,9 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
 
     this->numberOfNodes = n;
 
-    ofstream saida;
+    ofstream out;
 
-    saida.open("saida");
+    out.open("out");
 
     if (bc || cc || ec)
     {
@@ -69,7 +69,7 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
         /**
          * Gera matriz de adjacência do grafo a partir do vetor de nós
          */
-        for ( unsigned int i = 0; i < this->numberOfNodes; i++)
+        for ( int i = 0; i < this->numberOfNodes; i++)
         {
             vector <int> adjacents = nodes[i].getAdjacentsNodes();
 
@@ -81,25 +81,25 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
 
         Brandes brandes (this->numberOfNodes);
 
-        for (int i = 0; i < this->numberOfNodes-1; i++)
-        {
-            for (int j = i+1; j < this->numberOfNodes; j++)
-            {
-                if (graph[i][j] == 1)
-                {
-                    saida <<" "<<i<<" "<<j<<endl;
-                }
+//        for (int i = 0; i < this->numberOfNodes-1; i++)
+//        {
+//            for (int j = i+1; j < this->numberOfNodes; j++)
+//            {
+//                if (graph[i][j] == 1)
+//                {
+//                    saida <<" "<<i<<" "<<j<<endl;
+//                }
 
-            }
-            cout<<"\n";
-        }
+//            }
+//            cout<<"\n";
+//        }
         /**
          * Encontra todos os caminhos mínimos entre pares de nós do grafo
          */
         for (int i = 0; i < this->numberOfNodes; i++)
         {
             brandes.execute(graph,i,nodes);
-            cout<<"getNumberOfPaths "<<nodes[i].returnPaths().size()<<endl;
+//            cout<<"getNumberOfPaths "<<nodes[i].returnPaths().size()<<endl;
         }
 
 
@@ -125,10 +125,10 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
         }
 
 
-        for (unsigned int i = 0; i < this->numberOfNodes; i++)
-        {
-            saida<<"bc["<<i<<"] = "<< nodes[i].getBetweenCentrality();
-        }
+//        for (unsigned int i = 0; i < this->numberOfNodes; i++)
+//        {
+//            saida<<"bc["<<i<<"] = "<< nodes[i].getBetweenCentrality();
+//        }
     }
 
     if (dc)
@@ -216,13 +216,12 @@ void Measure::betweenCentrality(vector<Node> & nodes)
 {
     int node = 0;
     double bc = -1.0;
-    double value = 0;
 
     for (int v = 0; v < this->numberOfNodes; v++)
     {
         double value =  geodesic(nodes,v);
 
-        cout<<"bc "<<value<<endl;
+//        cout<<"bc "<<value<<endl;
         nodes[v].setBetweenCentrality(value);
 
         if (bc < value)
@@ -256,8 +255,6 @@ double Measure::geodesic(vector<Node> nodes,int node)
 
         int nNodes = nodeSearch(paths,node,nPaths);
 
-        // cout<<"\n\n\n getNumberOfPaths geodesic "<<nodes[node].getNumberOfPaths()<<endl<<"\n\n";
-
         bc = bc + ( (double)nNodes / (double)nPaths );
       }
     }
@@ -279,14 +276,11 @@ int Measure::pathsSearch(vector<Node> nodes, int source, int target, vector< vec
 
     int nPaths = 0;
 
-    // paths = vector< vector<int> > ( this->numberOfNodes, vector<int>(this->numberOfNodes,-1) );
-
     unsigned int n = nodes[source].getNumberOfPaths();
 
     for (unsigned int i = 0; i < n; i++)
     {
         int auxiliar = nodes[source].getNumberOfNodesFromPath(i)-1;
-        // cout<<"auxiliar "<<auxiliar<<endl;
 
         if ( nodes[source].returnNode(i,auxiliar) == target )
         {
@@ -294,7 +288,7 @@ int Measure::pathsSearch(vector<Node> nodes, int source, int target, vector< vec
 
           for (unsigned int k = 0; k <= auxiliar; k++)
           {
-            // cout<<" node  "<<nodes[source].returnNode(i,k)<<" nPaths "<<nPaths<<endl;
+
             paths[nPaths][k] = nodes[source].returnNode(i,k);
           }
 
@@ -315,7 +309,7 @@ int Measure::nodeSearch(vector< vector<int> > &paths, int node, int nPaths)
 {
     int count = 0;
 
-    for (unsigned int i = 0; i < nPaths; i++)
+    for (int i = 0; i < nPaths; i++)
     {
         for (unsigned int j = 0; j < paths[i].size(); j++)
         {

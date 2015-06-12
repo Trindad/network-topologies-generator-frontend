@@ -247,13 +247,13 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-background: #fff;
-color:#2c3e50;
-border: 1px solid transparent;
-border-radius:4px;
+	background: #fff;
+	color:#2c3e50;
+	border: 1px solid transparent;
+	border-radius:4px;
 }
-QPushButton:disabled{
-background: #ff0000;
+QPushButton:!enabled{
+	background: #ff0000;
 }</string>
     </property>
     <property name="text">
@@ -1161,7 +1161,8 @@ color:#000;</string>
     <property name="styleSheet">
      <string notr="true">QGroupBox {
 	border:1px solid #d0d0d0;
-	color:rgb(236, 240, 241)
+	color:rgb(236, 240, 241);
+	border-radius:4px;
 }</string>
     </property>
     <property name="title">
