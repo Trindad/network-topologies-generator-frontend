@@ -27,7 +27,7 @@ string FileWriter::returnCurrentTimeAndDate()
 void FileWriter::openFile()
 {
 	//txt
-	string fileName = "topology_";
+    string fileName = "topology_";
     string date = returnCurrentTimeAndDate();
     string extension = ".txt";
 
@@ -57,7 +57,7 @@ void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 	     * Escreve no arquivo as posições(x,y) de cada nó no grafo
 	     * A ordem de inserção é crescente
 	     */
-	    this->output<<" this->row "<<" Column "<<endl;
+	    this->output<<" X "<<" Y "<<endl;
 
 	    for (int u = 0; u < g.getNumberOfNodes(); u++)
 		{
@@ -89,6 +89,8 @@ void FileWriter::writeTopologies(Graph g, Plane plane, int s, int topology)
 	this->topology = topology;
 
 	this->output<<" From "<<" To "<<" Distance "<<endl;
+	cout<<"getNumberOfNodes "<<g.getNumberOfNodes();
+
     for (int u = 0; u < g.getNumberOfNodes(); u++)
 	{
 		vector<int> adj = node[u].getAdjacentsNodes();

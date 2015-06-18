@@ -20,6 +20,7 @@ using namespace std;
  	int addPaths(vector<Node> &,vector< vector<int> > &,int,int,int);
  	int minimumDistance(vector<int> &, vector<int> &, vector<int> &,int);
  	void execute(vector< vector<int> >, int ,vector<Node> &);
+ 	void printShortestPaths();
 
 private:
 

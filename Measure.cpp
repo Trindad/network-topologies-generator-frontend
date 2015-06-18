@@ -87,6 +87,7 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
         for (int i = 0; i < this->numberOfNodes; i++)
         {
             brandes.execute(graph,i,nodes);
+            brandes.printShortestPaths();
         }
 
 
@@ -299,6 +300,6 @@ int Measure::nodeSearch(vector< vector<int> > &paths, int node, int nPaths)
           }
         }
     }
-
+    
     return count;
 }

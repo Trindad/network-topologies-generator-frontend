@@ -10,12 +10,18 @@ Suurballe::~Suurballe(){}
 
 void Suurballe::insertSubtree(Graph graph, tree<int> &tr, typename tree<int>::iterator root,vector<int> nodes, vector<int> &controller, int source)
 {
+    // cout<<"source "<<source<<endl;
     Node node = graph.getNodeAtPosition(source);
     vector<int> adjacents = node.getAdjacentsNodes();
     typename tree<int>::iterator temp;
     typename tree<int>::iterator newRoot;
     int newSource = source;
 
+    // for (unsigned int w = 0; w < nodes.size(); w++)
+    // {
+    //     cout<<" "<<nodes[w];
+    // }
+    // cout<<endl;
     if (find(this->nodeInTree.begin(),this->nodeInTree.end(),source) == this->nodeInTree.end())
     {
         this->nodeInTree.push_back(source);
@@ -48,9 +54,10 @@ void Suurballe::insertSubtree(Graph graph, tree<int> &tr, typename tree<int>::it
     }
 
     int n = nodes.size()-1;
-
+    // cout<<"n "<<n<<" "<<nodes[n]<<endl;
     if (source == nodes[n] )
     {
+        // cout<<"cai fora"<<endl;
         return;
     }
 
@@ -397,7 +404,6 @@ bool Suurballe::execute(Graph & graph)
 
     bool survivor = false;
 
-
     this->numberOfPaths = 0;
 
     Dijkstra dijkstra;
@@ -406,16 +412,15 @@ bool Suurballe::execute(Graph & graph)
 
     this->distance = vector<vector<int>> (this->numberOfNodes,vector<int>( this->numberOfNodes,0) );
 
-    int n = 0;
+    int n = 0, v = 0;
    
-    
     /**
      * Para cada par de nós (u,v)
      * Obtêm caminho mínimo
      */
     for (int u = 0; u < this->numberOfNodes-1; u++)
     {
-        for(int v = u+1; v < this->numberOfNodes; v++)
+        for(v = u+1; v < this->numberOfNodes; v++)
         {
             this->distance[u][v] = this->distance[v][u] = dijkstra.execute(graph,u,v);
             
@@ -425,17 +430,21 @@ bool Suurballe::execute(Graph & graph)
             {
                 return survivor;
             }
-            this->numberOfPaths++;
+
             n++;
         }
     }
+
+    this->numberOfPaths = n;
+
+    // cout<<"numberOfPaths "<<this->numberOfPaths<<endl;
 
     int iterator = 0;
     double dist = 0;
 
     for ( int u = 0; u < this->numberOfNodes-1; u++)
     {
-        for (int v = u+1; v < this->numberOfNodes; v++)
+        for (v = u+1; v < this->numberOfNodes; v++)
         {
             Graph auxiliar = graph;
 
@@ -443,8 +452,14 @@ bool Suurballe::execute(Graph & graph)
              * mudança de peso nas arestas
              * Monta árvore a partir do nó u
              */
-            
             this->treePath = vector<vector<int>> (this->numberOfNodes,vector<int>(this->numberOfNodes,0)); 
+            // cout<<"\n----------------------"<<u<<" "<<v <<"---------------------------"<<endl;
+            // for (unsigned int w = 0; w < path[iterator].size(); w++)
+            // {
+            //     cout<<" "<<path[iterator][w];
+            // }
+            // cout<<endl;
+
             tree<int> tr = makeTree(auxiliar, this->path[iterator], u);
            
             changeEdgesWeights(auxiliar, tr, this->path[iterator]);
@@ -459,17 +474,16 @@ bool Suurballe::execute(Graph & graph)
             vector<int> newPath = dijkstra.shortestPath(v);
 
             //não encontrou caminho
-            if (newPath.size() == 1)
+            if (newPath.size() <= 1)
             {
                 return false;
             }
-
 
             survivor = makeDisjointPaths(path[iterator],newPath);
 
             if (survivor == false)
             {
-                break;
+                return false;
             }
 
             this->nodeInTree.empty();

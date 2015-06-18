@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>760</width>
+    <width>799</width>
     <height>636</height>
    </rect>
   </property>
@@ -263,7 +263,7 @@ QPushButton:!enabled{
    <widget class="QSpinBox" name="nodes">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>90</y>
       <width>71</width>
       <height>31</height>
@@ -282,15 +282,15 @@ background: rgba(255, 255, 255, 0);
      <number>1000</number>
     </property>
     <property name="value">
-     <number>5</number>
+     <number>50</number>
     </property>
    </widget>
    <widget class="QSpinBox" name="minimumDegree">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>140</x>
       <y>90</y>
-      <width>161</width>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -311,9 +311,9 @@ color:#000</string>
    <widget class="QSpinBox" name="maximumDegree">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>300</x>
       <y>90</y>
-      <width>171</width>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -329,15 +329,15 @@ color:#000
      <number>999</number>
     </property>
     <property name="value">
-     <number>2</number>
+     <number>8</number>
     </property>
    </widget>
    <widget class="QSpinBox" name="distance">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>640</x>
       <y>90</y>
-      <width>151</width>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -350,7 +350,7 @@ color:#000
    <widget class="QSpinBox" name="area">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>220</y>
       <width>81</width>
       <height>31</height>
@@ -367,13 +367,13 @@ color:#000</string>
      <number>100000</number>
     </property>
     <property name="value">
-     <number>10</number>
+     <number>100</number>
     </property>
    </widget>
    <widget class="QSpinBox" name="numberOfRegions">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>390</y>
       <width>171</width>
       <height>31</height>
@@ -413,7 +413,7 @@ color:#000;</string>
      <number>99999</number>
     </property>
     <property name="value">
-     <number>2</number>
+     <number>20</number>
     </property>
    </widget>
    <widget class="QSpinBox" name="breadth">
@@ -445,7 +445,7 @@ color:#000</string>
    <widget class="QRadioButton" name="fixedRegions">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>320</y>
       <width>141</width>
       <height>26</height>
@@ -978,7 +978,7 @@ color:#000;</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>60</y>
       <width>81</width>
       <height>21</height>
@@ -991,40 +991,40 @@ color:#000;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>60</y>
-      <width>171</width>
-      <height>21</height>
+      <x>140</x>
+      <y>61</y>
+      <width>101</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Minimum degree 〈δ〉min</string>
+     <string>δ min</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>60</y>
-      <width>171</width>
-      <height>21</height>
+      <x>300</x>
+      <y>61</y>
+      <width>141</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Maximum degree 〈δ〉max</string>
+     <string> δ max</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>640</x>
       <y>60</y>
       <width>161</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Minimum distance ( ι )</string>
+     <string>  ι </string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -1069,7 +1069,7 @@ color:#000;</string>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>360</y>
       <width>171</width>
       <height>21</height>
@@ -1082,7 +1082,7 @@ color:#000;</string>
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>40</x>
       <y>190</y>
       <width>81</width>
       <height>21</height>
@@ -1152,7 +1152,7 @@ color:#000;</string>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>200</x>
       <y>160</y>
       <width>321</width>
       <height>101</height>
@@ -1163,10 +1163,11 @@ color:#000;</string>
 	border:1px solid #d0d0d0;
 	color:rgb(236, 240, 241);
 	border-radius:4px;
+	padding:3px;
 }</string>
     </property>
     <property name="title">
-     <string>   Waxman</string>
+     <string/>
     </property>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
@@ -1207,7 +1208,7 @@ color: #000</string>
       <double>0.100000000000000</double>
      </property>
      <property name="value">
-      <double>0.500000000000000</double>
+      <double>0.400000000000000</double>
      </property>
     </widget>
     <widget class="QLabel" name="label_6">
@@ -1250,7 +1251,20 @@ color:#000
       <double>0.050000000000000</double>
      </property>
      <property name="value">
-      <double>0.800000000000000</double>
+      <double>0.400000000000000</double>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Waxman</string>
      </property>
     </widget>
    </widget>
@@ -1298,6 +1312,46 @@ color:#000
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>60</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string> 〈δ〉max</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="max_average_degree">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>90</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);
+color:#000
+</string>
+    </property>
+    <property name="minimum">
+     <double>2.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>199.990000000000009</double>
+    </property>
+    <property name="singleStep">
+     <double>0.500000000000000</double>
+    </property>
+    <property name="value">
+     <double>2.000000000000000</double>
+    </property>
+   </widget>
    <zorder>fexibleRegions</zorder>
    <zorder>groupBox</zorder>
    <zorder>pushButton</zorder>
@@ -1331,6 +1385,8 @@ color:#000
    <zorder>label_14</zorder>
    <zorder>label_15</zorder>
    <zorder>error</zorder>
+   <zorder>label_16</zorder>
+   <zorder>max_average_degree</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="enabled">

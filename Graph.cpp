@@ -60,6 +60,12 @@ void Graph::setNumberOfNodes(int n)
 	memsetGraph();
 }
 
+
+void Graph::setMaximumAverageDegree(double avg)
+{
+	this->avgMaximumDegree = avg;
+}
+
 void Graph::setAverageDegree(double avg) 
 {
 	this->avgDegree = avg;
@@ -168,7 +174,13 @@ int Graph::getMinimumNumberOfEdges()
 
 double Graph::getAverageDegree() 
 {
+	this->avgDegree = this->nEdges/getNumberOfNodes();
 	return this->avgDegree;
+}
+
+double Graph::getMaximumAverageDegree()
+{
+	return this->avgMaximumDegree;
 }
 
 int Graph::getMinimumDegree()

@@ -114,6 +114,7 @@ int Brandes::addPaths(vector<Node> & nodes,vector<vector<int>> &path,int adjacen
 
         if ( nodes[source].returnNode(k-temp,auxiliar) == adjacent && nodesPath == minimum-1)
         {
+          cout<<" "<<i<<" "<<j<<endl;
           path[i][j++] = target;
 
           for (int n = auxiliar; n >= 0; n--)
@@ -122,6 +123,13 @@ int Brandes::addPaths(vector<Node> & nodes,vector<vector<int>> &path,int adjacen
           }
 
           i++;
+
+          if (i >= (int)path.size())
+          {
+
+            path.push_back(vector<int>(nodes.size()));
+          }
+
           j = 0;
         }
 
@@ -240,7 +248,6 @@ void Brandes::execute(vector<vector<int>> graph, int source,vector<Node> &nodes)
             if (check == 0)
             {
               insertPaths(nodes,source,v,nodeAdjacent[k]);
-              cout<<"increment "<<increment<<"  "<<v<<" "<<nodeAdjacent[k]<<endl;
 
               if (edge[increment][0] == -1 && edge[increment][1] == -1)
               {
@@ -276,4 +283,20 @@ void Brandes::execute(vector<vector<int>> graph, int source,vector<Node> &nodes)
       nodeAdjacent[v] = -1;
     }
   }
+}
+
+/**
+ * Imprime todos os caminhos mínimos
+ */
+void Brandes::printShortestPaths()
+{
+  for (unsigned int i = 0; i < this->shortestPath.size(); i++)
+  {
+    for (unsigned int j = 0; j < this->shortestPath[i].size(); j++)
+    {
+      cout<<this->shortestPath[i][j]<<" ";
+    }
+    cout<<endl;
+  }
+  cout<<endl;
 }

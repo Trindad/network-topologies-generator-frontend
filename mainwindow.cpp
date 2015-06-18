@@ -39,6 +39,8 @@ void MainWindow::on_pushButton_clicked()
 
      graph.setMinimumDistanceOfNode(ui->distance->value());//distância mínima entre dois nós
 
+     graph.setMaximumAverageDegree(ui->max_average_degree->value());
+
      /**
       * Configurações do plano
       */
@@ -104,6 +106,7 @@ void MainWindow::on_pushButton_clicked()
 
      plane.setNumberOfSimulations(ui->numberOfSimulations->value());
 
+     // cout<<"AQUI"<<endl;
      while( simulation <= plane.getNumberOfSimulations() )
      {
         graph.memsetGraph();
@@ -123,6 +126,7 @@ void MainWindow::on_pushButton_clicked()
          while( graph.getNumberOfEdges() < graph.getMinimumNumberOfEdges() && notMax >= 2)
          {
             notMax = plane.randomLink(graph);
+            cout<<" "<<notMax<<endl;
          }
 
 
@@ -143,9 +147,9 @@ void MainWindow::on_pushButton_clicked()
             file.writeTopologies(graph,plane,simulation,topology);
 
 
-            if(ui->measures->isChecked())
+            if(ui->measures->isChecked() && survivor)
             {
-
+                cout<<"Measures"<<endl;
                 if (simulation == 1)
                 {
                     file.createXls(ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked());
@@ -167,16 +171,16 @@ void MainWindow::on_pushButton_clicked()
         while( graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2)
         {
             notMax = plane.randomLink(graph);
-
+            cout<<" "<<notMax<<endl;
             if (graph.getNumberOfEdges() > nEdges)
             {
                 nEdges = graph.getNumberOfEdges();
 
-                Suurballe s;
+                Suurballe suurballe;
 
-                bool survivor = s.execute(graph);
+                bool survivor = suurballe.execute(graph);
 
-
+                cout<<"survivor "<<survivor<<endl;
                 if(survivor)
                 {
                     if (simulation == 1 && topology == 1)
@@ -189,7 +193,7 @@ void MainWindow::on_pushButton_clicked()
 
                     if(ui->measures->isChecked())
                     {
-
+                        cout<<"Measure"<<endl;
                         if (simulation == 1)
                         {
                             file.createXls(ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked());
@@ -198,8 +202,6 @@ void MainWindow::on_pushButton_clicked()
                          Measure measures;
 
                          measures.initialize(graph,graph.getNumberOfNodes(),ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked() ); //obtêm as medidas de centralidade para cada nó da rede
-
-//                         cout<<"measures"<<endl;
 
                          file.writeMeasures(graph,ui->bc->isChecked(),ui->ec->isChecked(),ui->dc->isChecked(),ui->cc->isChecked());
                     }
@@ -251,4 +253,3 @@ void MainWindow::on_measures_clicked()
         ui->dc->setEnabled(false);
     }
 }
-

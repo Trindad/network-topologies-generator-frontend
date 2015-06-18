@@ -1117,6 +1117,7 @@ void Plane::initialize(Graph &graph,int simulation)
  */
 int Plane::randomLink(Graph &graph)
 {
+    cout<<"RANDOM LINK"<<endl;
     vector<int> nodes;
     int maximum = graph.getMaximumDegree();
 
@@ -1128,15 +1129,18 @@ int Plane::randomLink(Graph &graph)
 
         if (graph.getDegree(i) < maximum)
         {
-
+            cout<<" "<<graph.getDegree(i)<<" ";
             nodes.push_back(i);
         }
     }
+
+    cout<<endl;
 
     if (nodes.size() <= 1)
     {
         return nodes.size();
     }
+
     else if (nodes.size() == 2)
     {
         if ( graph.getEdge(nodes[0],nodes[1]) ==  false && waxmanProbability(graph,nodes[0],nodes[1]) == true )

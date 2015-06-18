@@ -24,6 +24,7 @@ public:
 	void setMinimumDegree(int);
 	void setMaximumDegree(int);
 	void setAverageDegree(double);
+	void setMaximumAverageDegree(double);//número médio do grau máximo da rede
 	void removeEgde(int,int);
 	void setWeight(int,int,double);
 	void setWeightEdgeDirected(int, int, double);
@@ -44,6 +45,7 @@ public:
 	int getNumberOfNodes();		//número de nós do grafo
 	vector<Node> getNodes();	//retorna um vetor de nós do grafo
 	double getAverageDegree();	//retorna grau médio do grafo
+	double getMaximumAverageDegree();
 	Node getNodeAtPosition(int);
 	int getMinimumDistanceOfNode();
 	int getMinimumNumberOfEdges();
@@ -60,6 +62,7 @@ private:
 	int nNodes;						//número de nós da topologia
 	int maxDegree;					//grau máximo da topologia
 	int minDegree;					//grau minimo da topologia
+	double avgMaximumDegree;		//grau máximo médio previsto para a topologia
 	double avgDegree;				//grau médio da topologia
 	int minDistance; 				//distancia minima entre um par de vertices/nós
 	vector <Node> nodes;			//vetor de informações de um nó do grafo
