@@ -971,19 +971,8 @@ void Plane::connectionNodesRegion(Graph &graph,vector<vector<int>> &nodes)
  */
 void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
 {
-    //cout<<"AQUI REGIONS "<<this->nRegions<<endl;
     int controller = 0;
-
-    // for (int i = 0; i < nodes.size(); i++)
-    // {
-    //     for (int j = 0; j < nodes[i].size(); j++)
-    //     {
-    //         cout<<" "<<nodes[i][j];
-    //     }
-    //     cout<<endl;
-    // }
-
-    // cout<<endl;
+    double e = 0.0f;
 
     for (int i = 0; i < this->nRegions; i++)
     {
@@ -1006,8 +995,12 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
 
             neighbor = targetSearch(nodes[i][j],graph,nodes,i);
 
-            // cout<<"( "<< nodes[i][j]<<" , "<<neighbor<<")'"<<controller<<" "<<i<<endl;
+            cout<<"( "<< nodes[i][j]<<" , "<<neighbor<<")'"<<controller<<" "<<i<<endl;
+            
             graph.setEdge(nodes[i][j],neighbor); //faz a ligação dos nós no grafo de matriz adjacente
+            
+            e = getEuclidean(nodes[i][j],neighbor);
+            graph.setEuclideanDistance(nodes[i][j],neighbor,e);
 
             controller++;
 
@@ -1026,7 +1019,7 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
             while( count < nodes[i].size() )
             {
                 neighbor = targetSearch(nodes[i][j],graph,nodes,i);
-                // cout<<"( "<< nodes[i][j]<<" , "<<neighbor<<")"<<endl;
+                cout<<"( "<< nodes[i][j]<<" , "<<neighbor<<")"<<endl;
 
                 graph.setEdge(nodes[i][j],neighbor); //faz a ligação dos nós no grafo de matriz adjacente
 
@@ -1128,6 +1121,7 @@ int Plane::randomLink(Graph &graph)
     cout<<"RANDOM LINK"<<endl;
     vector<int> nodes;
     int maximum = graph.getMaximumDegree();
+    double e = 0.0f;
 
     /**
      * Insere os nodos que possuem grau inferior ao limite
@@ -1136,12 +1130,9 @@ int Plane::randomLink(Graph &graph)
     {
         if (graph.getDegree(i) < maximum)
         {
-            //cout<<" "<<graph.getDegree(i)<<" ";
             nodes.push_back(i);
         }
     }
-
-//    cout<<endl;
 
     if (nodes.size() <= 1)
     {
@@ -1154,7 +1145,7 @@ int Plane::randomLink(Graph &graph)
         {
 
             graph.setEdge(nodes[0],nodes[1]);
-            double e = getEuclidean(nodes[0],nodes[1]);
+            e = getEuclidean(nodes[0],nodes[1]);
             graph.setEuclideanDistance(nodes[0],nodes[1],e);
 
             return nodes.size();
@@ -1212,7 +1203,8 @@ int Plane::randomLink(Graph &graph)
         if ( graph.getEdge(source,target) == false && waxmanProbability(graph,source,target) == true )
         {
             graph.setEdge(source,target);
-            graph.setEuclideanDistance(source,target,this->euclidean);
+            double e = getEuclidean(source,target);
+            graph.setEuclideanDistance(source,target,e);
 
             return nodes.size();
         }

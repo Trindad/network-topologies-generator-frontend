@@ -51,7 +51,7 @@ void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 
 	if (this->output.good())
 	{
-		vector < vector<int> > coodinates = plane.getCoordinates();
+		vector < vector<int> > coordinates = plane.getCoordinates();
 
 	    /**
 	     * Escreve no arquivo as posições(x,y) de cada nó no grafo
@@ -62,7 +62,7 @@ void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 	    for (int u = 0; u < g.getNumberOfNodes(); u++)
 		{
 			char str[255];
-            sprintf(str," %*d  %*d ", 2, coodinates[u][0], 4, coodinates[u][1]);
+            sprintf(str," %*d  %*d ", 2, coordinates[u][0], 4, coordinates[u][1]);
 	        this->output<<str<<endl;
 		}
 	}
@@ -110,8 +110,9 @@ void FileWriter::writeTopologies(Graph g, Plane plane, int s, int topology)
 
 	        graph[u][v] = graph[v][u] = 1;
 
+            //cout<<"u "<<u<<" v "<<v<<euclidean[count]<<endl;
 	        char str[255];
-            sprintf(str," %*d  %*d  %*f ", 2, u, 4, v, 8, euclidean[count]);
+            sprintf(str," %*d  %*d  %*.3f ", 2, u, 4, v, 8, euclidean[count]);
 
 			this->output<<str<<"\n";
         	count++;
