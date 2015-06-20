@@ -174,8 +174,16 @@ int Graph::getMinimumNumberOfEdges()
 
 double Graph::getAverageDegree() 
 {
-	this->avgDegree = this->nEdges/getNumberOfNodes();
-	return this->avgDegree;
+	int sum = 0;
+
+	for (int u = 0; u < getNumberOfNodes(); u++)
+	{
+		// cout<<" "<<nodes[u].getDegree()<<endl;
+		sum = sum + nodes[u].getDegree();
+	}
+	// cout<<endl;
+	
+	return ( sum/getNumberOfNodes() );
 }
 
 double Graph::getMaximumAverageDegree()

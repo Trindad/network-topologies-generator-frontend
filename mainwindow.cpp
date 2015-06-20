@@ -106,7 +106,6 @@ void MainWindow::on_pushButton_clicked()
 
      plane.setNumberOfSimulations(ui->numberOfSimulations->value());
 
-     // cout<<"AQUI"<<endl;
      while( simulation <= plane.getNumberOfSimulations() )
      {
         graph.memsetGraph();
@@ -123,7 +122,7 @@ void MainWindow::on_pushButton_clicked()
          int notMax = std::numeric_limits<int>::max();
          int topology = 1;
 
-         while( graph.getNumberOfEdges() < graph.getMinimumNumberOfEdges() && notMax >= 2)
+         while( ( graph.getNumberOfEdges() < graph.getMinimumNumberOfEdges() && notMax >= 2) && ( (graph.getAverageDegree() < graph.getMaximumAverageDegree() ) && notMax >= 2) )
          {
             notMax = plane.randomLink(graph);
             cout<<" "<<notMax<<endl;
@@ -164,11 +163,12 @@ void MainWindow::on_pushButton_clicked()
             topology++;
         }
 
+        survivor = false;
 
         int nEdges = graph.getNumberOfEdges();
 
 
-        while( graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2)
+        while( (graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2) && ( (graph.getAverageDegree() < graph.getMaximumAverageDegree() ) && notMax >= 2) )
         {
             notMax = plane.randomLink(graph);
             cout<<" "<<notMax<<endl;
@@ -178,7 +178,7 @@ void MainWindow::on_pushButton_clicked()
 
                 Suurballe suurballe;
 
-                bool survivor = suurballe.execute(graph);
+                survivor = suurballe.execute(graph);
 
                 cout<<"survivor "<<survivor<<endl;
                 if(survivor)
@@ -209,12 +209,14 @@ void MainWindow::on_pushButton_clicked()
                     topology++;
                 }
 
+                survivor = false;
             }
         }
 
         simulation++;
      }
 
+     cout<<"\nmax degree "<<graph.getAverageDegree()<<endl;
      file.closeFileTopologies();
      file.closeFileMeasures();
      ui->pushButton->setEnabled(true);

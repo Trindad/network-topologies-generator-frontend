@@ -74,9 +74,9 @@ public:
     bool waxmanProbability(Graph,int,int);                                      //calcula a probabilidade de waxman para nós u e v
     void blockedAreaAroundTheNode(Graph,int,int);                               // bloqueio da área conforme a distância passada pelo usuário
     int targetSearch(int,Graph, vector<vector<int>>,int);                       //busca nodo destino
-    void regionsInterconnection(Graph &,vector<vector<int>>);                   //conecção dos nós entre as regiões
+    void regionsInterconnection(Graph &,vector<vector<int>> &);                   //conecção dos nós entre as regiões
     void generateCoordinatesUniform(Graph graph,int position);                  //gera coordenadas com base em uma distribuição uniforme dos nós
-    vector<vector<int>> connectionNodesRegion(Graph &,vector<vector<int>>&);    //conecta nós por região utilizando a probabilidade de Waxman
+    void connectionNodesRegion(Graph &,vector<vector<int>> &);    //conecta nós por região utilizando a probabilidade de Waxman
 
 private:
 

@@ -129,7 +129,7 @@ void Plane::setEuclidean(Graph graph,int u,int v)
 
 void Plane::setCoordinatesRegion()
 {
-    vector<int> xy;
+    vector<int> positionxy;
 
     int column = 0, row = 0;
     int columns = 0,rows = 0;
@@ -157,14 +157,15 @@ void Plane::setCoordinatesRegion()
             rows = row + this->regionRow;                   //limite de linhas da região
         }
 
-        xy.push_back(column);
-        xy.push_back(columns);
-        xy.push_back(row);
-        xy.push_back(rows);
+        positionxy.push_back(column);
+        positionxy.push_back(columns);
+        positionxy.push_back(row);
+        positionxy.push_back(rows);
 
-        xy.push_back(0);//inicializa número de nós na região
 
-        this->regionsWithNodes.push_back(xy);
+        this->regionsWithNodes.push_back(positionxy);
+        
+        positionxy.clear();//inicializa número de nós na região
     }
 }
 
@@ -174,9 +175,10 @@ void Plane::setCoordinatesRegion()
  */
 void Plane::getNumberOfNodesRegion(int numberRegion, vector<int> &nodes)
 {
-    for (int i = regionsWithNodes[numberRegion][0]; i < regionsWithNodes[numberRegion][1]; i++)
+    cout<<" "<<this->regionsWithNodes[numberRegion][0]<<" "<<this->regionsWithNodes[numberRegion][2]<<endl;
+    for (int i = this->regionsWithNodes[numberRegion][0]; i < this->regionsWithNodes[numberRegion][1]; i++)
     {
-        for (int j = regionsWithNodes[numberRegion][2]; j < regionsWithNodes[numberRegion][3]; j++)
+        for (int j = this->regionsWithNodes[numberRegion][2]; j < this->regionsWithNodes[numberRegion][3]; j++)
         {
             if (this->plane[i][j] >= 0)
             {
@@ -851,9 +853,8 @@ int Plane::ring(Graph graph)
 /**
  * Estabelece a conecção entre nós em sua respectiva região
  */
-vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>> &nodes)
+void Plane::connectionNodesRegion(Graph &graph,vector<vector<int>> &nodes)
 {
-
     /**
      * Controladores para fechamento do anel
      * O nodo somente poderá ser uma vez destino e origem
@@ -863,7 +864,6 @@ vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>
 
     for (int i = 0; i < this->nRegions; i++)
     {
-
         vector<int> temp;
 
         getNumberOfNodesRegion(i,temp);
@@ -961,10 +961,7 @@ vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>
                 source = target;
             }
         }
-
     }
-
-    return nodes;
 }
 
 
@@ -972,10 +969,21 @@ vector<vector<int>> Plane::connectionNodesRegion(Graph &graph,vector<vector<int>
  * Estabelecer a conecção dos nós entre as regiões
  * Busca pelo raio de modo que os nós interligados serão os mais próximos
  */
-void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> nodes)
+void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
 {
-
+    //cout<<"AQUI REGIONS "<<this->nRegions<<endl;
     int controller = 0;
+
+    // for (int i = 0; i < nodes.size(); i++)
+    // {
+    //     for (int j = 0; j < nodes[i].size(); j++)
+    //     {
+    //         cout<<" "<<nodes[i][j];
+    //     }
+    //     cout<<endl;
+    // }
+
+    // cout<<endl;
 
     for (int i = 0; i < this->nRegions; i++)
     {
@@ -990,14 +998,16 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> nodes)
 
         if (nodes[i].size() == 0)
         {
+            // cout<<" AQUI 1"<<endl;
             continue;
         }
-        else if ( nodes[i].size() == 1)
+        else if (nodes[i].size() == 1)
         {
 
-            neighbor = targetSearch(nodes[i][0],graph,nodes,i);
+            neighbor = targetSearch(nodes[i][j],graph,nodes,i);
 
-            graph.setEdge(nodes[i][0],neighbor); //faz a ligação dos nós no grafo de matriz adjacente
+            // cout<<"( "<< nodes[i][j]<<" , "<<neighbor<<")'"<<controller<<" "<<i<<endl;
+            graph.setEdge(nodes[i][j],neighbor); //faz a ligação dos nós no grafo de matriz adjacente
 
             controller++;
 
@@ -1009,15 +1019,14 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> nodes)
             {
                 controller = 0;
             }
-
         }
         else
         {
-
+            // cout<<"AQUI SEGUNDA PARTE"<<endl;
             while( count < nodes[i].size() )
             {
-
                 neighbor = targetSearch(nodes[i][j],graph,nodes,i);
+                // cout<<"( "<< nodes[i][j]<<" , "<<neighbor<<")"<<endl;
 
                 graph.setEdge(nodes[i][j],neighbor); //faz a ligação dos nós no grafo de matriz adjacente
 
@@ -1034,9 +1043,10 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> nodes)
  */
 void Plane::initialize(Graph &graph,int simulation)
 {
-
     if (simulation == 1)
     {
+        cout<<"START"<<endl;
+
         memsetCoordinates( graph.getNumberOfNodes() );
 
         this->xy = vector<vector<int>> (graph.getNumberOfNodes(),vector<int>(2,0));
@@ -1047,7 +1057,6 @@ void Plane::initialize(Graph &graph,int simulation)
          * de acordo com a configuração referente ao número
          * de regiões do plano
          */
-
 
         if(!this->nRegions)
         {
@@ -1076,8 +1085,7 @@ void Plane::initialize(Graph &graph,int simulation)
         setNodesCoordinates(graph);
     }
     
-
-//    print();
+    // print();
 
     vector<vector<int>> nodesFromRegion;
 
@@ -1091,7 +1099,7 @@ void Plane::initialize(Graph &graph,int simulation)
      * Verifica se o limite de links foi atingido
      * E se todos os vértices tem grau 2 no mínimo
      */
-    nodesFromRegion = connectionNodesRegion(graph,nodesFromRegion);
+    connectionNodesRegion(graph,nodesFromRegion);
 
     /**
      * Interconecta regiões do plano
@@ -1126,15 +1134,14 @@ int Plane::randomLink(Graph &graph)
      */
     for (int i = 0; i < graph.getNumberOfNodes(); i++)
     {
-
         if (graph.getDegree(i) < maximum)
         {
-            cout<<" "<<graph.getDegree(i)<<" ";
+            //cout<<" "<<graph.getDegree(i)<<" ";
             nodes.push_back(i);
         }
     }
 
-    cout<<endl;
+//    cout<<endl;
 
     if (nodes.size() <= 1)
     {
