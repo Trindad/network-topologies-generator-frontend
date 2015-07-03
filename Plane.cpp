@@ -121,9 +121,8 @@ int Plane::getEuclidean(int u, int v)
     return this->euclidean;
 }
 
-void Plane::setEuclidean(Graph graph,int u,int v)
+void Plane::setEuclidean(Graph &graph,int u,int v)
 {
-
     graph.setDistancePairOfNodes(u,v,getEuclidean(u,v));
 }
 
@@ -721,13 +720,11 @@ bool Plane::regionEqual(vector<int> nodes,int node)
 }
 
 /**
- * Busca nodo destino mais próximo
- * Busca utilizando o raio
+ * Encontra um nó destino mais próximo ao source passao como parâmetro
  */
-int Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes,int indexRegion )
+int Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes, int indexRegion )
 {
-
-    int minimum = 1;
+    int minimum = 1, i = 0, j = 0, k = 0;
     int maximum = graph.getNumberOfNodes();
 
     /*
@@ -736,8 +733,7 @@ int Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes,int in
     int xSource = this->coordinates[source][0];
     int ySource = this->coordinates[source][1];
 
-    int target = source;
-    int count = minimum;
+    int target = source, count = minimum, targetNow = 0, xTarget, yTarget, radiusNow = 0, radiusEarlier = 1;
 
     vector<int> targets = vector<int> (graph.getNumberOfNodes(),0);
 
@@ -745,19 +741,18 @@ int Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes,int in
 
     while(count < maximum)
     {
+        targetNow = random(0,maximum-1);
 
-        int targetNow = random(0,maximum-1);
+        radiusNow = 0, radiusEarlier = 1;
 
-        int radiusNow = 0, radiusEarlier = 1;
+        xTarget = this->coordinates[targetNow][0];
+        yTarget = this->coordinates[targetNow][1];
 
-        int xTarget = this->coordinates[targetNow][0];
-        int yTarget = this->coordinates[targetNow][1];
-
-        for(int i = 1; i <= this->side; i++)
+        for(i = 1; i <= this->side; i++)
         {
-            for(int j =  xSource-i; j <= xSource+i; j++)
+            for(j =  xSource-i; j <= xSource+i; j++)
             {
-                for(int k = ySource-i; k <= ySource+i; k++)
+                for(k = ySource-i; k <= ySource+i; k++)
                 {
                     /*
                      * Testa se as coordenadas encontradas são iguais ao nó candidato a target
@@ -768,7 +763,6 @@ int Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes,int in
                         {
                             target = targetNow;
                             radiusEarlier = radiusNow;
-
                             break;
                         }
 
@@ -787,6 +781,75 @@ int Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes,int in
     }
 
     return target;
+}
+
+
+/**
+ * Busca nodo destino mais próximo
+ * Busca utilizando o raio
+ */
+void Plane::targetSearch(int source,Graph graph, vector<vector<int>> nodes, vector<int> &controller, int indexRegion )
+{
+    int minimum = 1, i = 0, j = 0, k = 0;
+    int maximum = graph.getNumberOfNodes();
+
+    /*
+     * Obtem o valor das coordenadas dos nodos
+     */
+    int xSource = this->coordinates[source][0];
+    int ySource = this->coordinates[source][1];
+
+    int target = source, count = minimum, targetNow = 0, xTarget, yTarget, radiusNow = 0, radiusEarlier = 1;
+
+    vector<int> targets = vector<int> (graph.getNumberOfNodes(),0);
+
+    targets[source] = 1;
+
+    while(count < maximum)
+    {
+
+        targetNow = random(0,maximum-1);
+
+        radiusNow = 0, radiusEarlier = 1;
+
+        xTarget = this->coordinates[targetNow][0];
+        yTarget = this->coordinates[targetNow][1];
+
+        for(i = 1; i <= this->side; i++)
+        {
+            for(j =  xSource-i; j <= xSource+i; j++)
+            {
+                for(k = ySource-i; k <= ySource+i; k++)
+                {
+                    /*
+                     * Testa se as coordenadas encontradas são iguais ao nó candidato a target
+                    */
+                    if(xTarget == j && k == yTarget && targetNow != source)
+                    {
+                        if(radiusNow < radiusEarlier && regionEqual(nodes[indexRegion],targetNow) == false && graph.getEdge(source,targetNow) == false && graph.getDegree(targetNow) <= 2)
+                        {
+                            target = targetNow;
+                            radiusEarlier = radiusNow;
+                            break;
+                        }
+
+                        radiusNow++;
+                    }
+
+                }
+            }
+        }
+
+        if ( targets[targetNow] == 0)
+        {
+            targets[targetNow] = 1;
+            count++;
+        }
+    }
+
+    controller.push_back(source);
+    controller.push_back(target);
+    controller.push_back(radiusNow);
 }
 
 /**
@@ -964,21 +1027,24 @@ void Plane::connectionNodesRegion(Graph &graph,vector<vector<int>> &nodes)
     }
 }
 
-
 /**
  * Estabelecer a conecção dos nós entre as regiões
  * Busca pelo raio de modo que os nós interligados serão os mais próximos
  */
 void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
 {
-    int controller = 0;
+    int controller = 0, j = 0;
+    unsigned int count = 0;
     double e = 0.0f;
+    vector<int> neighbor;
 
     for (int i = 0; i < this->nRegions; i++)
     {
-        int neighbor,j = 0;
-        unsigned int count = 0;
+        neighbor = vector<int> (nodes[i].size(),0);
+        j = 0;
+        count = 0;
 
+        printf("\nREGIÃO QUE PERTENCE %d\n",i );
         /**
          * Se existir somente um nó na região
          * então haverá ligação entre dois nós
@@ -987,46 +1053,93 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
 
         if (nodes[i].size() == 0)
         {
-            // cout<<" AQUI 1"<<endl;
             continue;
         }
         else if (nodes[i].size() == 1)
         {
+            controller = 0;
+            int target = nodes[i][j];
 
-            neighbor = targetSearch(nodes[i][j],graph,nodes,i);
-
-            cout<<"( "<< nodes[i][j]<<" , "<<neighbor<<")'"<<controller<<" "<<i<<endl;
-            
-            graph.setEdge(nodes[i][j],neighbor); //faz a ligação dos nós no grafo de matriz adjacente
-            
-            e = getEuclidean(nodes[i][j],neighbor);
-            graph.setEuclideanDistance(nodes[i][j],neighbor,e);
-
-            controller++;
-
-            if (controller < 2)
+            while(controller < 2)
             {
-                i--;//retorna a região e faz a segunda ligação
-            }
-            else
-            {
-                controller = 0;
+                target = targetSearch(nodes[i][j],graph,nodes,i);
+
+                cout<<"( "<< nodes[i][j]<<" , "<<target<<")'"<<controller<<" "<<i<<endl;
+                
+                graph.setEdge(nodes[i][j],target); //faz a ligação dos nós no grafo de matriz adjacente
+                
+                e = getEuclidean(nodes[i][j],target);
+                graph.setEuclideanDistance(nodes[i][j],target,e);
+
+                controller++;
             }
         }
         else
         {
-            // cout<<"AQUI SEGUNDA PARTE"<<endl;
-            while( count < nodes[i].size() )
+            /**
+             * Escolhe um par de nós origem e um par destino
+             * Os nós destinos não podem ser da mesma região
+             */
+            unsigned int n = nodes[i].size();
+            vector< vector<int> > pair = vector< vector<int> > (n);
+
+            /**
+             * Encontra nós destinos para todos os nós da região
+             */
+            while( count <  n)
             {
-                neighbor = targetSearch(nodes[i][j],graph,nodes,i);
-                cout<<"( "<< nodes[i][j]<<" , "<<neighbor<<")"<<endl;
-
-                graph.setEdge(nodes[i][j],neighbor); //faz a ligação dos nós no grafo de matriz adjacente
-
+                targetSearch(nodes[i][j],graph,nodes,pair[count], i);
                 count++;
-
                 j++;
             }
+
+            count = 0;
+            int source = 0, target = 0,index = -1;
+            int radius = std::numeric_limits<int>::max(); 
+
+            while(count < n)
+            {
+                if (radius > pair[count][2])
+                {
+                    radius = pair[count][2];
+                    index = count;
+                }
+
+                count++;
+            }
+
+            if (index >= 0)
+            {
+                source = pair[index][0];
+                target = pair[index][1];
+
+                cout<<"( "<< source<<" , "<<target<<")"<<endl;
+                graph.setEdge(source,target);
+                e = getEuclidean(source,target);
+                graph.setEuclideanDistance(source,target,e);
+            }
+
+            count = j = 0;
+            radius = std::numeric_limits<int>::max(); 
+
+            while(count < n)
+            {
+                if ( ( radius > pair[count][2]) && count != index )
+                {
+                    radius = pair[count][2];
+                    j = count;
+                }
+
+                count++;
+            }
+
+            source = pair[j][0];
+            target = pair[j][1];
+
+            cout<<"( "<< source<<" , "<<target<<")"<<endl;
+            graph.setEdge(source,target);
+            e = getEuclidean(source,target);
+            graph.setEuclideanDistance(source,target,e);
         }
     }
 }
@@ -1077,8 +1190,6 @@ void Plane::initialize(Graph &graph,int simulation)
         
         setNodesCoordinates(graph);
     }
-    
-    // print();
 
     vector<vector<int>> nodesFromRegion;
 
@@ -1093,6 +1204,27 @@ void Plane::initialize(Graph &graph,int simulation)
      * E se todos os vértices tem grau 2 no mínimo
      */
     connectionNodesRegion(graph,nodesFromRegion);
+
+    int i = 0, j = 0;
+    unsigned int n = 0;
+
+    //armazena em qual região cada nó se encontra
+    for (int i = 0; i < this->nRegions; i++)
+    {
+        n = nodesFromRegion[i].size();
+
+        cout<<"number of region "<<i<<endl;
+        while(j < n)
+        {
+            cout<<" "<<nodesFromRegion[i][j];
+            graph.setRegionOfNode(i,nodesFromRegion[i][j]);
+
+            j++;
+        }
+        cout<<endl;
+
+        j = 0;
+    }
 
     /**
      * Interconecta regiões do plano

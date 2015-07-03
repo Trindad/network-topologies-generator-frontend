@@ -32,7 +32,7 @@ public:
 	void setDistancePairOfNodes(int,int,double);
 	void setEuclideanDistance(int,int,double);
 	void setNodesMeasures(vector<Node> &);
-
+	void setRegionOfNode(int, int);		//insere a região que o nó pertence
 
 	/**
 	 * Getters
@@ -43,6 +43,7 @@ public:
 	int getMinimumDegree();		//número mínimo do grau
 	int getMaximumDegree();		//número máximo do grau
 	int getNumberOfNodes();		//número de nós do grafo
+	int getRegionOfNode(int);
 	vector<Node> getNodes();	//retorna um vetor de nós do grafo
 	double getAverageDegree();	//retorna grau médio do grafo
 	double getMaximumAverageDegree();

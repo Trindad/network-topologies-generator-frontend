@@ -112,6 +112,14 @@ void MainWindow::on_pushButton_clicked()
 
         plane.initialize(graph,simulation);
 
+        cout<<"AQUI IMPRIME ADJACENTES....\n";
+        for (int w = 0; w < graph.getNumberOfNodes(); w++)
+        {
+            cout<<"Node "<<w<<endl;
+            graph.printAdjacents(w);
+            cout<<endl;
+        }
+        
          /**
           * Verifica se o número de ligações foi atingido
           * Se sim verifica se a topologia gerada é sobrevivente

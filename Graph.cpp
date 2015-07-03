@@ -110,6 +110,11 @@ void Graph::setWeight(int u,int v, double value)
 }
 
 
+void Graph::setRegionOfNode(int region, int node)
+{
+	this->nodes[node].setRegion(region);
+}
+
 vector<Node> Graph::getNodes() 
 {
 	return this->nodes;
@@ -210,6 +215,11 @@ int Graph::getMinimumDistanceOfNode()
 Node Graph::getNodeAtPosition(int index)
 {
 	return this->nodes[index];
+}
+
+int Graph::getRegionOfNode(int u)
+{
+	return this->nodes[u].getRegionOfNode();
 }
 
 /**

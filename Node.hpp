@@ -35,7 +35,7 @@ public:
     void setEfficientCentrality(double);		//atribui o valor da centralidade de eficiência
     void setRelativeDegreeCentrality(double);	//atribui o valor da centralidade relativa de grau
     void setEuclideanDistance(double);
-   
+    void setRegion(int);                        //armazena a região que o nó pertence
     /**
      * Getters
      */
@@ -43,6 +43,7 @@ public:
     bool getEdgeNode(int); 				//verifica a existência de uma ligação entre dois vértices passados como parâmetros
     int getNumberOfPaths();				//número de caminhos mínimos
     int getNumberOfNodes();				//retorna o número de caminhos mínimos
+    int getRegionOfNode();
     int getAdjacentNode(int);			//retorna nó adjacente na posição passada como parâmetro
     double getWeightEdge(int);			//retorna o peso da ligação
     void incrementPaths(int);			//incrementa o número de caminhos minimos
@@ -78,6 +79,7 @@ private:
     double closenessCentrality;		//centralidade de proximidade
     double efficientCentrality;		//centralidade de eficiência
     vector< vector<int> > paths;	//matriz contendo todos caminhos minimos
+    int region;                     //região a qual o nó pertence
 };
 
 #endif

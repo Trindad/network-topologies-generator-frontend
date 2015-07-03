@@ -52,6 +52,11 @@ void Node::setEuclideanDistance(double distance)
 	this->distanceEuclidean.push_back(distance);
 }
 
+void Node::setRegion(int r)
+{
+	this->region = r;
+}
+
 void Node::incrementPaths(int n)
 {
 	this->numberOfPaths  = this->numberOfPaths + n;
@@ -125,6 +130,11 @@ vector<int> Node::getAdjacentsNodes()
 {
 	return this->adjacents;
 }	
+
+int Node::getRegionOfNode()
+{
+	return this->region;
+}
 
 /**
  * Verifica se existe ligação
