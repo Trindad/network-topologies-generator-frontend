@@ -504,194 +504,6 @@ background:#fff;</string>
      </property>
     </item>
    </widget>
-   <widget class="QCheckBox" name="measures">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>450</y>
-      <width>291</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>236</red>
-          <green>240</green>
-          <blue>241</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>44</red>
-          <green>62</green>
-          <blue>80</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>236</red>
-          <green>240</green>
-          <blue>241</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>236</red>
-          <green>240</green>
-          <blue>241</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>44</red>
-          <green>62</green>
-          <blue>80</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>44</red>
-          <green>62</green>
-          <blue>80</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>236</red>
-          <green>240</green>
-          <blue>241</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>44</red>
-          <green>62</green>
-          <blue>80</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>236</red>
-          <green>240</green>
-          <blue>241</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>236</red>
-          <green>240</green>
-          <blue>241</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>44</red>
-          <green>62</green>
-          <blue>80</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>44</red>
-          <green>62</green>
-          <blue>80</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>236</red>
-          <green>240</green>
-          <blue>241</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>44</red>
-          <green>62</green>
-          <blue>80</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Text">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>236</red>
-          <green>240</green>
-          <blue>241</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="ButtonText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>236</red>
-          <green>240</green>
-          <blue>241</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>44</red>
-          <green>62</green>
-          <blue>80</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>44</red>
-          <green>62</green>
-          <blue>80</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:rgb(236, 240, 241)</string>
-    </property>
-    <property name="text">
-     <string>Do you want to enable Measures?</string>
-    </property>
-   </widget>
    <widget class="QCheckBox" name="bc">
     <property name="enabled">
      <bool>false</bool>
@@ -1352,6 +1164,19 @@ color:#000
      <double>2.000000000000000</double>
     </property>
    </widget>
+   <widget class="QLabel" name="label_18">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>450</y>
+      <width>67</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Measures</string>
+    </property>
+   </widget>
    <zorder>fexibleRegions</zorder>
    <zorder>groupBox</zorder>
    <zorder>pushButton</zorder>
@@ -1365,7 +1190,6 @@ color:#000
    <zorder>breadth</zorder>
    <zorder>fixedRegions</zorder>
    <zorder>nodesDistribution</zorder>
-   <zorder>measures</zorder>
    <zorder>bc</zorder>
    <zorder>dc</zorder>
    <zorder>ec</zorder>
@@ -1387,6 +1211,7 @@ color:#000
    <zorder>error</zorder>
    <zorder>label_16</zorder>
    <zorder>max_average_degree</zorder>
+   <zorder>label_18</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="enabled">
@@ -1591,7 +1416,6 @@ color:#000
   <tabstop>fixedRegions</tabstop>
   <tabstop>fexibleRegions</tabstop>
   <tabstop>nodesDistribution</tabstop>
-  <tabstop>measures</tabstop>
   <tabstop>bc</tabstop>
   <tabstop>dc</tabstop>
   <tabstop>ec</tabstop>

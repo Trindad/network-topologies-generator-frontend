@@ -112,10 +112,8 @@ void MainWindow::on_pushButton_clicked()
 
         plane.initialize(graph,simulation);
 
-        cout<<"AQUI IMPRIME ADJACENTES....\n";
         for (int w = 0; w < graph.getNumberOfNodes(); w++)
         {
-            cout<<"Node "<<w<<endl;
             graph.printAdjacents(w);
             cout<<endl;
         }
@@ -133,7 +131,11 @@ void MainWindow::on_pushButton_clicked()
          while( ( graph.getNumberOfEdges() < graph.getMinimumNumberOfEdges() && notMax >= 2) && ( (graph.getAverageDegree() < graph.getMaximumAverageDegree() ) && notMax >= 2) )
          {
             notMax = plane.randomLink(graph);
-            cout<<" "<<notMax<<endl;
+
+            if (graph.getAverageDegree() >= graph.getMaximumAverageDegree())
+            {
+                break;
+            }
          }
 
 
@@ -154,7 +156,7 @@ void MainWindow::on_pushButton_clicked()
             file.writeTopologies(graph,plane,simulation,topology);
 
 
-            if(ui->measures->isChecked() && survivor)
+            if( (ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() ) && survivor)
             {
                 cout<<"Measures"<<endl;
                 if (simulation == 1)
@@ -171,22 +173,27 @@ void MainWindow::on_pushButton_clicked()
             topology++;
         }
 
-        survivor = false;
-
         int nEdges = graph.getNumberOfEdges();
 
 
         while( (graph.getNumberOfEdges() < graph.getMaximumNumberOfEdges() && notMax >= 2) && ( (graph.getAverageDegree() < graph.getMaximumAverageDegree() ) && notMax >= 2) )
         {
             notMax = plane.randomLink(graph);
-            cout<<" "<<notMax<<endl;
+          
             if (graph.getNumberOfEdges() > nEdges)
             {
                 nEdges = graph.getNumberOfEdges();
 
-                Suurballe suurballe;
+                /**
+                 * Executa algoritmo se Suurballe somente 
+                 * se a rede não for sobrevivente
+                 */
+                if (survivor == false)
+                {
+                    Suurballe suurballe;
 
-                survivor = suurballe.execute(graph);
+                    survivor = suurballe.execute(graph);
+                }
 
                 cout<<"survivor "<<survivor<<endl;
                 if(survivor)
@@ -199,7 +206,7 @@ void MainWindow::on_pushButton_clicked()
 
                     file.writeTopologies(graph,plane,simulation,topology);
 
-                    if(ui->measures->isChecked())
+                    if(ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() )
                     {
                         cout<<"Measure"<<endl;
                         if (simulation == 1)
@@ -215,6 +222,11 @@ void MainWindow::on_pushButton_clicked()
                     }
 
                     topology++;
+                }
+
+                if (graph.getAverageDegree() >= graph.getMaximumAverageDegree())
+                {
+                    break;
                 }
 
                 survivor = false;
@@ -248,18 +260,40 @@ void MainWindow::on_fexibleRegions_clicked()
 
 void MainWindow::on_measures_clicked()
 {
-    if(ui->measures->isChecked())
+    if(ui->bc->isChecked())
     {
         ui->bc->setEnabled(true);
-        ui->ec->setEnabled(true);
-        ui->cc->setEnabled(true);
-        ui->dc->setEnabled(true);
     }
     else
     {
         ui->bc->setEnabled(false);
+    }
+
+    if(ui->ec->isChecked())
+    {
+        ui->ec->setEnabled(true);
+    }
+    else
+    {
         ui->ec->setEnabled(false);
+    }
+
+    if(ui->cc->isChecked())
+    {
+        ui->cc->setEnabled(true);
+    }
+    else
+    {
         ui->cc->setEnabled(false);
+    }
+
+    if(ui->dc->isChecked())
+    {
+
+        ui->dc->setEnabled(true);
+    }
+    else
+    {
         ui->dc->setEnabled(false);
     }
 }

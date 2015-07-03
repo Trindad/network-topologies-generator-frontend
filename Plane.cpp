@@ -1043,8 +1043,6 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
         neighbor = vector<int> (nodes[i].size(),0);
         j = 0;
         count = 0;
-
-        printf("\nREGIÃO QUE PERTENCE %d\n",i );
         /**
          * Se existir somente um nó na região
          * então haverá ligação entre dois nós
@@ -1064,8 +1062,6 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
             {
                 target = targetSearch(nodes[i][j],graph,nodes,i);
 
-                cout<<"( "<< nodes[i][j]<<" , "<<target<<")'"<<controller<<" "<<i<<endl;
-                
                 graph.setEdge(nodes[i][j],target); //faz a ligação dos nós no grafo de matriz adjacente
                 
                 e = getEuclidean(nodes[i][j],target);
@@ -1113,7 +1109,6 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
                 source = pair[index][0];
                 target = pair[index][1];
 
-                cout<<"( "<< source<<" , "<<target<<")"<<endl;
                 graph.setEdge(source,target);
                 e = getEuclidean(source,target);
                 graph.setEuclideanDistance(source,target,e);
@@ -1136,7 +1131,6 @@ void Plane::regionsInterconnection(Graph &graph,vector<vector<int>> &nodes)
             source = pair[j][0];
             target = pair[j][1];
 
-            cout<<"( "<< source<<" , "<<target<<")"<<endl;
             graph.setEdge(source,target);
             e = getEuclidean(source,target);
             graph.setEuclideanDistance(source,target,e);
@@ -1151,7 +1145,6 @@ void Plane::initialize(Graph &graph,int simulation)
 {
     if (simulation == 1)
     {
-        cout<<"START"<<endl;
 
         memsetCoordinates( graph.getNumberOfNodes() );
 
@@ -1213,10 +1206,8 @@ void Plane::initialize(Graph &graph,int simulation)
     {
         n = nodesFromRegion[i].size();
 
-        cout<<"number of region "<<i<<endl;
         while(j < n)
         {
-            cout<<" "<<nodesFromRegion[i][j];
             graph.setRegionOfNode(i,nodesFromRegion[i][j]);
 
             j++;
@@ -1250,7 +1241,6 @@ void Plane::initialize(Graph &graph,int simulation)
  */
 int Plane::randomLink(Graph &graph)
 {
-    cout<<"RANDOM LINK"<<endl;
     vector<int> nodes;
     int maximum = graph.getMaximumDegree();
     double e = 0.0f;
