@@ -231,7 +231,7 @@ color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>510</y>
+      <y>500</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -269,6 +269,9 @@ QPushButton:!enabled{
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Number of nodes on the plane</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(0, 0, 0);
 background: rgba(255, 255, 255, 0);
@@ -294,6 +297,9 @@ background: rgba(255, 255, 255, 0);
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Node's minimum degree</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
 color:#000</string>
@@ -316,6 +322,9 @@ color:#000</string>
       <width>141</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Node's maximum degree</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
@@ -341,6 +350,9 @@ color:#000
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Min distance between two nodes</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
 color:#000
@@ -355,6 +367,9 @@ color:#000
       <width>81</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Square root of plane's area</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
@@ -379,6 +394,9 @@ color:#000</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Number of regions in which will be divided</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
 color:#000</string>
@@ -401,6 +419,9 @@ color:#000</string>
       <width>81</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Length of each region</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: #fff;
@@ -427,6 +448,9 @@ color:#000;</string>
       <width>81</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Breadth of each region</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: #fff;
@@ -489,6 +513,9 @@ color:#000</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Nodes distribution on the plane</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">color:#2c3e50;
 background:#fff;</string>
@@ -527,7 +554,7 @@ background:#fff;</string>
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>520</y>
+      <y>530</y>
       <width>171</width>
       <height>26</height>
      </rect>
@@ -776,6 +803,9 @@ background:#fff;</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Number of simulations</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
 color:#000;</string>
@@ -848,8 +878,11 @@ color:#000;</string>
       <height>21</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Number of Simulations </string>
+    </property>
     <property name="text">
-     <string>Number of Simulations ( φ )</string>
+     <string>( φ )</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
@@ -888,7 +921,7 @@ color:#000;</string>
      </rect>
     </property>
     <property name="text">
-     <string>Number of Regions ( R )</string>
+     <string> R </string>
     </property>
    </widget>
    <widget class="QLabel" name="label_11">
@@ -970,12 +1003,21 @@ color:#000;</string>
       <height>101</height>
      </rect>
     </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="toolTip">
+     <string>Waxman Probability. Used to calculate the probability of a pair of nodes get linked</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QGroupBox {
 	border:1px solid #d0d0d0;
 	color:rgb(236, 240, 241);
 	border-radius:4px;
 	padding:3px;
+}
+QToolTip{
+color:#000;
 }</string>
     </property>
     <property name="title">
@@ -1145,6 +1187,9 @@ color:#000
       <width>141</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Network's max average degree</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
