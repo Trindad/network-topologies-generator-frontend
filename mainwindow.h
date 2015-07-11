@@ -24,6 +24,8 @@ private slots:
 
     void on_measures_clicked();
 
+    void on_help_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

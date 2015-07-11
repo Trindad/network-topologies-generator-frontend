@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QString>
+#include <QDesktopServices>//para abrir help
 #include "Plane.hpp"
 #include "Measure.hpp"
 #include "Suurballe.hpp"
@@ -296,4 +297,9 @@ void MainWindow::on_measures_clicked()
     {
         ui->dc->setEnabled(false);
     }
+}
+
+void MainWindow::on_help_clicked()
+{
+    QDesktopServices::openUrl(QUrl("file:///home/silvana/interface/help/index.html", QUrl::TolerantMode));
 }
