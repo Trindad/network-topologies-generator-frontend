@@ -1,0 +1,59 @@
+.content {
+	padding: 25px;
+	font-family: "Roboto", Helvetica, Arial, verdana, sans-serif;
+	color: #333;
+	font-weight: 400;
+}
+
+.content p {
+	line-height: 1.8;
+}
+
+h2, h3, h4, h5 {
+	font-family: "Roboto", Helvetica, Arial, verdana, sans-serif;
+	font-weight: 700;
+	margin: 30px 0 15px;
+}
+
+.sidebar-wrapper {
+	padding-top: 80px;
+}
+
+.sidebar li {
+	border-left: 2px solid transparent;
+}
+
+.sidebar li a {
+	color: #333;
+	padding: 6px 10px;
+	font-family: "Roboto", Helvetica, Arial, verdana, sans-serif;
+	font-weight: 400;
+}
+
+.sidebar li a:hover {
+	background: transparent;
+}
+
+.sidebar li.active {
+	border-left-color: #2980b9;
+}
+
+.sidebar li.active a {
+	font-weight: 700;
+}
+
+.navbar {
+	background: #34495e;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	margin: 0 !important;
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.navbar-brand {
+	color: #fff !important;
+}
