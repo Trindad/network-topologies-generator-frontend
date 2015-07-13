@@ -224,7 +224,8 @@
   <property name="styleSheet">
    <string notr="true">font: 11pt &quot;Droid Sans&quot;;
 background: #2c3e50;
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushButton">
@@ -1470,10 +1471,49 @@ color:#000
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>26</height>
+     <height>30</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar {
+background: #23303d;
+}
+
+QMenuBar::item {
+	background: transparent;
+    padding: 5px 10px;
+}
+
+QMenuBar::item:selected {
+	background: #263544;
+}
+
+QMenuBar::item:pressed {
+	background: #263544;
+}
+
+QMenu {
+  background: #263544;
+}
+
+QMenu::item {
+  background: transparent;
+}
+
+QMenu::item:selected {
+	background: #2c3e50;
+}</string>
+   </property>
    <widget class="QMenu" name="menuHelp">
+    <property name="styleSheet">
+     <string notr="true">QAction {
+  background: transparent;
+}
+
+QAction:selected {
+	background: #2c3e50;
+}</string>
+    </property>
     <property name="title">
      <string>Help</string>
     </property>
