@@ -2,16 +2,22 @@
 <ui version="4.0">
  <class>About</class>
  <widget class="QDialog" name="About">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>403</width>
+    <height>327</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string/>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -26,9 +32,13 @@
     <font>
      <family>Droid Sans</family>
      <pointsize>14</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 14pt &quot;Droid Sans&quot;;</string>
    </property>
    <property name="text">
     <string>About</string>
@@ -38,17 +48,46 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>61</y>
+     <y>70</y>
      <width>341</width>
      <height>201</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none;
+font: 12pt &quot;Droid Sans&quot;;
+line-height:18pt;</string>
    </property>
    <property name="html">
     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Developed by Silvana Trindade under mentorship by Claunir Pavan, during a research project called &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-style:italic;&quot;&gt;Desenvolvimento de uma ferramenta computacional para a geração de topologias de redes de telecomunicações&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;, with financial support by PIBITI/CNPq.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Droid Sans'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:28px;&quot;&gt;&lt;span style=&quot; font-family:'Cantarell';&quot;&gt;Developed by Silvana Trindade under mentorship by Claunir Pavan, during a research project called &lt;/span&gt;&lt;span style=&quot; font-family:'Cantarell'; font-style:italic;&quot;&gt;Desenvolvimento de uma ferramenta computacional para a geração de topologias de redes de telecomunicações&lt;/span&gt;&lt;span style=&quot; font-family:'Cantarell';&quot;&gt;, with financial support by PIBITI/CNPq.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>280</y>
+     <width>97</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background: #fff;
+	color:#2c3e50;
+	border: 1px solid transparent;
+	border-radius:4px;
+}
+QPushButton:!enabled{
+	background: #ff0000;
+}</string>
+   </property>
+   <property name="text">
+    <string>close</string>
    </property>
   </widget>
  </widget>
