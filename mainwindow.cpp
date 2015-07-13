@@ -27,8 +27,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::openNewWindow()
 {
-//    this->aboutWindow = new About(this);
-//    this->aboutWindow->show();
+    this->aboutWindow = new About(this);
+    this->aboutWindow->show();
 }
 
 void MainWindow::on_pushButton_clicked()
