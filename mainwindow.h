@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+//#include "aboutwindow"
+
 
 namespace Ui {
 class MainWindow;
@@ -26,8 +28,11 @@ private slots:
 
     void on_help_clicked();
 
+    void openNewWindow();
+
 private:
     Ui::MainWindow *ui;
+    //AboutWindow *aboutWindow;
 };
 
 #endif // MAINWINDOW_H

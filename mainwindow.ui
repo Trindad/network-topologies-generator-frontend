@@ -562,6 +562,12 @@ background:#fff;</string>
     <property name="text">
      <string>Degree Centrality</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QCheckBox" name="ec">
     <property name="enabled">
@@ -1235,26 +1241,6 @@ color:#000
      <number>0</number>
     </property>
    </widget>
-   <widget class="QPushButton" name="help">
-    <property name="geometry">
-     <rect>
-      <x>716</x>
-      <y>10</y>
-      <width>51</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../Downloads/iconmonstr-help-3-icon-256.png</normaloff>../Downloads/iconmonstr-help-3-icon-256.png</iconset>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
    <zorder>fexibleRegions</zorder>
    <zorder>groupBox</zorder>
    <zorder>pushButton</zorder>
@@ -1291,7 +1277,6 @@ color:#000
    <zorder>max_average_degree</zorder>
    <zorder>label_18</zorder>
    <zorder>progressBar</zorder>
-   <zorder>help</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="enabled">
@@ -1479,6 +1464,34 @@ color:#000
     </font>
    </property>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>799</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionOpen_help"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionOpen_help">
+   <property name="text">
+    <string>Open help</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>

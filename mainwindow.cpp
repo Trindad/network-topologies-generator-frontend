@@ -15,11 +15,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->actionOpen_help, SIGNAL(triggered()), this, SLOT(on_help_clicked()));
+    connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(openNewWindow()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::openNewWindow()
+{
+//    this->aboutWindow = new About(this);
+//    this->aboutWindow->show();
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -209,7 +218,6 @@ void MainWindow::on_pushButton_clicked()
 
                     if(ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() )
                     {
-                        cout<<"Measure"<<endl;
                         if (simulation == 1)
                         {
                             file.createXls(ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked());

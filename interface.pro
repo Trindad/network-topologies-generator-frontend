@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     Measure.cpp \
     Node.cpp \
     Plane.cpp \
-    Suurballe.cpp
+    Suurballe.cpp \
+    about.cpp
 
 HEADERS  += mainwindow.h \
     Brandes.hpp \
@@ -38,6 +39,8 @@ HEADERS  += mainwindow.h \
     Plane.hpp \
     Suurballe.hpp \
     tree.hh \
-    tree_util.hh
+    tree_util.hh \
+    about.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    about.ui
