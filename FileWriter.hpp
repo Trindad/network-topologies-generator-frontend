@@ -20,7 +20,7 @@ public:
 
 	void openFile();
 	string returnCurrentTimeAndDate();
-	void createXls(bool,bool,bool,bool);
+    void createXls();
 	void writeCoordinatesTopologies(Graph, Plane);
 	void writeTopologies(Graph,Plane,int,int);
 	void writeMeasures(Graph &,bool,bool,bool,bool);

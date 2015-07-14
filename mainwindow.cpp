@@ -33,9 +33,11 @@ void MainWindow::openNewWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
+    ui->error->setText(QString::fromUtf8(""));
      ui->error->setText(QString::fromUtf8(""));
      ui->pushButton->setEnabled(false);
-
+     ui->pushButton->setText("Simulating...");
+     ui->pushButton->repaint();
      int simulation = 1;
      FileWriter file;
 
@@ -100,6 +102,7 @@ void MainWindow::on_pushButton_clicked()
      {
         ui->error->setText(QString::fromUtf8("2N ≤ R ≤ N²\n"));
         ui->pushButton->setEnabled(true);
+        ui->pushButton->setText("Begin simulation");
         return;
      }
 
@@ -111,6 +114,7 @@ void MainWindow::on_pushButton_clicked()
      {
         ui->error->setText(QString::fromUtf8("2 ≤ Maximum Degree ≤ N-1\n"));
         ui->pushButton->setEnabled(true);
+        ui->pushButton->setText("Begin simulation");
         return;
      }
 
@@ -165,7 +169,7 @@ void MainWindow::on_pushButton_clicked()
                 // cout<<"\n Measures"<<endl;
                 if (simulation == 1)
                 {
-                    file.createXls(ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked());
+                    file.createXls();
                 }
                 Measure measures;
                 
@@ -214,7 +218,7 @@ void MainWindow::on_pushButton_clicked()
                     {
                         if (simulation == 1)
                         {
-                            file.createXls(ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked());
+                            file.createXls();
                         }
 
                          Measure measures;
@@ -239,10 +243,16 @@ void MainWindow::on_pushButton_clicked()
         simulation++;
      }
 
-     // cout<<"\nmax degree "<<graph.getAverageDegree()<<endl;
+     QString message = "Simulation complete. File located at \"";
+     message.append(QDir::homePath());
+     message.append("/simulations\"");
+
+     ui->error->setText(message);
+
      file.closeFileTopologies();
      file.closeFileMeasures();
      ui->pushButton->setEnabled(true);
+     ui->pushButton->setText("Begin simulation");
 }
 
 void MainWindow::on_fixedRegions_clicked()

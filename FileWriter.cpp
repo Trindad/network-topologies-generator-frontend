@@ -1,4 +1,5 @@
 #include "FileWriter.hpp"
+#include <QDir>
 
 FileWriter::FileWriter()
 {
@@ -27,11 +28,24 @@ string FileWriter::returnCurrentTimeAndDate()
 void FileWriter::openFile()
 {
 	//txt
-    string fileName = "topology_";
     string date = returnCurrentTimeAndDate();
-    string extension = ".txt";
+    QString temp = QDir::homePath();
+    temp.append("/simulations");
+    /**
+     * Cria diretório caso não exista
+     */
+    QDir dir(temp);
 
-    string file = fileName+date+extension;
+    if (!dir.exists())
+    {
+        dir.mkpath(".");
+    }
+    temp.append("/topology_");
+    temp.append(QString::fromStdString(date));
+    temp.append(".txt");
+
+    string file = temp.toStdString();
+    cout << file << endl;
 
     this->output.open(file);
 
@@ -39,7 +53,7 @@ void FileWriter::openFile()
 }
 
 
-void FileWriter::createXls(bool bc, bool ec, bool dc, bool cc)
+void FileWriter::createXls()
 {
     //xls
    this->hFmt.setFontBold(true);
