@@ -14,19 +14,19 @@
 
 
  	double getDegreeCentrality(int);
-	double getBetweenCentrality(int);
+	double getBetweennessCentrality(int);
 	double getClosenessCentrality(int);
 	double getEfficientCentrality(int);
 
 
 	void setDegreeCentrality(int,double);
-	void setBetweenCentrality(int,double);
+	void setBetweennessCentrality(int,double);
 	void setClosenessCentrality(int,double);
 	void setEfficientCentrality(int, double);
 
 
 	void degreeCentrality(vector<Node> &);
-	void betweenCentrality(vector<Node> &);
+	void betweennessCentrality(vector<Node> &);
 	void closenessCentrality(vector<Node> &, vector<vector <int> >);
 	void efficientCentrality(vector<Node> &, vector<vector <int> >);	
 

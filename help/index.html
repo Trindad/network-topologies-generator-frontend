@@ -19,48 +19,87 @@
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
           <div class="content">
-            <h2 id="glyphicons">Abstract</h2>
+            <h2 id="introduction">Introduction</h2>
+
+            <p>
+              This is Network Topologies Generator, a tool with the objective to assist network architects in creating new survivor topologies. 
+            </p>
+
+            <p>
+              It is designed specifically for optical telecommunication networks, and is based on a paper by Claunir Pavan, entitled <em>Generating Realistic Optical Transport Network Topologies</em> published on IEEE in 2010.
+            </p>
+            <br>
+            <img src="img/nttgen_full.png">
+            <br>
+            <br>
+
+            <p>
+              On the next sections, we'll explain each of the interface's sections and their options in more detail.
+            </p>
+
+            <h2 id="network">Network</h2>
+
+            <p>
+              The network section allows you to configure some characteristics of the graph that represents the network. You can set the number of nodes, the minimum and maximum degree of each node (note that on OTNs the minimum degree is greater or equal to 2), the average maximum degree of the network and the minimum distance of each pair of nodes.
+            </p>
+
+            <img src="img/nttgen_network.png">
+            <br>
+            <br>
+            <p>
+              Be aware of the minimum distance between nodes, not to block the distribution of nodes on the regions.
+            </p>
+            <p class="clearfix">
+              <img style="margin: 0 20px 20px 0" class="pull-left" src="img/distance.png" width="200">
+              This is because  blocks the area around the nodes, and this could make impossible to distribute all the nodes on the plane because de of the limited area.
+              <br>
+              The average maximum degree of the network must follow the properties of the graph, where the node degree is N-1, where <strong>N</strong>  is the number of nodes of the network.
+            </p>
+            <br>
+
+            <h2 id="plane">Plane</h2>
+
+            <p>
+              The plane represent the area on which the nodes will be distributed. The plane is a square matrix where the square root of the area must be between 2N and N². 
+            </p>
+            <p>
+              The routing between nodes inside region uses the Waxman probability to determine the links that will happen or not.
+              The Waxman probability makes use of two variables, alpha and  beta, ranging from 0 to 1.
+            </p>
+            
+            <img src="img/nttgen_plane.png">
+
+            <h2 id="region">Region</h2>
 
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
+            <img src="img/nttgen_region.png">
 
-            <h2>Network</h2>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <h2>Plane</h2>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <h2>Region</h2>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <h2>Measures</h2>
+            <h2 id="measures">Measures</h2>
 
             <h3>Betweenness Centrality</h3>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
             <h3>Degree Centrality</h3>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
             <h3>Efficiency Centrality</h3>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
             <h3>Closeness Centrality</h3>
 
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
-
-            <h2>Out</h2>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <h2>Test</h2>
+            <img src="img/nttgen_measures.png">
+            <h2 id="output">Output</h2>
 
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -70,23 +109,23 @@
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 sidebar-wrapper">
           <nav class="sidebar hidden-print hidden-xs hidden-sm affix">
             <ul class="nav">
-              <li>
-                <a href="#glyphicons">Abstract</a>
+              <li class="active">
+                <a href="#introduction">Introduction</a>
               </li>
               <li>
-                <a href="#dropdowns">Network</a>
+                <a href="#network">Network</a>
               </li>
               <li>
-                <a href="#btn-groups">Plane</a>
+                <a href="#plane">Plane</a>
               </li>
                <li>
-                <a href="#btn-groups">Region</a>
+                <a href="#region">Region</a>
               </li>
               <li>
-                <a href="#btn-groups">Measure</a>
+                <a href="#measures">Measures</a>
               </li>
                <li>
-                <a href="#btn-groups">Out</a>
+                <a href="#output">Output</a>
               </li>
             </ul>
           </nav>

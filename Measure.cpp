@@ -7,19 +7,19 @@ Measure::~Measure(){}
 
 double Measure::getDegreeCentrality(int index)
 {
-    return nodes[index].getDegreeCentrality();
+    return this->nodes[index].getDegreeCentrality();
 }
 
 
-double Measure::getBetweenCentrality(int index)
+double Measure::getBetweennessCentrality(int index)
 {
-    return nodes[index].getBetweenCentrality();
+    return this->nodes[index].getBetweennessCentrality();
 }
 
 
 double Measure::getClosenessCentrality(int index)
 {
-    return nodes[index].getClosenessCentrality();
+    return this->nodes[index].getClosenessCentrality();
 }
 
 
@@ -35,9 +35,9 @@ void Measure::setDegreeCentrality(int index,double value)
 }
 
 
-void Measure::setBetweenCentrality(int index,double value)
+void Measure::setBetweennessCentrality(int index,double value)
 {
-    nodes[index].setDegreeCentrality(value);
+    nodes[index].setBetweennessCentrality(value);
 }
 
 
@@ -87,7 +87,7 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
         for (int i = 0; i < this->numberOfNodes; i++)
         {
             brandes.execute(graph,i,nodes);
-            brandes.printShortestPaths();
+            // brandes.printShortestPaths();
         }
 
 
@@ -99,7 +99,7 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
 
         if (bc)
         {
-            betweenCentrality(nodes);       //centralidade de intermediação
+            betweennessCentrality(nodes);       //centralidade de intermediação
         }
 
         if (cc)
@@ -120,6 +120,7 @@ void Measure::initialize(Graph &graph,int n, bool bc, bool cc, bool dc, bool ec)
     }
 
     graph.setNodesMeasures(nodes);
+
 }
 
 
@@ -195,7 +196,7 @@ void Measure::efficientCentrality(vector<Node> &nodes, vector<vector <int> > sho
     }
 }
 
-void Measure::betweenCentrality(vector<Node> & nodes)
+void Measure::betweennessCentrality(vector<Node> & nodes)
 {
     int node = 0;
     double bc = -1.0;
@@ -203,7 +204,7 @@ void Measure::betweenCentrality(vector<Node> & nodes)
     for (int v = 0; v < this->numberOfNodes; v++)
     {
         double value =  geodesic(nodes,v);
-        nodes[v].setBetweenCentrality(value);
+        nodes[v].setBetweennessCentrality(value);
 
         if (bc < value)
         {
@@ -212,31 +213,43 @@ void Measure::betweenCentrality(vector<Node> & nodes)
         }
     }
 
-    this->centralNode = node;
+    this->centralNode = node;//armazena nó com a centralidade maior
 }
 
 /**
  * Calcula a centralidade de intermediação a partir das geodésicas obtidas
  * pelo algoritmo de Brandes e em seguida retorna a medida.
  */
-double Measure::geodesic(vector<Node> nodes,int node)
+double Measure::geodesic(vector<Node> nodes,int source)
 {
+  // cout<<"GEODESIC "<<this->numberOfNodes<<" "<<source<<endl;
 
   double bc = 0.0f;
+  int i = 0, j = 0, n = this->numberOfNodes;
 
-  for ( int i = 0; i < this->numberOfNodes-1; i++)
+  for (i = 0; i < n-1; i++)
   {
-    for (int j = i+1; j < this->numberOfNodes; j++)
+    if (i == source)
     {
-      if (j != node && i != j && i != node)
+        continue;
+    }
+
+    for (j = i+1; j < n; j++)
+    {
+
+      if (j != source && i != j && i != source)
       {
+        // cout<<"j "<<j<<" i "<<i<<" source "<<source<<endl;
         vector< vector<int> > paths;
 
         int nPaths = pathsSearch(nodes,i,j,paths);//número de geodésicas de i até j
 
-        int nNodes = nodeSearch(paths,node,nPaths);
+        int nNodes = nodeSearch(paths,source,nPaths);
+        // cout<<" "<<nPaths<<" "<<nNodes<<endl;
 
         bc = bc + ( (double)nNodes / (double)nPaths );
+
+        paths.clear();
       }
     }
   }
@@ -257,7 +270,7 @@ int Measure::pathsSearch(vector<Node> nodes, int source, int target, vector< vec
 
     int nPaths = 0;
 
-    unsigned int n = nodes[source].getNumberOfPaths();
+    unsigned int n = nodes[source].getNumberOfPaths(), k = 0;
 
     for (unsigned int i = 0; i < n; i++)
     {
@@ -267,18 +280,16 @@ int Measure::pathsSearch(vector<Node> nodes, int source, int target, vector< vec
         {
             paths.push_back(vector<int>(auxiliar+1));
 
-          for (unsigned int k = 0; k <= auxiliar; k++)
-          {
+            for (k = 0; k <= auxiliar; k++)
+            {
+                paths[nPaths][k] = nodes[source].returnNode(i,k);
+            }
 
-            paths[nPaths][k] = nodes[source].returnNode(i,k);
-          }
-
-          nPaths++;
+            nPaths++;
         }
     }
 
     return nPaths;
-
 }
 
 /**

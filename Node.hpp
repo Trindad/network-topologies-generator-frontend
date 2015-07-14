@@ -30,7 +30,7 @@ public:
     void setWeight(int, double);				//atualiza peso de uma ligação
     void setDistanceNode(double);				//atribui distância entre dois nós
     void setDegreeCentrality(int);				//atribui o valor da centralidade de grau
-    void setBetweenCentrality(double);			//atribui o valor da centralidade de intermediação
+    void setBetweennessCentrality(double);			//atribui o valor da centralidade de intermediação
     void setClosenessCentrality(double);		//atribui o valor da centralidade de proximidade
     void setEfficientCentrality(double);		//atribui o valor da centralidade de eficiência
     void setRelativeDegreeCentrality(double);	//atribui o valor da centralidade relativa de grau
@@ -48,7 +48,7 @@ public:
     double getWeightEdge(int);			//retorna o peso da ligação
     void incrementPaths(int);			//incrementa o número de caminhos minimos
     int getDegreeCentrality();		    //centralidade do grau
-    double getBetweenCentrality();		//centralidade de intermediação
+    double getBetweennessCentrality();		//centralidade de intermediação
     double getClosenessCentrality();	//centralidade de proximidade
     double getEfficientCentrality();	//centralidade de eficiência
     vector<int> getAdjacentsNodes();	//retorna vetor de nós adjacentes

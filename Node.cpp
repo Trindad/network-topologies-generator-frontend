@@ -68,7 +68,7 @@ void Node::setDegreeCentrality(int value)
 	this->degreeCentrality = value;
 }		
 
-void Node::setBetweenCentrality(double value)
+void Node::setBetweennessCentrality(double value)
 {
 	cout<<"<bc> "<<value<<endl;
 
@@ -99,7 +99,7 @@ int Node::getDegreeCentrality()
 }
 
 
-double Node::getBetweenCentrality()
+double Node::getBetweennessCentrality()
 {
 	return this->betweenCentrality;
 }
@@ -177,7 +177,7 @@ int Node::getAdjacentNode(int position)
 
 void Node::addNodePath(int newNode) 
 {
-	int position = this->numberOfPaths;
+     unsigned int position = this->numberOfPaths;
 
 	if (paths.size() < position)
 	{
@@ -201,9 +201,8 @@ vector<vector<int>> Node::returnPaths()
 
 void Node::removeNode(int node)
 {
-	int n = this->degree;
 
-	for (int i = 0; i < degree; i++)
+    for (int i = 0; i < this->degree; i++)
 	{
 	
 		if (this->adjacents[i] == node)

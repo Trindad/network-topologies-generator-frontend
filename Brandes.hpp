@@ -27,6 +27,6 @@ private:
 	int nNodes;							//número de vértices no grafo
 	vector<int> nodeAdjacent;			//vetor de nó adjacente
 	vector<int> nodeAuxiliar;			//auxiliar  
-	vector< vector<int> > shortestPath;	//armazena caminhos minimos de uma origem i à um destino j	
+	vector< vector<int> > shortestPath;	//armazena os caminhos minimos de uma origem i à um destino j	
 
 };

@@ -534,7 +534,7 @@ background:#fff;</string>
    </widget>
    <widget class="QCheckBox" name="bc">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -550,7 +550,7 @@ background:#fff;</string>
    </widget>
    <widget class="QCheckBox" name="dc">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -572,7 +572,7 @@ background:#fff;</string>
    </widget>
    <widget class="QCheckBox" name="ec">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -787,7 +787,7 @@ background:#fff;</string>
    </widget>
    <widget class="QCheckBox" name="cc">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -969,11 +969,14 @@ color:#000;</string>
     <property name="font">
      <font>
       <family>Droid Sans</family>
-      <pointsize>11</pointsize>
-      <weight>50</weight>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Droid Sans&quot;;</string>
     </property>
     <property name="text">
      <string>Network</string>
@@ -991,11 +994,14 @@ color:#000;</string>
     <property name="font">
      <font>
       <family>Droid Sans</family>
-      <pointsize>11</pointsize>
-      <weight>50</weight>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Droid Sans&quot;;</string>
     </property>
     <property name="text">
      <string>Plane</string>
@@ -1141,11 +1147,14 @@ color:#000
     <property name="font">
      <font>
       <family>Droid Sans</family>
-      <pointsize>11</pointsize>
-      <weight>50</weight>
+      <pointsize>12</pointsize>
+      <weight>9</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Droid Sans&quot;;</string>
     </property>
     <property name="text">
      <string>Region</string>
@@ -1219,11 +1228,14 @@ color:#000
    <widget class="QLabel" name="label_18">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>450</y>
-      <width>67</width>
-      <height>21</height>
+      <x>30</x>
+      <y>451</y>
+      <width>91</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Droid Sans&quot;;</string>
     </property>
     <property name="text">
      <string>Measures</string>

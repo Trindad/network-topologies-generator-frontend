@@ -121,12 +121,6 @@ void MainWindow::on_pushButton_clicked()
         graph.memsetGraph();
 
         plane.initialize(graph,simulation);
-
-        for (int w = 0; w < graph.getNumberOfNodes(); w++)
-        {
-            graph.printAdjacents(w);
-            cout<<endl;
-        }
         
          /**
           * Verifica se o número de ligações foi atingido
@@ -168,7 +162,7 @@ void MainWindow::on_pushButton_clicked()
 
             if( (ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() ) && survivor)
             {
-                cout<<"Measures"<<endl;
+                cout<<"\n Measures"<<endl;
                 if (simulation == 1)
                 {
                     file.createXls(ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked());

@@ -162,7 +162,7 @@ void FileWriter::writeMeasures(Graph &graph, bool bc, bool ec, bool dc, bool cc)
         for (int u = 0;  u < graph.getNumberOfNodes(); u++) 
         {   
 //	      	cout<<"bc( "<<u<<") = "<<betweenCentrality<<endl;
-            string temp = to_string( node[u].getBetweenCentrality() );
+            string temp = to_string( node[u].getBetweennessCentrality() );
             // cout<<"temp betweenCentrality "<<temp<<" "<<node[u].getBetweenCentrality()<<endl;
             this->xlsx.write(it, 2, temp.c_str() );
 
