@@ -64,17 +64,28 @@
             </p>
             <p>
               The routing between nodes inside region uses the Waxman probability to determine the links that will happen or not.
-              The Waxman probability makes use of two variables, alpha and  beta, ranging from 0 to 1.
+              The Waxman probability makes use of two variables, alpha and  beta, ranging from 0 to 1. 
             </p>
-            
+            <p>
+              The distribution of the nodes can be uniform or random. On the uniform distribution, all regions have the same number of nodes. However, as the number of regions is greater than the number of nodes, there will be same empty regions. Also, if the number of nodes is odd the distribution will not be perfectly equal.   
+            </p>
+            <p>
+              On the random distribution, will do as the name suggests: it will distribute the nodes not following any pattern and as such, some regions will have more nodes than others, and some may have none. 
+            </p>
+            <br>
             <img src="img/nttgen_plane.png">
 
-            <h2 id="region">Region</h2>
+            <h2 id="region">Regions</h2>
 
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              The subdivision of the plane in regions can be fixed regions or flexible regions. On the former, the plane will be divided in R equal regions; and on the latter, you can enter the Length and the Breadth of the plane ( Length * Breadth = sqrt(R) ), so there are several options to divide the sqrt(R) into different types of rectangular dimensions. 
             </p>
             <img src="img/nttgen_region.png">
+            <br>
+            <br>
+            <p>
+              Also there is an option to say the number of simulations.
+            </p>
 
             <h2 id="measures">Measures</h2>
 
