@@ -40,7 +40,9 @@ void FileWriter::openFile()
     {
         dir.mkpath(".");
     }
+
     temp.append("/topology_");
+
     temp.append(QString::fromStdString(date));
     temp.append(".txt");
 
@@ -103,7 +105,6 @@ void FileWriter::writeTopologies(Graph g, Plane plane, int s, int topology)
 	this->topology = topology;
 
 	this->output<<" From "<<" To "<<" Distance "<<endl;
-	cout<<"getNumberOfNodes "<<g.getNumberOfNodes();
 
     for (int u = 0; u < g.getNumberOfNodes(); u++)
 	{
@@ -124,7 +125,6 @@ void FileWriter::writeTopologies(Graph g, Plane plane, int s, int topology)
 
 	        graph[u][v] = graph[v][u] = 1;
 
-            //cout<<"u "<<u<<" v "<<v<<euclidean[count]<<endl;
 	        char str[255];
             sprintf(str," %*d  %*d  %*.3f ", 2, u, 4, v, 8, euclidean[count]);
 
@@ -267,13 +267,12 @@ void FileWriter::closeFileMeasures()
 	// cf4.addRange("E3:E21");
 	// xlsx.addConditionalFormatting(cf4);
 
-    string fileName = "measure_";
-    string extension = ".xlsx";
+    QString temp = QDir::homePath();
+    temp.append("/simulations/measure_");
+    temp.append(QString::fromStdString(this->dateTime));
+    temp.append(".xlsx");
 
-    string file = fileName+this->dateTime+extension;
-
-
-    xlsx.saveAs(file.c_str());
+    xlsx.saveAs(temp);
 }
 
 void FileWriter::closeFileTopologies()
