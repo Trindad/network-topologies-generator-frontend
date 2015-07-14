@@ -70,7 +70,7 @@ void Node::setDegreeCentrality(int value)
 
 void Node::setBetweennessCentrality(double value)
 {
-	cout<<"<bc> "<<value<<endl;
+	// cout<<"<bc> "<<value<<endl;
 
 	this->betweenCentrality = value;
 }

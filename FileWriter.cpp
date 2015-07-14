@@ -57,7 +57,7 @@ void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 	     * Escreve no arquivo as posições(x,y) de cada nó no grafo
 	     * A ordem de inserção é crescente
 	     */
-	    this->output<<" X "<<" Y "<<endl;
+	    this->output<<" X\t"<<"Y "<<endl;
 
 	    for (int u = 0; u < g.getNumberOfNodes(); u++)
 		{

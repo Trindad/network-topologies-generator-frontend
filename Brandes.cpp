@@ -150,7 +150,7 @@ int Brandes::addPaths(vector<Node> & nodes,vector<vector<int>> &path,int adjacen
  */
 void Brandes::insertPaths(vector<Node> &nodes,int source,int target,int adjacent)
 {
-  printf("(%d , %d)\n",source,target );
+  // printf("(%d , %d)\n",source,target );
   vector< vector<int> > path = vector< vector<int> > ( this->nNodes, vector<int>(this->nNodes,-1) );
 
   if (this->shortestPath[source][target] >= 3)

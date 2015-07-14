@@ -174,7 +174,7 @@ void Plane::setCoordinatesRegion()
  */
 void Plane::getNumberOfNodesRegion(int numberRegion, vector<int> &nodes)
 {
-    cout<<" "<<this->regionsWithNodes[numberRegion][0]<<" "<<this->regionsWithNodes[numberRegion][2]<<endl;
+    // cout<<" "<<this->regionsWithNodes[numberRegion][0]<<" "<<this->regionsWithNodes[numberRegion][2]<<endl;
     for (int i = this->regionsWithNodes[numberRegion][0]; i < this->regionsWithNodes[numberRegion][1]; i++)
     {
         for (int j = this->regionsWithNodes[numberRegion][2]; j < this->regionsWithNodes[numberRegion][3]; j++)
@@ -1212,7 +1212,7 @@ void Plane::initialize(Graph &graph,int simulation)
 
             j++;
         }
-        cout<<endl;
+        // cout<<endl;
 
         j = 0;
     }

@@ -147,7 +147,7 @@ void MainWindow::on_pushButton_clicked()
 
         bool survivor = s.execute(graph);
 
-        cout<<"survivor "<<survivor<<endl;
+        // cout<<"survivor "<<survivor<<endl;
 
         if(survivor)
         {
@@ -162,7 +162,7 @@ void MainWindow::on_pushButton_clicked()
 
             if( (ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() ) && survivor)
             {
-                cout<<"\n Measures"<<endl;
+                // cout<<"\n Measures"<<endl;
                 if (simulation == 1)
                 {
                     file.createXls(ui->bc->isChecked(),ui->cc->isChecked(),ui->dc->isChecked(),ui->ec->isChecked());
@@ -199,7 +199,7 @@ void MainWindow::on_pushButton_clicked()
                     survivor = suurballe.execute(graph);
                 }
 
-                cout<<"survivor "<<survivor<<endl;
+                // cout<<"survivor "<<survivor<<endl;
                 if(survivor)
                 {
                     if (simulation == 1 && topology == 1)
@@ -239,7 +239,7 @@ void MainWindow::on_pushButton_clicked()
         simulation++;
      }
 
-     cout<<"\nmax degree "<<graph.getAverageDegree()<<endl;
+     // cout<<"\nmax degree "<<graph.getAverageDegree()<<endl;
      file.closeFileTopologies();
      file.closeFileMeasures();
      ui->pushButton->setEnabled(true);

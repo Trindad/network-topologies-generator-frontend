@@ -222,8 +222,6 @@ void Measure::betweennessCentrality(vector<Node> & nodes)
  */
 double Measure::geodesic(vector<Node> nodes,int source)
 {
-  // cout<<"GEODESIC "<<this->numberOfNodes<<" "<<source<<endl;
-
   double bc = 0.0f;
   int i = 0, j = 0, n = this->numberOfNodes;
 
