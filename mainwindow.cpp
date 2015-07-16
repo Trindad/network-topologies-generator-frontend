@@ -161,7 +161,7 @@ void MainWindow::on_pushButton_clicked()
                 file.writeCoordinatesTopologies(graph,plane);
             }
 
-            file.writeTopologies(graph,plane,simulation,topology);
+            file.writeTopologies(graph,simulation,topology);
 
 
             if( (ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() ) && survivor)
@@ -212,7 +212,7 @@ void MainWindow::on_pushButton_clicked()
                         file.writeCoordinatesTopologies(graph,plane);
                     }
 
-                    file.writeTopologies(graph,plane,simulation,topology);
+                    file.writeTopologies(graph,simulation,topology);
 
                     if(ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() )
                     {

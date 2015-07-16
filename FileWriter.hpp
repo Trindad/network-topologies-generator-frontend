@@ -22,7 +22,7 @@ public:
 	string returnCurrentTimeAndDate();
     void createXls();
 	void writeCoordinatesTopologies(Graph, Plane);
-	void writeTopologies(Graph,Plane,int,int);
+    void writeTopologies(Graph,int,int);
 	void writeMeasures(Graph &,bool,bool,bool,bool);
 	void closeFileTopologies();
 	void closeFileMeasures();

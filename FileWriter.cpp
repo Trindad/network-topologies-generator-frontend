@@ -88,7 +88,7 @@ void FileWriter::writeCoordinatesTopologies(Graph g, Plane plane)
 	}
 }
 
-void FileWriter::writeTopologies(Graph g, Plane plane, int s, int topology)
+void FileWriter::writeTopologies(Graph g, int s, int topology)
 {
 	vector < vector<int> > graph = vector< vector<int> > (g.getNumberOfNodes(),vector<int>(g.getNumberOfNodes(),0));
 	vector<Node> node = g.getNodes();
@@ -245,27 +245,6 @@ void FileWriter::writeMeasures(Graph &graph, bool bc, bool ec, bool dc, bool cc)
 
 void FileWriter::closeFileMeasures()
 {
-
-	// ConditionalFormatting cf1;
-	// Format fmt1;
-	// fmt1.setFontColor(Qt::green);
-	// fmt1.setBorderStyle(Format::BorderDashed);
-	// cf1.addHighlightCellsRule(ConditionalFormatting::Highlight_LessThan, "40", fmt1);
-	// cf1.addRange("B3:B21");
-	// xlsx.addConditionalFormatting(cf1);
-
-	// ConditionalFormatting cf2;
-	// Format fmt2;
-	// fmt2.setBorderStyle(Format::BorderDotted);
-	// fmt2.setBorderColor(Qt::blue);
-	// cf2.addHighlightCellsRule(ConditionalFormatting::Highlight_Between, "30", "70", fmt2);
-	// cf2.addRange("C3:C21");
-	// xlsx.addConditionalFormatting(cf2);
-
-	// ConditionalFormatting cf4;
-	// cf4.addDataBarRule(Qt::blue);
-	// cf4.addRange("E3:E21");
-	// xlsx.addConditionalFormatting(cf4);
 
     QString temp = QDir::homePath();
     temp.append("/simulations/measure_");
