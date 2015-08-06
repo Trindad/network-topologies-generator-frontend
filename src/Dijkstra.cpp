@@ -62,7 +62,7 @@ int Dijkstra::execute( Graph graph, int source, int target)
 
         if (n == 0)
         {
-            cout<<"Topologia com nó "<<v<<" desconexo."<<endl;
+            // cout<<"Topologia com nó "<<v<<" desconexo."<<endl;
 
             return -std::numeric_limits<double>::max() ;
         }
@@ -90,7 +90,7 @@ int Dijkstra::execute( Graph graph, int source, int target)
 
         dist = std::numeric_limits<double>::max();
 
-        for (unsigned int i = 0; i < graph.getNumberOfNodes(); i++)
+        for (int i = 0; i < graph.getNumberOfNodes(); i++)
         {
             if ( ( inTree[i] == false ) && ( dist > distance[i] ) )
             {

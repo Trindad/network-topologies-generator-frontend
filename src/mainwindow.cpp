@@ -56,6 +56,7 @@ void MainWindow::on_pushButton_clicked()
      /**
       * Configurações do plano
       */
+    // cout<<ui->bc->isChecked()<< ui->cc->isChecked()<< ui->dc->isChecked()<< ui->ec->isChecked()<<endl;
 
      Plane plane;
 
@@ -83,7 +84,7 @@ void MainWindow::on_pushButton_clicked()
 
      plane.setWaxmanParameters(ui->alpha->value(),ui->beta->value());
 
-     qDebug()<<ui->nodesDistribution->currentText();
+     // qDebug()<<ui->nodesDistribution->currentText();
 
      if(ui->nodesDistribution->currentText() == "Uniform")
      {
@@ -167,7 +168,7 @@ void MainWindow::on_pushButton_clicked()
             if( (ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() ) && survivor)
             {
                 // cout<<"\n Measures"<<endl;
-                if (simulation == 1)
+                if (simulation)
                 {
                     file.createXls();
                 }
@@ -214,9 +215,9 @@ void MainWindow::on_pushButton_clicked()
 
                     file.writeTopologies(graph,simulation,topology);
 
-                    if(ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() )
+                    if( (ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked() ) && survivor )
                     {
-                        if (simulation == 1)
+                        if (simulation)
                         {
                             file.createXls();
                         }
@@ -250,7 +251,10 @@ void MainWindow::on_pushButton_clicked()
      ui->error->setText(message);
 
      file.closeFileTopologies();
-     file.closeFileMeasures();
+     if (ui->bc->isChecked() || ui->cc->isChecked() || ui->dc->isChecked() || ui->ec->isChecked())
+     {
+        file.closeFileMeasures();
+     }
      ui->pushButton->setEnabled(true);
      ui->pushButton->setText("Begin simulation");
 }
@@ -313,5 +317,5 @@ void MainWindow::on_measures_clicked()
 
 void MainWindow::on_help_clicked()
 {
-    QDesktopServices::openUrl(QUrl("file:///home/silvana/interface/help/index.html", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl(QString::fromStdString(this->appPath+"/help/index.html"), QUrl::TolerantMode));
 }

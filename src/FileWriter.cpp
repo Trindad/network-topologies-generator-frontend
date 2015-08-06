@@ -47,7 +47,7 @@ void FileWriter::openFile()
     temp.append(".txt");
 
     string file = temp.toStdString();
-    cout << file << endl;
+    // cout << file << endl;
 
     this->output.open(file);
 

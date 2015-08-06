@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    std::string appPath;
 
 private slots:
     void on_pushButton_clicked();
